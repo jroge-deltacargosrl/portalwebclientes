@@ -1,0 +1,18 @@
+{
+  "FilePath": "c:\\Users\\hp\\Desktop\\DeltaCargo\\PortalWebClientes\\portal-web-clientes\\PortalWebClientes\\PortalWebClientes\\PortalWebClientes.csproj",
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 703
+  },
+  "RootNamespace": null,
+  "Documents": []
+}
