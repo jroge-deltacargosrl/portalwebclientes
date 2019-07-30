@@ -1,24 +1,98 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿:root {
+    --naranjaDeltaCargo: #ec9404;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+:root {
+    --plomoInput: #f1f1f1;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+@font-face {
+    font-family: primaryFont;
+    /* No usar */
+    src: url("../fonts/ProximaNova/ProximaNova-Regular.otf");
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+body {
+    margin: 0%;
+    padding: 0%;
+}
+
+.centro {
+    width: 60%;
+    margin: 15% auto 0% auto;
+    padding: 1%;
+    font-family: primaryFont;
+    background-color: var(--naranjaDeltaCargo);
+    border-style: none;
+    border-radius: 50px;
+}
+
+    .centro div {
+        width: 100%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        padding: 0%;
+        display: flex;
+    }
+
+        .centro div label {
+            width: 40%;
+            margin: 0%;
+            padding: 0%;
+            text-align: right;
+            font-size: 200%;
+        }
+
+        .centro div input {
+            width: 40%;
+            margin-left: 5%;
+            margin-top: 0%;
+            padding: 0%;
+            font-size: 150%;
+            border: solid;
+            border-color: black;
+            border-radius: 7px;
+        }
+
+.primaryButton {
+    background-color:black;
+}
+
+@media only screen and (max-width: 361px) {
+
+    .centro {
+        width: 70%;
+        margin: 30% auto 0% auto;
+        padding: 1%;
+        font-family: primaryFont;
+        background-color: var(--naranjaDeltaCargo);
+        border-style: none;
+        border-radius: 30px;
+    }
+
+        .centro div {
+            width: 100%;
+            margin-top: 15%;
+            margin-bottom: 15%;
+            padding: 0%;
+            display: flex;
+        }
+
+            .centro div label {
+                width: 40%;
+                margin-top: 1.5%;
+                padding: 0%;
+                text-align: right;
+                font-size: 100%;
+            }
+
+            .centro div input {
+                width: 40%;
+                margin-left: 5%;
+                padding: 0%;
+                font-size: 100%;
+                border: solid;
+                border-color: black;
+                border-radius: 7px;
+            }
 }
