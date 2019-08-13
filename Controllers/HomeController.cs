@@ -22,6 +22,9 @@ namespace PortalWebCliente.Controllers
         [HttpPost]
         public IActionResult Index(PersonaModel persona)
         {
+
+
+
             if (persona.userName != null)
             {
                 if (persona.contraseña != null)
@@ -71,6 +74,8 @@ namespace PortalWebCliente.Controllers
                 }
                 return RedirectToAction("LogIn", "Home", new { @estadoUsuario = 2 });
             }
+
+            // respuesta con valores enteros para validar del lado del cliente la peticion // modificar el metodo de ser posible
         }
         public IActionResult About()
         {
