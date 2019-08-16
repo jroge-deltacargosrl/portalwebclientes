@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Data.SqlClient;
 using PortalWebCliente.Models;
+using MessageObjects;
+using RestSharp;
 
 namespace PortalWebCliente.Controllers
 {
@@ -22,60 +24,72 @@ namespace PortalWebCliente.Controllers
         [HttpPost]
         public IActionResult Index(PersonaModel persona)
         {
-
-
-
+            int estadoUsuario = 0, estadoContraseña = 0;string antiguoUsuario = "";
             if (persona.userName != null)
             {
                 if (persona.contraseña != null)
                 {
-                    SqlConnectionStringBuilder sConnB = new SqlConnectionStringBuilder()
+                    var client = new RestClient("http://deltawebapi.azurewebsites.net/api/v1/operations/");
+                    var request = new RestRequest(Method.GET);
+                    request.AddHeader("cache-control", "no-cache");
+                    request.AddHeader("Connection", "keep-alive");
+                    request.AddHeader("Content-Length", "26");
+                    request.AddHeader("Accept-Encoding", "gzip, deflate");
+                    request.AddHeader("Cookie", "ARRAffinity=419a3fd042e09f6a2a8c01997b56c1bc63e7fa41cfbb8e4472612963a6dd2564");
+                    request.AddHeader("Host", "deltawebapi.azurewebsites.net");
+                    request.AddHeader("Postman-Token", "2ee76cf0-4044-4abf-a14e-653ce68188b3,627cc292-00b1-4912-be84-9981691d9cf5");
+                    request.AddHeader("Cache-Control", "no-cache");
+                    request.AddHeader("Accept", "*/*");
+                    request.AddHeader("User-Agent", "PostmanRuntime/7.15.2");
+                    request.AddHeader("Content-Type", "application/json");
+                    request.AddParameter("undefined", "{\n\t\"id\":7,\n\t\"message\":\"\"\n}", ParameterType.RequestBody);
+                    IRestResponse response = client.Execute(request);
+                    string json = response.Content.ToString();
+                    int respuesta = 3;
+                    if (respuesta == 3)
                     {
-                        DataSource = "deltaserver.database.windows.net",
-                        InitialCatalog = "deltadb",
-                        UserID = "deltasa",
-                        Password = "Delta123#"
-                    };
-                    SqlConnection cnn = new SqlConnection(sConnB.ConnectionString);
-                    cnn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM usuario", cnn);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    int c = 0;
-                    while (dr.Read())
-                    {
-                        c++;
-                        if (persona.userName.Equals(dr["nombre"].ToString()))
-                        {
-                            if (persona.contraseña.Equals(dr["contraseña"].ToString()))
-                            {
-                                cnn.Close();
-                                return View(persona);
-                            }
-                            else
-                            {
-                                cnn.Close();
-                                return RedirectToAction("LogIn", "Home", new { @estadoContraseña=1, @antiguoUsuario = persona.userName });
-                            }
-                        }
+                        //TODO OK
+                        //Pedir el nombre de la persona
+                        //Convertir el json que me llega a una List
+                        //List = json.toList();
+                        persona.userName = json.Length.ToString();
+                        return View(persona);
                     }
-                    cnn.Close();
-                    return RedirectToAction("LogIn", "Home", new { @estadoUsuario=1, @antiguoUsuario = persona.userName });
+                    else if (respuesta == 2)
+                    {
+                        //CONTRASEÑA INCORRECTA
+                        estadoContraseña = 1;
+                    }
+                    else
+                    {
+                        //USUARIO NO EXISTE
+                        estadoUsuario = 1;
+                        antiguoUsuario = persona.userName;
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("LogIn", "Home", new { @estadoContraseña= 2 ,@antiguoUsuario=persona.userName});
+                    //CONTRASEÑA NO INTRODUCIDA
+                    estadoContraseña = 2;
+                    antiguoUsuario = persona.userName;
                 }
             }
             else
             {
+                //USUARIO NO INTRODUCIDO
+                estadoUsuario = 2;
                 if (persona.contraseña == null)
                 {
-                    return RedirectToAction("LogIn", "Home", new { @estadoUsuario = 2, @estadoContraseña =2});
+                    //CONTRASEÑA NO INTRODUCIDA
+                    estadoContraseña = 2;
                 }
-                return RedirectToAction("LogIn", "Home", new { @estadoUsuario = 2 });
             }
-
-            // respuesta con valores enteros para validar del lado del cliente la peticion // modificar el metodo de ser posible
+            return RedirectToAction("LogIn", "Home", new
+            {
+                estadoUsuario,
+                estadoContraseña,
+                antiguoUsuario
+            });
         }
         public IActionResult About()
         {
