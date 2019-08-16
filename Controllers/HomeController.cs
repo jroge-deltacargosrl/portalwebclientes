@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Data.SqlClient;
 using PortalWebCliente.Models;
-using MessageObjects;
 using RestSharp;
 
 namespace PortalWebCliente.Controllers

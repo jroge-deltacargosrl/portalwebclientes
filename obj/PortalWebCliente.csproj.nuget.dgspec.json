@@ -4,60 +4,6 @@
     "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalWebClientes\\PortalWebCliente.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\MessageObjects\\MessageObjects.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\MessageObjects\\MessageObjects.csproj",
-        "projectName": "MessageObjects",
-        "projectPath": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\MessageObjects\\MessageObjects.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\MessageObjects\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "netstandard2.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "netstandard2.0": {
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "netstandard2.0": {
-          "dependencies": {
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
-            }
-          },
-          "imports": [
-            "net461"
-          ],
-          "assetTargetFallback": true,
-          "warn": true
-        }
-      }
-    },
     "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalWebClientes\\PortalWebCliente.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -85,11 +31,7 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
-            "projectReferences": {
-              "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\MessageObjects\\MessageObjects.csproj": {
-                "projectPath": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\MessageObjects\\MessageObjects.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
