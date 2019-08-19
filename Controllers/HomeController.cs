@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using System.Data.SqlClient;
 using PortalWebCliente.Models;
 using RestSharp;
+using PortalWebCliente.Models.Infrastructure;
 
 namespace PortalWebCliente.Controllers
 {
@@ -28,7 +29,21 @@ namespace PortalWebCliente.Controllers
             {
                 if (persona.contraseña != null)
                 {
-                    var client = new RestClient("http://deltawebapi.azurewebsites.net/api/v1/operations/");
+                    string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+                    var responseRequest = new RequestAPI()
+                        .addClient(new RestClient(urlRequest))
+                        .addHeader(new KeyValuePair<string, object>("Accept","application/json"))
+                        .addRequest(new RestRequest("operation/{idCustomer}",Method.GET))
+                        .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer", 7))
+                        .buildRquest();
+
+                    int x = 2;
+                        
+                       
+
+
+
+                    /*var client = new RestClient("http://deltawebapi.azurewebsites.net/api/v1/operations/");
                     var request = new RestRequest(Method.GET);
                     request.AddHeader("cache-control", "no-cache");
                     request.AddHeader("Connection", "keep-alive");
@@ -38,7 +53,6 @@ namespace PortalWebCliente.Controllers
                     request.AddHeader("Host", "deltawebapi.azurewebsites.net");
                     request.AddHeader("Postman-Token", "2ee76cf0-4044-4abf-a14e-653ce68188b3,627cc292-00b1-4912-be84-9981691d9cf5");
                     request.AddHeader("Cache-Control", "no-cache");
-                    request.AddHeader("Accept", "*/*");
                     request.AddHeader("User-Agent", "PostmanRuntime/7.15.2");
                     request.AddHeader("Content-Type", "application/json");
                     request.AddParameter("undefined", "{\n\t\"id\":7,\n\t\"message\":\"\"\n}", ParameterType.RequestBody);
@@ -64,7 +78,7 @@ namespace PortalWebCliente.Controllers
                         //USUARIO NO EXISTE
                         estadoUsuario = 1;
                         antiguoUsuario = persona.userName;
-                    }
+                    }*/
                 }
                 else
                 {
@@ -83,6 +97,7 @@ namespace PortalWebCliente.Controllers
                     estadoContraseña = 2;
                 }
             }
+
             return RedirectToAction("LogIn", "Home", new
             {
                 estadoUsuario,

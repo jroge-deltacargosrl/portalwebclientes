@@ -1,4 +1,6 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json;
+using RestSharp;
+using RestSharp.Serialization.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +12,11 @@ namespace PortalWebCliente.Models.Infrastructure
 {
     public class RequestAPI
     {
-
         public RestClient client { get; set; }
         public RestRequest request { get; set; }
         public IRestResponse response { get; set; }
 
-
-        public RequestAPI():this(null,null) { }
-        
+        public RequestAPI() : this(null, null) { }
 
         public RequestAPI(RestClient client, RestRequest request)
         {
@@ -25,28 +24,69 @@ namespace PortalWebCliente.Models.Infrastructure
             this.request = request;
         }
 
+        // Metodos de construccion por partes
+        public RequestAPI addClient(RestClient client)
+        {
+            this.client = client;
+            return this;
+        }
+
+        public RequestAPI addRequest(RestRequest request)
+        {
+            this.request = request;
+            return this;
+        }
 
         public bool requestValid() => !isNull(client) && !isNull(request);
 
         // rediseñar este metodo de una forma optima para futuras iteraciones
-        public IRestRequest addParameters(Dictionary<string,object> paramsRequest)
+        public RequestAPI addParameters(Dictionary<string, object> paramsRequest, ParameterType paramType)
         {
-            IRestRequest requestCurrent = null;
-            foreach (KeyValuePair<string,object> item in paramsRequest)
+            foreach (KeyValuePair<string, object> item in paramsRequest)
             {
-                 requestCurrent = addParameter(item);
+                addParameter(item, paramType);
             }
-            return requestCurrent;
+            return this;
         }
 
-        public IRestRequest addHeader(KeyValuePair<string, object> paramHeader) => request.AddHeader(paramHeader.Key,paramHeader.Value.ToString());
-        public IRestRequest addParameter(KeyValuePair<string, object> param) => request.AddParameter(param.Key, param.Value);
-        
+        public RequestAPI setRequestFormat(DataFormat format)
+        {
+            request.RequestFormat = format;
+            return this;
+        }
+
+        public RequestAPI addBodyData(object param)
+        {
+            request.AddBody(param);
+            return this;
+        }
+
+        public RequestAPI addHeader(KeyValuePair<string, object> paramHeader)
+        {
+            request.AddHeader(paramHeader.Key, paramHeader.Value.ToString());
+            return this;
+        }
+
+        public RequestAPI addParameter(KeyValuePair<string, object> param, ParameterType paramType)
+        {
+            request.AddParameter(param.Key, param.Value, paramType);
+            return this;
+        }
+
+        public RequestAPI addUrlSegmentParam(KeyValuePair<string,object> param)
+        {
+            request.AddUrlSegment(param.Key, param.Value);
+            return this;
+        }
+
+
+
+
         /// <summary>
         /// Metodo que ejecuta la solicitud HTTP/ HTTPS desde el lado del cliente hacia el servidor, procesa la informacion y lanza una respuesta de parte del servidor
         /// </summary>
         /// <returns></returns>
-        public string executeRequest()
+        public string buildRquest() 
         {
             try
             {
@@ -62,6 +102,11 @@ namespace PortalWebCliente.Models.Infrastructure
             {
                 throw e;
             }
+        }
+
+        public T deserilize<T>(string content)
+        {
+            return new JsonDeserializer().;
         }
 
 
