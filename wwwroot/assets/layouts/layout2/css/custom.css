@@ -1,1 +1,104 @@
-/* here you can put your own css to customize and override the theme */
+.section-header {
+    color: orange;
+    font-weight: 800;
+    font-size: 1.4em;
+}
+
+.steps-header {
+    color: red;
+    font-weight: 800;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.steps-imgs {
+    display: block;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border: solid;
+    border-color: brown;
+    border-radius: 50%;
+}
+
+.steps-name, .steps-description {
+    margin: 0;
+}
+
+.steps-name {
+    color: violet;
+    font-weight: 800;
+    font-size: 1.4em;
+}
+
+.steps-description {
+    overflow: hidden;
+}
+
+@media screen and (max-width: 500px) {
+    .steps-timeline {
+        border-left: 2px solid orange;
+        margin-left: 25px;
+    }
+
+    .steps-one,
+    .steps-two,
+    .steps-three {
+        margin-left: -25px;
+    }
+
+    .steps-one,
+    .steps-two {
+        padding-bottom: 40px;
+    }
+
+    .steps-three {
+        margin-bottom: -100%;
+    }
+
+    .steps-img {
+        float: left;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .steps-timeline {
+        border-top: 2px solid orange;
+        padding-top: 20px;
+        margin-top: 40px;
+        margin-left: 16.65%;
+        margin-right: 16.65%;
+    }
+
+    .steps-one,
+    .steps-two,
+    .steps-three {
+        float: left;
+        width: 33%;
+        margin-top: -50px;
+    }
+
+    .steps-one {
+        margin-left: -16.65%;
+        margin-right: 16.65%;
+    }
+
+    .steps-three {
+        margin-left: 16.65%;
+        margin-right: -16.65%;
+    }
+
+    .steps-name {
+        color: red;
+        font-weight: 800;
+        font-size: 1.4em;
+        text-align: center;
+    }
+
+    .steps-description {
+        overflow: hidden;
+        text-align: center;
+    }
+}
