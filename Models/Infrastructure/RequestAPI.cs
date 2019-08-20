@@ -104,10 +104,11 @@ namespace PortalWebCliente.Models.Infrastructure
             }
         }
 
-        public T deserilize<T>(string content)
+
+        // readecuar esta seccion
+        public static List<ProyectoModel> deserilizeProject(string content)
         {
-            //return new JsonDeserializer().;
-            return default;
+            return JsonConvert.DeserializeObject<List<ProyectoModel>>(content);
         }
 
 

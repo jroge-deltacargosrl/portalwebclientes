@@ -1,4 +1,5 @@
-﻿@model PortalWebCliente.Models.PersonaModel;
+﻿
+@model List<PortalWebCliente.Models.ProyectoModel>;
 @{
     Layout = null;
 }
@@ -437,7 +438,7 @@
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
                                 <span class="username username-hide-on-mobile">
-                                    @Model.userName
+                                    Model.userName
                                 </span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
@@ -1532,15 +1533,49 @@
         <!-- END SIDEBAR -->
         <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
-
-
             <div class="page-content">
                 <!-- BEGIN CONTENT BODY -->
                 <section id="Steps" class="steps-section">
                     <h2 class="steps-header">
-                        Responsive Semantic Timeline
+                        LISTADO DE OPERACIONES POR CLIENTE
                     </h2>
-                    <div class="steps-timeline">
+                    @{
+                        List<string> classTimeLine = new List<string>() { "steps-one", "steps-two", "steps-three"};
+
+                    }
+
+                    @foreach (ProyectoModel item in Model)
+                    {
+                        <h3 class="steps-name" style="color:black">@item.name</h3>
+                        <div class="steps-timeline">
+                            @{
+                                List<EtapaModel> etapas = item.stages;
+                                int index = 0;
+                                foreach (var etapa in etapas)
+                                {
+                                    <div class="@classTimeLine[index++]">
+                                        <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+                                        <h3 class="steps-name">
+                                            @etapa.name
+                                        </h3>
+                                        @{int iTask = 0;}
+                                        @foreach (var tarea in etapa.tasks)
+                                        {
+                                            <p class="steps-description">
+                                                @string.Format("{0}) {1} => ESTADO : {2}",++iTask,tarea.name,tarea.kanbanState);
+                                            </p>
+                                        }
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                        //Responsive Semantic Timeline -> esto va aqui ariba XD
+
+                    }
+
+
+                    <!--<div class="steps-timeline">
                         <div class="steps-one">
                             <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
                             <h3 class="steps-name">
@@ -1568,7 +1603,9 @@
                                 The timeline does not extend past the first and last elements.
                             </p>
                         </div>
-                    </div>
+                    </div>-->
+
+
                 </section>
             </div>
             <!-- END CONTENT BODY -->

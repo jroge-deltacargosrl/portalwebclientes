@@ -34,12 +34,14 @@ namespace PortalWebCliente.Controllers
                         .addClient(new RestClient(urlRequest))
                         .addRequest(new RestRequest("operation/{idCustomer}", Method.GET))
                         .addHeader(new KeyValuePair<string, object>("Accept","application/json"))
-                        .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer", 7))
+                        .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer", 7)) // credenciales estaticas
                         .buildRquest();
+
+                    List<ProyectoModel> projectModel = RequestAPI.deserilizeProject(responseRequest);
 
                     int x = 2;
 
-                    return View(persona);
+                    return View(projectModel);
                     /*string json = response.Content.ToString();
                     int respuesta = 3;
                     if (respuesta == 3)
