@@ -106,7 +106,8 @@ namespace PortalWebCliente.Models.Infrastructure
 
         public T deserilize<T>(string content)
         {
-            return new JsonDeserializer().;
+            //return new JsonDeserializer().;
+            return default;
         }
 
 
