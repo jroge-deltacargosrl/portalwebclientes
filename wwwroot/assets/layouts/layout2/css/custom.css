@@ -1,36 +1,46 @@
 .section-header {
-    color: orange;
-    font-weight: 800;
+    color: red;
+    font-weight: 400;
     font-size: 1.4em;
 }
 
 .steps-header {
     color: red;
-    font-weight: 800;
+    font-weight: 400;
     font-size: 1.4em;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.steps-imgs {
+.steps-timeline {
+    outline: 1px dashed rgba(red, 0);
+}
+
+.steps-one,
+.steps-two,
+.steps-three {
+    outline: 1px dashed rgba(green, 0p);
+}
+
+.steps-img {
     display: block;
     margin: auto;
     width: 50px;
     height: 50px;
-    border: solid;
-    border-color: brown;
     border-radius: 50%;
 }
 
-.steps-name, .steps-description {
+.steps-name,
+.steps-description {
     margin: 0;
 }
 
 .steps-name {
-    color: violet;
-    font-weight: 800;
+    color: red;
+    font-weight: 400;
     font-size: 1.4em;
 }
+
 
 .steps-description {
     overflow: hidden;
@@ -65,7 +75,7 @@
 
 @media screen and (min-width: 500px) {
     .steps-timeline {
-        border-top: 2px solid orange;
+        border-top: 2px solid red;
         padding-top: 20px;
         margin-top: 40px;
         margin-left: 16.65%;
@@ -91,14 +101,16 @@
     }
 
     .steps-name {
-        color: red;
-        font-weight: 800;
-        font-size: 1.4em;
         text-align: center;
     }
 
     .steps-description {
-        overflow: hidden;
         text-align: center;
     }
+}
+
+.steps-timeline:after {
+    content: "";
+    display: table;
+    clear: both;
 }
