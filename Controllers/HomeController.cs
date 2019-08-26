@@ -24,7 +24,7 @@ namespace PortalWebCliente.Controllers
         [HttpPost]
         public IActionResult Index(PersonaModel persona)
         {
-            int estadoUsuario = 0, estadoContraseña = 0;string antiguoUsuario = "";
+            int estadoUsuario = 0, estadoContraseña = 0; string antiguoUsuario = "";
             if (persona.userName != null)
             {
                 if (persona.contraseña != null)
@@ -33,14 +33,12 @@ namespace PortalWebCliente.Controllers
                     var responseRequest = new RequestAPI()
                         .addClient(new RestClient(urlRequest))
                         .addRequest(new RestRequest("operation/{idCustomer}", Method.GET))
-                        .addHeader(new KeyValuePair<string, object>("Accept","application/json"))
+                        .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
                         .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer", 7)) // credenciales estaticas
                         .buildRquest();
-
                     List<ProyectoModel> projectModel = RequestAPI.deserilizeProject(responseRequest);
-
                     int x = 2;
-
+                    ViewBag.persona = persona;
                     return View(projectModel);
                     /*string json = response.Content.ToString();
                     int respuesta = 3;
@@ -90,9 +88,96 @@ namespace PortalWebCliente.Controllers
                 antiguoUsuario
             });
         }
-        [HttpGet("/Home/{operacion}", Name = "Products_List")]
+        [HttpGet("/Home/{operacion}", Name = "aux")]
         public IActionResult TimeLineOperacion(ProyectoModel operacion)
         {
+            operacion.stages = new List<EtapaModel>()
+            {
+                new EtapaModel()
+                {
+                    id=1,
+                    name="etapa1",
+                    projectId=1,
+                    sequence=1,
+                    tasks=new List<TareaModel>()
+                    {
+                        new TareaModel
+                        {
+                            id=1,
+                            name="Tarea1",
+                            projectId=1,
+                            stageId=1,
+                            date_start=new DateTime(2019,01,01),
+                            kanbanState="normal"
+                        },
+                        new TareaModel
+                        {
+                            id=2,
+                            name="Tarea2",
+                            projectId=1,
+                            stageId=1,
+                            date_start=new DateTime(2019,01,02),
+                            kanbanState="done"
+                        }
+                    }
+                },
+                new EtapaModel()
+                {
+                    id=2,
+                    name="etapa2",
+                    projectId=2,
+                    sequence=2,
+                    tasks=new List<TareaModel>()
+                    {
+                        new TareaModel
+                        {
+                            id=3,
+                            name="Tarea3",
+                            projectId=2,
+                            stageId=2,
+                            date_start=new DateTime(2019,01,01),
+                            kanbanState="normal"
+                        },
+                        new TareaModel
+                        {
+                            id=4,
+                            name="Tarea4",
+                            projectId=2,
+                            stageId=2,
+                            date_start=new DateTime(2019,01,02),
+                            kanbanState="done"
+                        }
+                    }
+                },
+                new EtapaModel()
+                {
+                    id=3,
+                    name="etapa3",
+                    projectId=3,
+                    sequence=3,
+                    tasks=new List<TareaModel>()
+                    {
+                        new TareaModel
+                        {
+                            id=5,
+                            name="Tarea5",
+                            projectId=3,
+                            stageId=3,
+                            date_start=new DateTime(2019,01,01),
+                            kanbanState="normal"
+                        },
+                        new TareaModel
+                        {
+                            id=6,
+                            name="Tarea6",
+                            projectId=3,
+                            stageId=3,
+                            date_start=new DateTime(2019,01,02),
+                            kanbanState="done"
+                        }
+                    }
+                }
+            };
             return View(operacion);
         }
         public IActionResult About()

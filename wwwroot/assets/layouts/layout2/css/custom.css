@@ -1,11 +1,11 @@
 .section-header {
-    color: red;
+    color: Black;
     font-weight: 400;
     font-size: 1.4em;
 }
 
 .steps-header {
-    color: red;
+    color: Black;
     font-weight: 400;
     font-size: 1.4em;
     margin-bottom: 20px;
@@ -13,13 +13,13 @@
 }
 
 .steps-timeline {
-    outline: 1px dashed rgba(red, 0);
+    outline: 1px dashed rgba(orange, 0);
 }
 
 .steps-one,
 .steps-two,
 .steps-three {
-    outline: 1px dashed rgba(green, 0p);
+    outline: 1px dashed rgba(black, 0p);
 }
 
 .steps-img {
@@ -36,7 +36,7 @@
 }
 
 .steps-name {
-    color: red;
+    color: black;
     font-weight: 400;
     font-size: 1.4em;
 }
@@ -75,7 +75,7 @@
 
 @media screen and (min-width: 500px) {
     .steps-timeline {
-        border-top: 2px solid red;
+        border-top: 2px solid orange;
         padding-top: 20px;
         margin-top: 40px;
         margin-left: 16.65%;

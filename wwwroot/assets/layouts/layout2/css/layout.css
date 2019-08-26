@@ -113,7 +113,7 @@ Page Header
 
     .page-header.navbar .page-top {
         height: 68px;
-        background: #BAC0B6;
+        background: yellow/*#BAC0B6*/;
     }
 
     .page-header.navbar .search-form {
@@ -128,7 +128,7 @@ Page Header
         .page-header.navbar .search-form .input-group .form-control {
             height: 68px;
             border: 0;
-            background: transparent !important;
+            background: yellow/*transparent !important*/;
             font-size: 14px;
             padding-left: 0;
             margin-left: 12px;
