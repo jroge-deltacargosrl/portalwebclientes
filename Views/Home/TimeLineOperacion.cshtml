@@ -1,5 +1,4 @@
-﻿@model List<PortalWebCliente.Models.ProyectoModel>
-    ;
+﻿@model PortalWebCliente.Models.ProyectoModel;
 @{
     Layout = null;
 }
@@ -8,6 +7,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
+d
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
@@ -1536,63 +1536,54 @@
             <div class="page-content">
                 <!-- BEGIN CONTENT BODY -->
                 <section id="Steps" class="steps-section">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="portlet light portlet-fit ">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class=" icon-layers font-green"></i>
-                                        <span class="caption-subject font-green bold uppercase">LISTADO DE OPERACIONES POR CLIENTE</span>
-                                    </div>
+                    <h2 class="steps-header">
+                        Nombre: @Model.name
+                    </h2>
+                    @{
+                        List<string>
+                            classTimeLine = new List<string>
+                                () { "steps-one", "steps-two", "steps-three" };
+                    }
+                    <div class="steps-timeline">
+                        @{
+                            List<EtapaModel> etapas = Model.stages;
+                            int index = 0;
+                            foreach (var etapa in etapas)
+                            {
+                                <div class="@classTimeLine[index++]">
+                                    <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+                                    <h3 class="steps-name">
+                                        @etapa.name
+                                    </h3>
+                                    @{
+                                        int iTask = 0;
+                                    }
+                                    <ul>
+                                        @foreach (var tarea in etapa.tasks)
+                                        {
+                                            <li class="mt-list-item">
+                                                <div class="list-icon-container done">
+                                                    <a href="javascript:;">
+                                                        <i class="icon-check"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="list-datetime">
+                                                    11am
+                                                    <br /> 8 Nov
+                                                </div>
+                                                <div class="list-item-content">
+                                                    <h3 class="uppercase bold">
+                                                        <a href="">@string.Format("{0}) {1} => ESTADO : {2}", ++iTask, tarea.name, tarea.kanbanState);</a>
+                                                    </h3>
+                                                    <p>Detalles del stage</p>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                    
                                 </div>
-                                <div class="portlet-body">
-                                    <div class="mt-element-list">
-                                        <div class="mt-list-container list-default">
-                                            <ul>
-                                                @foreach (ProyectoModel item in Model)
-                                                {
-                                                    <li class="mt-list-item">
-                                                        <div class="list-icon-container done">
-                                                            <a href="javascript:;">
-                                                                <i class="icon-check"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="list-datetime">
-                                                            11am
-                                                            <br /> 8 Nov
-                                                        </div>
-                                                        <div class="list-item-content">
-                                                            <h3 class="uppercase bold">
-                                                                <a href="/Home/@item">@item.name</a>
-                                                            </h3>
-                                                            <p>Detalles de la operacion</p>
-                                                        </div>
-                                                    </li>
-                                                    <!--<li class="mt-list-item">
-                                                        <div class="list-icon-container">
-                                                            <a href="javascript:;">
-                                                                <i class="icon-close"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="list-datetime">
-                                                            11am
-                                                            <br /> 8 Nov
-                                                        </div>
-                                                        <div class="list-item-content">
-                                                            <h3 class="uppercase bold">
-                                                                <a href="javascript:;">Listings Feature</a>
-                                                            </h3>
-                                                            <p>Lorem ipsum dolor sit amet</p>
-                                                        </div>
-                                                    </li>
-                                                    -->
-                                                }
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            }
+                        }
                     </div>
                     <!--<div class="steps-timeline">
                         <div class="steps-one">

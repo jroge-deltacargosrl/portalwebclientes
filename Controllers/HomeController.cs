@@ -90,6 +90,11 @@ namespace PortalWebCliente.Controllers
                 antiguoUsuario
             });
         }
+        [HttpGet("/Home/{operacion}", Name = "Products_List")]
+        public IActionResult TimeLineOperacion(ProyectoModel operacion)
+        {
+            return View(operacion);
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
