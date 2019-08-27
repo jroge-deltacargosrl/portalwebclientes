@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using PortalWebCliente.Models;
 using RestSharp;
 using PortalWebCliente.Models.Infrastructure;
+using Newtonsoft;
 
 namespace PortalWebCliente.Controllers
 {
@@ -29,27 +30,23 @@ namespace PortalWebCliente.Controllers
             {
                 if (persona.contraseña != null)
                 {
-                    string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
-                    var responseRequest = new RequestAPI()
-                        .addClient(new RestClient(urlRequest))
-                        .addRequest(new RestRequest("operation/{idCustomer}", Method.GET))
-                        .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
-                        .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer", 7)) // credenciales estaticas
-                        .buildRquest();
-                    List<ProyectoModel> projectModel = RequestAPI.deserilizeProject(responseRequest);
-                    int x = 2;
-                    ViewBag.persona = persona;
-                    return View(projectModel);
-                    /*string json = response.Content.ToString();
-                    int respuesta = 3;
+                    //ESPERAR EL 123
+                    int respuesta = 3;//PARA QUE ENTRE
                     if (respuesta == 3)
                     {
                         //TODO OK
-                        //Pedir el nombre de la persona
-                        //Convertir el json que me llega a una List
-                        //List = json.toList();
-                        ViewBag.lista = json;
-                        return View(persona);
+                        string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+                        var responseRequest = new RequestAPI()
+                            .addClient(new RestClient(urlRequest))
+                            .addRequest(new RestRequest("operation/{idCustomer}", Method.GET))
+                            .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
+                            .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer", 7)) // credenciales estaticas
+                            .buildRquest();
+                        List<ProyectoModel> projectModel = RequestAPI.deserilizeProject(responseRequest);
+                        HttpContext.Session.SetString("userName", persona.userName);
+                        ViewBag.userName = HttpContext.Session.GetString("userName");
+                        HttpContext.Session.SetString("listaDeProyectos", responseRequest);
+                        return View(projectModel);
                     }
                     else if (respuesta == 2)
                     {
@@ -61,7 +58,7 @@ namespace PortalWebCliente.Controllers
                         //USUARIO NO EXISTE
                         estadoUsuario = 1;
                         antiguoUsuario = persona.userName;
-                    }*/
+                    }
                 }
                 else
                 {
@@ -88,15 +85,28 @@ namespace PortalWebCliente.Controllers
                 antiguoUsuario
             });
         }
-        [HttpGet("/Home/{operacion}", Name = "aux")]
-        public IActionResult TimeLineOperacion(ProyectoModel operacion)
+        [HttpGet("/Home/{proyectName}", Name = "aux")]
+        public IActionResult TimeLineOperacion(string proyectName)
         {
+            List<ProyectoModel> listaDeProyectos = RequestAPI.deserilizeProject(
+                HttpContext.Session.GetString("listaDeProyectos")
+            );
+            foreach (ProyectoModel proyecto in listaDeProyectos)
+            {
+                if (proyecto.name.Equals(proyectName))
+                {
+                    ViewBag.userName = HttpContext.Session.GetString("userName");
+                    return View(proyecto);
+                }
+            }
+            //NUNCA PASA POR AQUI
+            ProyectoModel operacion = new ProyectoModel();
             operacion.stages = new List<EtapaModel>()
             {
                 new EtapaModel()
                 {
                     id=1,
-                    name="etapa1",
+                    name="Etapa1",
                     projectId=1,
                     sequence=1,
                     tasks=new List<TareaModel>()

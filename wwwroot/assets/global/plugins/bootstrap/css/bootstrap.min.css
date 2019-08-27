@@ -4274,6 +4274,10 @@ tbody.collapse.in {
     .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
         max-height: 200px
     }
+    .col-lg-4 {
+        width: 30%;
+        float:left;
+    }
 }
 
 .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {

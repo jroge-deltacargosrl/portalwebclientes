@@ -157,7 +157,7 @@ d
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
                                 <span class="username username-hide-on-mobile">
-                                    ViewBag.persona.userName
+                                    @ViewBag.userName
                                 </span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
@@ -1248,8 +1248,8 @@ d
             <div class="page-content">
                 <!-- BEGIN CONTENT BODY -->
                 <section id="Steps" class="steps-section">
-                    <h2 class="steps-header">
-                        Nombre
+                    <h2 class="caption-subject font-green bold uppercase" style="text-align:center;">
+                        @Model.name
                     </h2>
                     @{
                         List<string>
@@ -1262,16 +1262,16 @@ d
                             foreach (var etapa in Model.stages)
                             {
                                 <div class="@classTimeLine[index++]">
-                                    <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+                                    <img class="steps-img" src="~/images/puntoRojo.png" alt="" />
                                     @{
                                         int iTask = 0;
                                     }
-                                    <div class="portlet light portlet-fit ">
-                                        <div class="portlet-title"style="margin:0;padding:0;">
-                                            <div class="caption"style="margin:0;padding:0;">
-                                                <i class=" icon-layers font-green"></i>
-                                                <span class="caption-subject font-green bold uppercase">@etapa.name</span>
-                                            </div>
+                                    <div class="portlet light portlet-fit">
+                                        <div class="caption">
+                                            <i class=" icon-layers font-green"></i>
+                                            <label class="caption-subject font-green bold uppercase">
+                                                @etapa.name
+                                            </label>
                                         </div>
                                         <div class="portlet-body">
                                             <div class="mt-element-list">
@@ -1291,7 +1291,6 @@ d
                                                                         <h3 class="uppercase bold">
                                                                             <a href="">@tarea.name
                                                                         </h3>
-                                                                        <p>Detalles de la operacion</p>
                                                                     </div>
                                                                 </li>
                                                             }
@@ -1307,7 +1306,6 @@ d
                                                                         <h3 class="uppercase bold">
                                                                             <a href="">@tarea.name
                                                                         </h3>
-                                                                        <p>Detalles de la operacion</p>
                                                                     </div>
                                                                 </li>
                                                             }

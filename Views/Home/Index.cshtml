@@ -155,7 +155,7 @@
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
                                 <span class="username username-hide-on-mobile">
-                                    @ViewBag.persona.userName
+                                    @ViewBag.userName
                                 </span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
@@ -1258,7 +1258,7 @@
                                 <div class="portlet-body">
                                     <div class="mt-element-list">
                                         <div class="mt-list-container list-default">
-                                            <ul>
+                                            <ul style="margin:0%;padding:0%;">
                                                 @foreach (ProyectoModel item in Model)
                                                 {
                                                     <li class="mt-list-item">
@@ -1273,7 +1273,7 @@
                                                         </div>
                                                         <div class="list-item-content">
                                                             <h3 class="uppercase bold">
-                                                                <a href="/Home/{@ViewBag.persona}">@item.name</a>
+                                                                <a href="/Home/@item.name">@item.name</a>
                                                             </h3>
                                                             <p>Detalles de la operacion</p>
                                                         </div>
@@ -1993,5 +1993,4 @@
     <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
     <!-- END THEME LAYOUT SCRIPTS -->
 </body>
-
 </html>

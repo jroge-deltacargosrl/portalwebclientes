@@ -27347,3 +27347,22 @@ Color library demo
         padding: 10px 10px;
         text-align: center;
     }
+
+@media (max-width: 767px) {
+    .steps-one .portlet.light.portlet-fit {
+        padding: 0;
+        margin-left: 50px;
+    }
+    .steps-two .portlet.light.portlet-fit {
+        padding: 0;
+        margin-left: 50px;
+    }
+    .steps-three .portlet.light.portlet-fit {
+        padding: 0;
+        margin-left: 50px;
+    }
+    .portlet-title{
+        margin-top:10px;
+        text-align:center;
+    }
+}
