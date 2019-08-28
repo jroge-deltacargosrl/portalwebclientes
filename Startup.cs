@@ -43,9 +43,18 @@ namespace PortalWebCliente
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             /*CAMBIO NUEVO*/
-            services.AddMvc();
+            
             services.AddDistributedMemoryCache();
-            services.AddSession();
+            services.AddSession(
+                (options) =>
+                {
+                    options.IdleTimeout = TimeSpan.FromMinutes(10);
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.IsEssential = true;
+                }
+            );
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             /*FIN CAMBIO NUEVO*/
         }
 
@@ -69,6 +78,7 @@ namespace PortalWebCliente
 
             /*CAMBIO NUEVO*/
             app.UseSession();
+            //app.UseHttpContextItemsMiddleware(); not working
             /*FIN CAMBIO NUEVO*/
 
             app.UseAuthentication();

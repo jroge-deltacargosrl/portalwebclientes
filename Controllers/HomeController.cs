@@ -10,6 +10,9 @@ using PortalWebCliente.Models;
 using RestSharp;
 using PortalWebCliente.Models.Infrastructure;
 using Newtonsoft;
+using RestSharp.Serialization.Json;
+using Newtonsoft.Json;
+using static PortalWebCliente.Utils.SessionExtensions;
 
 namespace PortalWebCliente.Controllers
 {
@@ -22,33 +25,45 @@ namespace PortalWebCliente.Controllers
             ViewBag.antiguoUsuario = antiguoUsuario;
             return View();
         }
+
+        // Metodo encargado de verificar el login
         [HttpPost]
-        public IActionResult Index(PersonaModel persona)
+        public IActionResult Index(UsuarioModel usuario)
         {
             int estadoUsuario = 0, estadoContraseña = 0; string antiguoUsuario = "";
-            if (persona.userName != null)
+            if (usuario.email != null)
             {
-                if (persona.contraseña != null)
+                if (usuario.password != null)
                 {
                     //ESPERAR EL 123
-                    int respuesta = 3;//PARA QUE ENTRE
-                    if (respuesta == 3)
+                    //string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+                    string urlRequest = @"https://localhost:44333//api/v1/";
+                    var responseLogin = new RequestAPI()
+                        .addClient(new RestClient(urlRequest))
+                        .addRequest(new RestRequest("access/", Method.POST,DataFormat.Json))
+                        .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
+                        .addBodyData(usuario)
+                        .buildRequest();
+
+                    UsuarioResponse usuarioResponse = JsonConvert.DeserializeObject<UsuarioResponse>(responseLogin);
+
+
+                    if (usuarioResponse.responseType == 3)
                     {
                         //TODO OK
-                        string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
-                        var responseRequest = new RequestAPI()
+                        var responseProjects = new RequestAPI()
                             .addClient(new RestClient(urlRequest))
                             .addRequest(new RestRequest("operation/{idCustomer}", Method.GET))
                             .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
-                            .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer", 7)) // credenciales estaticas
-                            .buildRquest();
-                        List<ProyectoModel> projectModel = RequestAPI.deserilizeProject(responseRequest);
-                        HttpContext.Session.SetString("userName", persona.userName);
+                            .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer",usuarioResponse.id)) // credenciales estaticas
+                            .buildRequest();
+                        List<ProyectoModel> projectModel = JsonConvert.DeserializeObject<List<ProyectoModel>>(responseProjects);
+                        HttpContext.Session.SetString("userName", usuario.email);
                         ViewBag.userName = HttpContext.Session.GetString("userName");
-                        HttpContext.Session.SetString("listaDeProyectos", responseRequest);
+                        HttpContext.Session.setObjectAsJson("listaDeProyectos", projectModel);
                         return View(projectModel);
                     }
-                    else if (respuesta == 2)
+                    else if (usuarioResponse.responseType == 2)
                     {
                         //CONTRASEÑA INCORRECTA
                         estadoContraseña = 1;
@@ -57,21 +72,21 @@ namespace PortalWebCliente.Controllers
                     {
                         //USUARIO NO EXISTE
                         estadoUsuario = 1;
-                        antiguoUsuario = persona.userName;
+                        antiguoUsuario = usuario.email;
                     }
                 }
                 else
                 {
                     //CONTRASEÑA NO INTRODUCIDA
                     estadoContraseña = 2;
-                    antiguoUsuario = persona.userName;
+                    antiguoUsuario = usuario.email;
                 }
             }
             else
             {
                 //USUARIO NO INTRODUCIDO
                 estadoUsuario = 2;
-                if (persona.contraseña == null)
+                if (usuario.password == null)
                 {
                     //CONTRASEÑA NO INTRODUCIDA
                     estadoContraseña = 2;
@@ -88,9 +103,7 @@ namespace PortalWebCliente.Controllers
         [HttpGet("/Home/{proyectName}", Name = "aux")]
         public IActionResult TimeLineOperacion(string proyectName)
         {
-            List<ProyectoModel> listaDeProyectos = RequestAPI.deserilizeProject(
-                HttpContext.Session.GetString("listaDeProyectos")
-            );
+            List<ProyectoModel> listaDeProyectos = HttpContext.Session.getObjectFromJson<List<ProyectoModel>>("listaDeProyectos");
             foreach (ProyectoModel proyecto in listaDeProyectos)
             {
                 if (proyecto.name.Equals(proyectName))

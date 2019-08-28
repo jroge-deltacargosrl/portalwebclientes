@@ -14,23 +14,27 @@ namespace PortalWebCliente.Utils
         public static string URL_LISTAR_TABLAS_ODOO_METADATA_PORTAL { get; private set; }
         public static string URL_VERIFICAR_LOGIN_USUARIO_PORTAL { get; private set; }
         public static string URL_REGISTRO_USUARIO_PORTAL { get; private set; }
+        public static string URL_ACCESS_PORTAL_WEB { get; private set; }
         public static string URL_LISTAR_PROYECTOS_CLIENTE_PORTAL { get; private set; }
+        public static string URL_OBTENER_PROYECTO_CLIENTE_PORTAL { get; private set; }
 
         public static void initVarEnviroment()
         {
             switch (environment)
             {
                 case "developing":
-                    URL_LISTAR_TABLAS_ODOO_METADATA_PORTAL = "https://localhost/TMS_WebServices/api/getSchemmaOdoo/";
-                    URL_VERIFICAR_LOGIN_USUARIO_PORTAL = "https://localhost/TMS_WebServices/api/accessClient/";
+                    URL_LISTAR_TABLAS_ODOO_METADATA_PORTAL = "https://localhost/TMS_WebServices/api/v1/getSchemmaOdoo/";
+                    URL_VERIFICAR_LOGIN_USUARIO_PORTAL = "https://localhost/TMS_WebServices/api/v1/accessClient/";
                     URL_REGISTRO_USUARIO_PORTAL = "";
-                    URL_LISTAR_PROYECTOS_CLIENTE_PORTAL = "https://localhost/TMS_WebServices/api/projectsByCustomer/";
+                    URL_LISTAR_PROYECTOS_CLIENTE_PORTAL = "https://localhost/TMS_WebServices/api/v1/projectsByCustomer/";
+                    URL_ACCESS_PORTAL_WEB = ""
                     break;
                 case "local production":
-                    URL_LISTAR_TABLAS_ODOO_METADATA_PORTAL = "https://localhost/TMS_WebServices/api/getSchemmaOdoo/";
-                    URL_VERIFICAR_LOGIN_USUARIO_PORTAL = "https://localhost/TMS_WebServices/api/accessClient/";
+                    URL_LISTAR_TABLAS_ODOO_METADATA_PORTAL = "https://localhost/TMS_WebServices/api/v1/getSchemmaOdoo/";
+                    URL_VERIFICAR_LOGIN_USUARIO_PORTAL = "https://localhost/TMS_WebServices/api/v1/accessClient/";
                     URL_REGISTRO_USUARIO_PORTAL = "";
-                    URL_LISTAR_PROYECTOS_CLIENTE_PORTAL = "https://localhost/TMS_WebServices/api/projectsByCustomer/";
+                    URL_LISTAR_PROYECTOS_CLIENTE_PORTAL = "https://localhost/TMS_WebServices/api/v1/projectsByCustomer/";
+                    URL_ACCESS_PORTAL_WEB = @"https://localhost:44333/api/v1/accessClient/"
                     break;
                 case "cloud production":
                     break;

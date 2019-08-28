@@ -57,7 +57,7 @@ namespace PortalWebCliente.Models.Infrastructure
 
         public RequestAPI addBodyData(object param)
         {
-            request.AddBody(param);
+            request.AddJsonBody(param);
             return this;
         }
 
@@ -86,7 +86,7 @@ namespace PortalWebCliente.Models.Infrastructure
         /// Metodo que ejecuta la solicitud HTTP/ HTTPS desde el lado del cliente hacia el servidor, procesa la informacion y lanza una respuesta de parte del servidor
         /// </summary>
         /// <returns></returns>
-        public string buildRquest() 
+        public string buildRequest() 
         {
             try
             {
@@ -105,35 +105,10 @@ namespace PortalWebCliente.Models.Infrastructure
         }
 
 
-        // readecuar esta seccion
-        public static List<ProyectoModel> deserilizeProject(string content)
-        {
-            return JsonConvert.DeserializeObject<List<ProyectoModel>>(content);
-        }
+        public static T deserilizeProject<T>(string content)  => JsonConvert.DeserializeObject<T>(content);
 
+        public static string serializeObject<T>(T value) => JsonConvert.SerializeObject(value);
 
-        /***
-           public static List<ItemCatalogoInfraestructura> getInfraestructuras(string citeInfra)
-        {
-            try
-            {
-                var client = new RestClient(URL_OBTENER_CATALOGO_ESPECIFICO);
-                var request = new RestRequest(Method.POST);
-                request.AddParameter("citeInfraestructura", citeInfra);
-                //request.AddHeader("Authorization", string.Format("Bearer {0}", "eyJhb.eyJmZWNo._I4oj"));
-                request.AddHeader("Authorization", string.Format("Bearer {0}", "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJmZWNoYSI6IjIwMTgwODAxMTU0NTIzIiwic2lyZWhpZHJvIjoiQU5IMDIyMzMiLCJvcGVyYWRvciI6IkFJUiBCUCBCT0xJVklBIFMuQS4gQUJCU0EiLCJ2aWdlbmNpYSI6IjIwMjgxMjMxMDAwMDAwIn0._I4ojD5n1WATqGolIOAUPHXPyaED2ISKspFYMSiODYY"));
-        request.AddHeader("Authorization", string.Format("Bearer {0}", TOKEN));
-                IRestResponse response = client.Execute(request);
-        var content = response.Content;
-        ObtenerCatalogoEspecificoJSON catalogoEspecifico = ObtenerCatalogoEspecificoJSON.FromJson(content);
-                return catalogoEspecifico.OResultado != null ? new List<ItemCatalogoInfraestructura>(catalogoEspecifico.OResultado.CatalogoInfraestructura) : null;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-         */
-
+        
     }
 }

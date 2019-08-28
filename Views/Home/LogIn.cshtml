@@ -1,4 +1,4 @@
-﻿@model PortalWebCliente.Models.PersonaModel;
+﻿@model PortalWebCliente.Models.UsuarioModel;
 @{
     Layout = null;
 }
@@ -54,7 +54,7 @@
     <div class="content">
         <!-- BEGIN LOGIN FORM -->
         <!--action="/Home/Index"-->
-        <form class="login-form" asp-action="Index" method="post">
+        <form class="login-form" asp-controller="Home" asp-action="Index" method="post">
             <h3 class="form-title">Ingresa a tu cuenta</h3>
             <div class="alert alert-danger display-hide">
                 <button class="close" data-close="alert"></button>
@@ -65,10 +65,10 @@
                 <label class="control-label visible-ie8 visible-ie9">Usuario</label>
                 <div class="input-icon">
                     <i class="fa fa-user"></i>
-                    <input asp-for="userName" id="Username"
+                    <input asp-for="email" id="Username"
                            class="form-control placeholder-no-fix"
                            type="text" autocomplete="off" value=@ViewBag.antiguoUsuario
-                           placeholder="Usuario" name="userName" />
+                           placeholder="Usuario" name="email" />
                     @{
                         if (ViewBag.estadoUsuario == 1)
                         {
@@ -85,9 +85,9 @@
                 <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
                 <div class="input-icon">
                     <i class="fa fa-lock"></i>
-                    <input asp-for="contraseña"
+                    <input asp-for="password"
                            class="form-control placeholder-no-fix" type="password" autocomplete="off"
-                           placeholder="Contraseña" name="contraseña" />
+                           placeholder="Contraseña" name="password" />
                     @{
                         if (ViewBag.estadoContraseña == 1)
                         {
