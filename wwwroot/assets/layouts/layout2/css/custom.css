@@ -25,10 +25,17 @@
 .steps-img {
     display: block;
     margin: auto;
-    margin-top:26.7px;
+    margin-top:46px;
     margin-bottom:15px;
-    width: 7px;
-    height: 5px;
+    width: 10px;
+    height: 7px;
+    border-image: 50%;
+}
+.steps-imgCamion {
+    display: flex;
+    margin: -60px 0px 0px -45px; 
+    width: 80px;
+    height: 40px;
     border-image: 50%;
 }
 
@@ -52,6 +59,7 @@
     .steps-timeline {
         border-left: 2px solid #B2B4B3;
         margin-left: 25px;
+        margin-top:40px;
     }
 
     .steps-one,
@@ -75,13 +83,19 @@
         margin-left:9px;
         margin-top:0px;
     }
+    .steps-imgCamion {
+        float: left;
+        margin-right: 25px;
+        margin-left: 9px;
+        margin-top: 0px;
+    }
 }
 
 @media screen and (min-width: 500px) {
     .steps-timeline {
         border-top: 2px solid #B2B4B3;
         padding-top: 20px;
-        margin-top: 40px;
+        margin-top: 60px;
         margin-left: 16.65%;
         margin-right: 16.65%;
     }
