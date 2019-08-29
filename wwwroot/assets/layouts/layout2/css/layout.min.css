@@ -6,7 +6,7 @@
 
 @media print {
     body {
-        background-color: #fff !important
+        background-color: white;/*#fff !important*/
     }
 
     .hidden-print, .page-bar, .page-footer, .page-sidebar-wrapper, .theme-panel {
@@ -42,7 +42,7 @@
     height: 68px;
     min-height: 68px;
     filter: none;
-    background-image: none
+    background-image: none;
 }
 
     .page-header.navbar.navbar-fixed-top, .page-header.navbar.navbar-static-top {
@@ -55,16 +55,20 @@
         width: 195px;
         height: 68px;
         padding-left: 20px;
-        padding-right: 20px
+        padding-right: 20px;
+        background-color: white;
+        border-right: black;
+        border-right-style: solid;
     }
 
         .page-header.navbar .page-logo > .logo-image, .page-header.navbar .page-logo > a {
             display: block;
-            float: left
+            float: left;
         }
 
         .page-header.navbar .page-logo .logo-default {
-            margin: 27px 0 0
+            margin: 0 0 0 5px;
+            width:120px;
         }
 
         .page-header.navbar .page-logo .logo-mini {
@@ -148,7 +152,7 @@
         height: 20px;
         background-repeat: no-repeat;
         background-position: center center;
-        background-image: url(../img/sidebar-toggler.png)
+        background-image: url(../img/sidebar-toggler-inverse.png)
     }
 
         .page-header.navbar .menu-toggler:hover, .page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a:hover {
@@ -573,7 +577,9 @@
 @media (min-width:992px) {
     .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {
         padding: 0;
-        width: 54px
+        width: 54px;
+        border-right:black;
+        border-right-style:solid;
     }
 
         .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo .logo-default {
@@ -581,7 +587,9 @@
         }
 
     .page-boxed .page-header.navbar .page-logo {
-        width: 195px
+        width: 195px;
+        border-right: black;
+        border-right-style: solid;
     }
 
     .page-boxed .page-header.navbar .top-menu .navbar-nav {
@@ -589,7 +597,9 @@
     }
 
     .page-sidebar-closed.page-sidebar-closed-hide-logo.page-boxed .page-header.navbar .page-logo {
-        width: 54px
+        width: 54px;
+        border-right: black;
+        border-right-style: solid;
     }
 
     .page-boxed.page-sidebar-fixed .page-header.navbar .page-logo {
@@ -750,7 +760,7 @@
             }
 
         .page-header.navbar .menu-toggler.responsive-toggler {
-            background-image: url(../img/sidebar-toggler.png)
+            background-image: url(../img/sidebar-toggler-inverse.png)
         }
 
         .page-header.navbar .search-form {

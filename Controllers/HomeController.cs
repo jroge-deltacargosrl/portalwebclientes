@@ -25,7 +25,6 @@ namespace PortalWebCliente.Controllers
             ViewBag.antiguoUsuario = antiguoUsuario;
             return View();
         }
-
         // Metodo encargado de verificar el login
         [HttpPost]
         public IActionResult Index(UsuarioModel usuario)
@@ -35,19 +34,17 @@ namespace PortalWebCliente.Controllers
             {
                 if (usuario.password != null)
                 {
-                    //ESPERAR EL 123
-                    //string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
-                    string urlRequest = @"https://localhost:44333//api/v1/";
+                    //Tabla de configuracion
+                    string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+                    //string urlRequest = @"https://localhost:44333//api/v1/";
                     var responseLogin = new RequestAPI()
                         .addClient(new RestClient(urlRequest))
                         .addRequest(new RestRequest("access/", Method.POST,DataFormat.Json))
                         .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
                         .addBodyData(usuario)
                         .buildRequest();
-
                     UsuarioResponse usuarioResponse = JsonConvert.DeserializeObject<UsuarioResponse>(responseLogin);
-
-
+                    HttpContext.Session.setObjectAsJson("usuarioResponseJSON",usuarioResponse);
                     if (usuarioResponse.responseType == 3)
                     {
                         //TODO OK
@@ -58,15 +55,16 @@ namespace PortalWebCliente.Controllers
                             .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer",usuarioResponse.id)) // credenciales estaticas
                             .buildRequest();
                         List<ProyectoModel> projectModel = JsonConvert.DeserializeObject<List<ProyectoModel>>(responseProjects);
-                        HttpContext.Session.SetString("userName", usuario.email);
-                        ViewBag.userName = HttpContext.Session.GetString("userName");
-                        HttpContext.Session.setObjectAsJson("listaDeProyectos", projectModel);
+                        HttpContext.Session.setObjectAsJson("listaDeProyectosJSON", projectModel);
+                        UsuarioResponse usuarioActual = HttpContext.Session.getObjectFromJson<UsuarioResponse>("usuarioResponseJSON");
+                        ViewBag.emailUsuarioActual = usuarioActual.email;
                         return View(projectModel);
                     }
                     else if (usuarioResponse.responseType == 2)
                     {
                         //CONTRASEÑA INCORRECTA
                         estadoContraseña = 1;
+                        antiguoUsuario = usuario.email;
                     }
                     else
                     {
@@ -92,7 +90,6 @@ namespace PortalWebCliente.Controllers
                     estadoContraseña = 2;
                 }
             }
-
             return RedirectToAction("LogIn", "Home", new
             {
                 estadoUsuario,
@@ -103,12 +100,15 @@ namespace PortalWebCliente.Controllers
         [HttpGet("/Home/{proyectName}", Name = "aux")]
         public IActionResult TimeLineOperacion(string proyectName)
         {
-            List<ProyectoModel> listaDeProyectos = HttpContext.Session.getObjectFromJson<List<ProyectoModel>>("listaDeProyectos");
+            List<ProyectoModel> listaDeProyectos = 
+                HttpContext.Session.getObjectFromJson
+                <List<ProyectoModel>>("listaDeProyectosJSON");
             foreach (ProyectoModel proyecto in listaDeProyectos)
             {
                 if (proyecto.name.Equals(proyectName))
                 {
-                    ViewBag.userName = HttpContext.Session.GetString("userName");
+                    UsuarioResponse usuarioActual = HttpContext.Session.getObjectFromJson<UsuarioResponse>("usuarioResponseJSON");
+                    ViewBag.emailUsuarioActual = usuarioActual.email;
                     return View(proyecto);
                 }
             }

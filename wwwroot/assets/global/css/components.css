@@ -26366,6 +26366,9 @@ Custom color buttons
 .font-red {
     color: #e7505a !important;
 }
+.font-colorDelta {
+    color: #e69404 !important;
+}
 
 .bg-font-red {
     color: #ffffff !important;

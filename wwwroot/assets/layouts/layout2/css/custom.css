@@ -13,7 +13,7 @@
 }
 
 .steps-timeline {
-    outline: 1px dashed rgba(orange, 0);
+    outline: 1px dashed rgba(gray, 0);
 }
 
 .steps-one,
@@ -25,10 +25,10 @@
 .steps-img {
     display: block;
     margin: auto;
-    margin-top:15px;
+    margin-top:26.7px;
     margin-bottom:15px;
-    width: 30px;
-    height: 30px;
+    width: 7px;
+    height: 5px;
     border-image: 50%;
 }
 
@@ -50,7 +50,7 @@
 
 @media screen and (max-width: 500px) {
     .steps-timeline {
-        border-left: 2px solid orange;
+        border-left: 2px solid #B2B4B3;
         margin-left: 25px;
     }
 
@@ -79,7 +79,7 @@
 
 @media screen and (min-width: 500px) {
     .steps-timeline {
-        border-top: 2px solid orange;
+        border-top: 2px solid #B2B4B3;
         padding-top: 20px;
         margin-top: 40px;
         margin-left: 16.65%;
@@ -117,4 +117,8 @@
     content: "";
     display: table;
     clear: both;
+}
+.portlet .caption{
+    font-size:130%;
+    text-align:center;
 }

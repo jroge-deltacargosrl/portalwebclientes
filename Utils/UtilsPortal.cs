@@ -27,14 +27,14 @@ namespace PortalWebCliente.Utils
                     URL_VERIFICAR_LOGIN_USUARIO_PORTAL = "https://localhost/TMS_WebServices/api/v1/accessClient/";
                     URL_REGISTRO_USUARIO_PORTAL = "";
                     URL_LISTAR_PROYECTOS_CLIENTE_PORTAL = "https://localhost/TMS_WebServices/api/v1/projectsByCustomer/";
-                    URL_ACCESS_PORTAL_WEB = ""
+                    URL_ACCESS_PORTAL_WEB = "";
                     break;
                 case "local production":
                     URL_LISTAR_TABLAS_ODOO_METADATA_PORTAL = "https://localhost/TMS_WebServices/api/v1/getSchemmaOdoo/";
                     URL_VERIFICAR_LOGIN_USUARIO_PORTAL = "https://localhost/TMS_WebServices/api/v1/accessClient/";
                     URL_REGISTRO_USUARIO_PORTAL = "";
                     URL_LISTAR_PROYECTOS_CLIENTE_PORTAL = "https://localhost/TMS_WebServices/api/v1/projectsByCustomer/";
-                    URL_ACCESS_PORTAL_WEB = @"https://localhost:44333/api/v1/accessClient/"
+                    URL_ACCESS_PORTAL_WEB = @"https://localhost:44333/api/v1/accessClient/";
                     break;
                 case "cloud production":
                     break;
