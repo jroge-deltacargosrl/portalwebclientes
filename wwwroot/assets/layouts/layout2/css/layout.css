@@ -39,6 +39,7 @@
         min-height: 300px !important;
         padding: 0px 20px 20px !important;
         margin: 0 !important;
+        height:auto;
     }
 
         .page-content > .portlet {

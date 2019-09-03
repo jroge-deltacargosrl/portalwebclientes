@@ -48,7 +48,7 @@
         <!-- BEGIN HEADER INNER -->
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
-            <div class="page-logo">
+            <div class="page-logo" style="border-color:transparent;">
                 <img src="~/images/logoDeltaCargo.png" alt="logo" class="logo-default" />
                 <div class="menu-toggler sidebar-toggler">
                     <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -67,7 +67,7 @@
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                         <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <i class="icon-envelope-open"></i>
+                                <i class="icon-envelope-open" style="color:black;"></i>
                                 <!--<span class="badge badge-default"> 9 </span>-->
                             </a>
                             <ul class="ALTERARdropdown-menu">
@@ -150,8 +150,7 @@
                         <!-- Seccion donde se recupera al usuario que ingreso en el login -->
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
-                                <span class="username username-hide-on-mobile">
+                                <span class="username username-hide-on-mobile" style="color:black;">
                                     @ViewBag.emailUsuarioActual
                                 </span>
                                 <!--<i class="fa fa-angle-down"></i>-->
@@ -212,7 +211,8 @@
             <!-- END SIDEBAR -->
             <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
             <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-            <div class="page-sidebar navbar-collapse collapse">
+            <div class="page-sidebar navbar-collapse collapse"
+                 style="background-color:white;">
                 <!-- BEGIN SIDEBAR MENU -->
                 <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
                 <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
@@ -220,10 +220,13 @@
                 <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
                 <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
                 <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                    <li class="nav-item start active open">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                            <i class="icon-home"></i>
+                <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200"
+                    style="background-color:white;">
+                    <li class="nav-item start active open"
+                        style="background-color:white;">
+                        <a href="javascript:;" class="nav-link nav-toggle"
+                           style="background-color:white;color:black">
+                            <i class="icon-home" style="color:#ec9404;"></i>
                             <span class="title">Operaciones</span>
                             <span class="selected"></span>
                             <span class="arrow open"></span>
@@ -259,8 +262,8 @@
         </div>
         <!-- END SIDEBAR -->
         <!-- BEGIN CONTENT -->
-        <div class="page-content-wrapper">
-            <div class="page-content">
+        <div class="page-content-wrapper" style="background-color:white;">
+            <div class="page-content" style="height:100%;">
                 <!-- BEGIN CONTENT BODY -->
                 @{
                     int c = 1, cantidadTareasTerminadasDeLaEtapaAnterior = 0,
@@ -284,7 +287,7 @@
                         else
                         {
                             @if (cantidadTareasTerminadasDeLaEtapaAnterior ==
-                         Model.stages.ElementAt(i - 1).tasks.Count)
+                     Model.stages.ElementAt(i - 1).tasks.Count)
                             {
                                 porcentajeRecorrido += 205;
                                 <svg height="5" width="200">
@@ -306,12 +309,12 @@
                                     Sorry, your browser does not support inline SVG.
                                 </svg>
                                 porcentajeRecorrido += (205 / Model.stages.ElementAt(i - 1).tasks.Count) *
-                                    cantidadTareasTerminadasDeLaEtapaAnterior;
+                                cantidadTareasTerminadasDeLaEtapaAnterior;
                             }
                         }
                         <div class="event2">
                             <div class="event2Bubble">
-                                <label>@Model.stages.ElementAt(i).name</label>
+                                <label><b>@Model.stages.ElementAt(i).name</b></label>
                                 <div class="eventTime">
                                     <ul>
                                         @{
@@ -995,7 +998,6 @@
         </div>
     </div>
     <!-- END QUICK SIDEBAR -->
-    </div>
     <!-- END CONTAINER -->
     <!-- BEGIN FOOTER -->
     <div class="page-footer">
@@ -1004,6 +1006,9 @@
         </div>
         <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>
+        </div>
+        <div>
+            <a href="https://www.facebook.com/deltacargoSRL/"><i src=""></i></a>
         </div>
     </div>
     <!-- END FOOTER -->
