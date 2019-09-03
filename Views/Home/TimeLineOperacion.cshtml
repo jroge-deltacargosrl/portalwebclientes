@@ -262,141 +262,138 @@
         <div class="page-content-wrapper">
             <div class="page-content">
                 <!-- BEGIN CONTENT BODY -->
-                <div class="row">
-                    <div class="col-lg-4">
-                        <section id="Steps" class="steps-section">
-                            <h2 class="caption-subject font-black bold uppercase" style="text-align:center;margin:20px 0px 40px 0px;">
-                                @Model.name
-                            </h2>
-                            @{
-                                List<string>
-                                    classTimeLine = new List<string>
-                                        () { "steps-one", "steps-two", "steps-three", "" };
+                @{
+                    int c = 1, cantidadTareasTerminadasDeLaEtapaAnterior = 0,
+                    caminoRecorrido, caminoFaltante, porcentajeRecorrido = 0;
+                }
+                <h2 class="titulo-operacion">@Model.name</h2>
+                <div class="Timeline">
+                    <svg height="5" width="0">
+                        <line x1="0" y1="0" x2="0" y2="0" style="stroke:#ec9404;stroke-width:5" />
+                        Sorry, your browser does not support inline SVG.
+                    </svg>
+                    @for (int i = 0; i < Model.stages.Count; i++)
+                    {
+                        @if (c == 1)
+                        {
+                            <svg height="5" width="150">
+                                <line x1="0" y1="0" x2="0" y2="0" style="stroke:#ec9404;stroke-width:5" />
+                                Sorry, your browser does not support inline SVG.
+                            </svg>
+                        }
+                        else
+                        {
+                            @if (cantidadTareasTerminadasDeLaEtapaAnterior ==
+                         Model.stages.ElementAt(i - 1).tasks.Count)
+                            {
+                                porcentajeRecorrido += 205;
+                                <svg height="5" width="200">
+                                    <line x1="0" y1="0" x2="200" y2="0" style="stroke:#ec9404;stroke-width:5" />
+                                    Sorry, your browser does not support inline SVG.
+                                </svg>
                             }
-                            <div class="steps-timeline">
-                                <img class="steps-imgCamion" src="~/images/camionDelta.png" alt="" />
-                                @{
-                                    int index = 0;
-                                    foreach (var etapa in Model.stages)
-                                    {
-                                        <div class="@classTimeLine[index++]">
-                                            <img class="steps-img" src="~/images/puntoGray.png" alt="" />
-                                            <div class="portlet light portlet-fit">
-                                                <div class="caption">
-                                                    <label class="caption-subject font-colorDelta bold uppercase"
-                                                           style="margin:10px 0px 0px 0px;">
-                                                        @etapa.name
-                                                    </label>
+                            else
+                            {
+                                caminoRecorrido = (200 / Model.stages.ElementAt(i - 1).tasks.Count) *
+                                cantidadTareasTerminadasDeLaEtapaAnterior;
+                                caminoFaltante = 200 - caminoRecorrido;
+                                <svg height="5" width="@caminoRecorrido">
+                                    <line x1="0" y1="0" x2="@caminoRecorrido" y2="0" style="stroke:#ec9404;stroke-width:5" />
+                                    Sorry, your browser does not support inline SVG.
+                                </svg>
+                                <svg height="5" width="@caminoFaltante">
+                                    <line x1="0" y1="0" x2="@caminoFaltante" y2="0" style="stroke:gray;stroke-width:5" />
+                                    Sorry, your browser does not support inline SVG.
+                                </svg>
+                                porcentajeRecorrido += (205 / Model.stages.ElementAt(i - 1).tasks.Count) *
+                                    cantidadTareasTerminadasDeLaEtapaAnterior;
+                            }
+                        }
+                        <div class="event2">
+                            <div class="event2Bubble">
+                                <label>@Model.stages.ElementAt(i).name</label>
+                                <div class="eventTime">
+                                    <ul>
+                                        @{
+                                            cantidadTareasTerminadasDeLaEtapaAnterior = 0;
+                                        }
+                                        @foreach (var task in Model.stages.ElementAt(i).tasks)
+                                        {
+                                            <li>
+                                                @if (task.kanbanState == "done")
+                                                {
+                                                    <div class="icon-check"></div>
+                                                    cantidadTareasTerminadasDeLaEtapaAnterior++;
+                                                }
+                                                else
+                                                {
+                                                    <div class="icon-close"></div>
+                                                }
+
+                                                <div class="task-name">
+                                                    @task.name
                                                 </div>
-                                                <div class="portlet-body" style="padding:2px;">
-                                                    <div class="mt-element-list">
-                                                        <div class="mt-list-container list-default"
-                                                             style="padding:5px;">
-                                                            <ul style="padding:0%;margin:0%;">
-                                                                @foreach (var tarea in etapa.tasks)
-                                                                {
-                                                                    @if (tarea.kanbanState == "done")
-                                                                    {
-                                                                        <li class="mt-list-item" style="padding:20px 0px;">
-                                                                            <div class="list-icon-container done">
-                                                                                <i class="icon-check"></i>
-                                                                            </div>
-                                                                            <div class="list-item-content" style="padding:5px 0px 0px 50px;margin:auto 0px auto 0px;">
-                                                                                <h3 class="uppercase bold">
-                                                                                    <a style="font-size:50%;" href="">@tarea.name</a>
-                                                                                </h3>
-                                                                            </div>
-                                                                        </li>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <li class="mt-list-item">
-                                                                            <div class="list-icon-container">
-                                                                                <a href="javascript:;">
-                                                                                    <i class="icon-check"></i>
-                                                                                </a>
-                                                                            </div>
-                                                                            <div class="list-item-content" style="padding:5px 0px 0px 50px;margin:auto 0px auto 0px;">
-                                                                                <h3 class="uppercase bold">
-                                                                                    <a style="font-size:75%;" href="">@tarea.name
-                                                                                </h3>
-                                                                            </div>
-                                                                        </li>
-                                                                    }
-                                                                }
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                }
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
                             </div>
-                            <!--<div class="steps-timeline">
-                                <div class="steps-one">
-                                    <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
-                                    <h3 class="steps-name">
-                                        Semantic
-                                    </h3>
-                                    <p class="steps-description">
-                                        The timeline is created using negative margins and a top border.
-                                    </p>
-                                </div>
-                                <div class="steps-two">
-                                    <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
-                                    <h3 class="steps-name">
-                                        Relative
-                                    </h3>
-                                    <p class="steps-description">
-                                        All elements are positioned realtive to the parent. No absolute positioning.
-                                    </p>
-                                </div>
-                                <div class="steps-three">
-                                    <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
-                                    <h3 class="steps-name">
-                                        Contained
-                                    </h3>
-                                    <p class="steps-description">
-                                        The timeline does not extend past the first and last elements.
-                                    </p>
-                                </div>
-                            </div>-->
-                        </section>
+                            @if (c == 1)
+                            {
+                                c++;
+                                <svg height="20" width="20">
+                                    <circle cx="10" cy="11" r="5" fill="#ec9404" />
+                                </svg>
+                            }
+                            else
+                            {
+                                <svg height="20" width="20">
+                                    <circle cx="10" cy="11" r="5" fill="gray" />
+                                </svg>
+                            }
+                        </div>
+                    }
+                    <div>
+                        @{
+                            int k = -890 + porcentajeRecorrido;
+                        }
+                        <img class="now" src="~/images/camionDelta.png" alt="Alternate Text"
+                             style="margin-left:@k%;" />
                     </div>
                 </div>
             </div>
-            <!--<div class="steps-timeline">
-                <div class="steps-one">
-                    <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
-                    <h3 class="steps-name">
-                        Semantic
-                    </h3>
-                    <p class="steps-description">
-                        The timeline is created using negative margins and a top border.
-                    </p>
-                </div>
-                <div class="steps-two">
-                    <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
-                    <h3 class="steps-name">
-                        Relative
-                    </h3>
-                    <p class="steps-description">
-                        All elements are positioned realtive to the parent. No absolute positioning.
-                    </p>
-                </div>
-                <div class="steps-three">
-                    <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
-                    <h3 class="steps-name">
-                        Contained
-                    </h3>
-                    <p class="steps-description">
-                        The timeline does not extend past the first and last elements.
-                    </p>
-                </div>
-            </div>-->
         </div>
-        <!-- END CONTENT BODY -->
+        <!--<div class="steps-timeline">
+            <div class="steps-one">
+                <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+                <h3 class="steps-name">
+                    Semantic
+                </h3>
+                <p class="steps-description">
+                    The timeline is created using negative margins and a top border.
+                </p>
+            </div>
+            <div class="steps-two">
+                <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+                <h3 class="steps-name">
+                    Relative
+                </h3>
+                <p class="steps-description">
+                    All elements are positioned realtive to the parent. No absolute positioning.
+                </p>
+            </div>
+            <div class="steps-three">
+                <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+                <h3 class="steps-name">
+                    Contained
+                </h3>
+                <p class="steps-description">
+                    The timeline does not extend past the first and last elements.
+                </p>
+            </div>
+        </div>-->
+    </div>
+    <!-- END CONTENT BODY -->
     </div>
     <!-- END CONTENT -->
     <!-- BEGIN QUICK SIDEBAR -->
