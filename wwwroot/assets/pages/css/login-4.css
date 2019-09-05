@@ -13,14 +13,14 @@
 
 .login .logo {
     /* POR DEFECTO:
-    margin: 60px auto 20px auto;
-    padding: 15px;*/
+  margin: 60px auto 20px auto;
+  padding: 15px;*/
     margin: 0%;
     padding: 0%;
     text-align: center;
 }
 
-.login .logo a img {
+.login .logo img {
     width: 25%;
 }
 
@@ -176,12 +176,12 @@
 
 @media (max-width: 480px) {
     /***
-  Login page
-  ***/
+Login page
+***/
     /* POR DEFECTO
-    .login .logo {
-        margin-top: 10px;
-    } */
+  .login .logo {
+      margin-top: 10px;
+  } */
     .login .logo a img {
         width: 50%;
     }
