@@ -67,28 +67,30 @@
 
     .event2Bubble li {
         margin: 0px 0px 0px 0px;
-        padding: 15px 15px 15px 0px;
+        padding: 15px 0px 15px 0px;
         display: flex;
         border-top-style: solid;
         border-top-color: gray;
         border-top-width: 1px;
+        width:100%;
     }
 
         .event2Bubble li .icon-check {
             color: green;
-            margin: 3px 0px 0px 10px;
+            margin: 2px 0px 0px 10px;
             padding: 0;
             width: 14px;
         }
 
         .event2Bubble li .icon-close {
-            margin: 3px 0px 0px 10px;
+            margin: 2px 0px 0px 10px;
             padding: 0;
             width: 14px;
         }
 
         .event2Bubble li .task-name {
             margin: 0px 0px 0px 5px;
+            width:55%;
         }
 
 /*Triangulos*/

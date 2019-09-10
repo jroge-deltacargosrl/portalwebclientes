@@ -8,6 +8,7 @@
                 int distanciaPorEtapa = 200, porcentajePorEtapa = 820 / 4;
                 int c = 1, cantidadTareasTerminadasDeLaEtapaAnterior = 0,
                 caminoRecorrido, caminoFaltante, porcentajeRecorrido = 0;
+                string state, canUpload;
             }
             @if (Model.stages.Count == 5)
             {
@@ -31,7 +32,7 @@
                     else
                     {
                         @if (cantidadTareasTerminadasDeLaEtapaAnterior ==
-              Model.stages.ElementAt(i - 1).tasks.Count)
+                       Model.stages.ElementAt(i - 1).tasks.Count)
                         {
                             porcentajeRecorrido += porcentajePorEtapa;
                             <svg height="5" width="@distanciaPorEtapa">
@@ -66,18 +67,25 @@
                                     }
                                     @foreach (var task in Model.stages.ElementAt(i).tasks)
                                     {
+                                        @if (task.kanbanState == "done")
+                                        {
+                                            state = "check";
+                                            cantidadTareasTerminadasDeLaEtapaAnterior++;
+                                        }
+                                        else
+                                        {
+                                            state = "close";
+                                        }
                                         <li>
-                                            @if (task.kanbanState == "done")
-                                            {
-                                                <div class="icon-check"></div>
-                                                cantidadTareasTerminadasDeLaEtapaAnterior++;
-                                            }
-                                            else
-                                            {
-                                                <div class="icon-close"></div>
-                                            }
+                                            <div class="icon-@state"></div>
                                             <div class="task-name">
                                                 @task.name
+                                            </div>
+                                            @{
+                                                canUpload = true ? "true" : "false";
+                                            }
+                                            <div class="divUpload">
+                                                <input type="file"title="Subir Documento"/>
                                             </div>
                                         </li>
                                     }
@@ -85,7 +93,7 @@
                             </div>
                         </div>
                         @if (c == 1 || cantidadTareasTerminadasDeLaEtapaAnterior ==
-              Model.stages.ElementAt(i).tasks.Count)
+                       Model.stages.ElementAt(i).tasks.Count)
                         {
                             c++;
                             <svg height="20" width="20">
