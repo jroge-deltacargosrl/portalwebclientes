@@ -137,3 +137,4 @@ E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.dll
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.pdb
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csproj.CopyComplete
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotation\Create.g.cshtml.cs

@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace PortalWebCliente.Models
 {
-    public class UsuarioResponse
+    public class RouteModel
     {
         public int id { get; set; }
-        public string email { get; set; }
-        public int responseType { get; set; }
+        public string name { get; set; }
     }
 }

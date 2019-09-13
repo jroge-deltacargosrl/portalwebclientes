@@ -1,41 +1,38 @@
-﻿@model  List<PortalWebCliente.Models.ProyectoModel>
-<div class="row">
-    <div class="col-lg-4">
-        <div class="portlet light portlet-fit ">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="icon-layers font-gray"></i>
-                    <span class="caption-subject font-black bold uppercase" style="font-size:150%;">LISTADO DE OPERACIONES POR CLIENTE</span>
-                </div>
-            </div>
-            <div class="portlet-body" style="padding:2px">
-                <div class="mt-element-list">
-                    <div class="mt-list-container list-default"
-                         style="padding:5px">
-                        <ul style="margin:0%;padding:0%;">
-                            @foreach (ProyectoModel item in Model)
-                            {
-                                <li class="mt-list-item" style="padding:20px 0px;">
-                                    <div class="list-icon-container done">
-                                        <a href="javascript:;">
-                                            <i class="icon-check"></i>
-                                        </a>
-                                    </div>
-                                    <div class="list-datetime">
-                                        <!--11am-->
-                                        <br /> <!--8 Nov-->
-                                    </div>
-                                    <div class="list-item-content" style="padding:13px 0px 0px 50px;margin:auto 0px auto 0px;">
-                                        <h3 class="uppercase bold">
-                                            <a href="/Home/@item.name">@item.name</a>
-                                        </h3>
-                                        <!--<p>Detalles de la operacion</p>-->
-                                    </div>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
+﻿@model List<PortalWebCliente.Models.ProjectModel>
+
+<div class="portlet light portlet-fit ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-layers font-gray"></i>
+            <span class="caption-subject font-black bold uppercase" style="font-size:150%;">LISTADO DE OPERACIONES POR CLIENTE</span>
+        </div>
+    </div>
+    <div class="portlet-body" style="padding:2px">
+        <div class="mt-element-list">
+            <div class="mt-list-container list-default"
+                 style="padding:5px">
+                <ul style="margin:0%;padding:0%;">
+                    @foreach (ProjectModel item in Model)
+                    {
+                        <li class="mt-list-item" style="padding:20px 0px;">
+                            <div class="list-icon-container done">
+                                <a href="javascript:;">
+                                    <i class="icon-check"></i>
+                                </a>
+                            </div>
+                            <div class="list-datetime">
+                                <!--11am-->
+                                <br /> <!--8 Nov-->
+                            </div>
+                            <div class="list-item-content" style="padding:13px 0px 0px 50px;margin:auto 0px auto 0px;">
+                                <h3 class="uppercase bold">
+                                    <a href="/Home/@item.name">@item.name</a>
+                                </h3>
+                                <!--<p>Detalles de la operacion</p>-->
+                            </div>
+                        </li>
+                    }
+                </ul>
             </div>
         </div>
     </div>

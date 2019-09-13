@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PortalWebCliente.Models
 {
-    public class UsuarioModel
+    public class UserModel
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "Campo Requerido")]
         public string email { get; set; }

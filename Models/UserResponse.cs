@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace PortalWebCliente.Models
 {
-    public class ProyectoModel
+    public class UserResponse
     {
         public int id { get; set; }
-        public string name { get; set; }
-        public List<EtapaModel> stages { get; set; } = new List<EtapaModel>();
-
-
+        public string email { get; set; }
+        public int responseType { get; set; }
     }
 }

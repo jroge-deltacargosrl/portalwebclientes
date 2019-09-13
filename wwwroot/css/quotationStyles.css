@@ -1,0 +1,134 @@
+﻿.servicesArea {
+    display: flex;
+    width: 70%;
+    margin: 0px auto;
+}
+
+    .servicesArea .servicesLabel {
+        margin-right: 15%;
+    }
+
+    .servicesArea .servicesSelect {
+        width: 80%;
+    }
+
+.quotationForms {
+    display: block;
+    width: 70%;
+    margin: 0px auto;
+}
+
+.loadStorage,
+.nationalTransport,
+.internationalTransport {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0.5px;
+}
+
+.labelInput, .labelInputSelect {
+    display: flex;
+    width: 100%;
+    margin: 5% auto;
+}
+
+    .labelInput label {
+        width: 50%;
+    }
+
+    .labelInput input {
+        width: 50%;
+    }
+
+    .labelInput .verySmallLabel {
+        width: 10%;
+    }
+
+    .labelInput .smallLabel {
+        width: 25%;
+    }
+
+    .labelInput .veryLargeInput {
+        width: 100%;
+    }
+
+    .labelInputSelect label {
+        width: 35%;
+    }
+
+    .labelInputSelect input {
+        width: 38%;
+        margin-right: 5%;
+    }
+
+    .labelInputSelect select {
+        width: 22%;
+    }
+
+    .labelInputSelect .largeInput {
+        width: 48%;
+        margin-right: 5%;
+    }
+
+    .labelInputSelect .smallSelect {
+        width: 12%;
+    }
+
+.labelTextarea {
+    display: block;
+    width: 100%;
+    margin: 5% auto;
+}
+
+    .labelTextarea div {
+        width: 100%;
+    }
+
+    .labelTextarea textarea {
+        width: 100%;
+        resize: none;
+    }
+
+    .labelTextarea .veryLarge {
+        width: 98%;
+        margin-right: 2%;
+    }
+
+    .labelTextarea .regular {
+        width: 50%;
+    }
+
+.divFlex {
+    display: flex;
+}
+
+.labelTextarea2 {
+    display: block;
+    width: 100%;
+    margin: 5% auto;
+    margin-top:0;
+}
+
+    .labelTextarea2 div {
+        width: 100%;
+    }
+
+    .labelTextarea2 textarea {
+        width: 100%;
+        resize: none;
+    }
+
+    .labelTextarea2 .veryLarge {
+        width: 98%;
+        margin-right: 2%;
+    }
+
+    .labelTextarea2 .regular {
+        width: 50%;
+    }
+.quotationForms div button{
+    float:right;
+    background-color:#ec9404;
+    width:12%;
+}

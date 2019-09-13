@@ -1,0 +1,185 @@
+﻿@model QuotationViewModel
+<link href="~/css/quotationStyles.css" rel="stylesheet" />
+<script src="~/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="~/js/quotationJs.js" type="text/javascript"></script>
+<div class="servicesArea">
+    <label class="servicesLabel">Servicio:</label>
+    <select class="servicesSelect">
+        @foreach (ServiceTypeModel serviceType in Model.serviceTypes)
+        {
+            @if (serviceType.id == 4)
+            {
+                <option value="@serviceType.id" selected>@serviceType.name</option>
+            }
+            else
+            {
+                <option value="@serviceType.id">@serviceType.name</option>
+            }
+        }
+    </select>
+</div>
+<form action="/Quotation/Create" method="post" class="quotationForms">
+    <div id="2" class="loadStorage">
+        <div class="labelInputSelect">
+            <label>Capacidad de almacenamiento</label>
+            <input class="largeInput" type="text" value="" />
+            <select class="smallSelect">
+                <option value="m2">m2</option>
+                <option value="m3">m3</option>
+            </select>
+        </div>
+        <div class="labelInputSelect">
+            <label>Tiempo de almacenamiento</label>
+            <input type="text" value="" />
+            <select class="regular">
+                <option value="week">Semana(s)</option>
+                <option value="month">Mes(es)</option>
+                <option value="year">Años(s)</option>
+            </select>
+        </div>
+    </div>
+    <div id="3" class="nationalTransport">
+        <div class="divFlex">
+            <div class="labelTextarea">
+                <div>
+                    <label>Origen</label>
+                </div>
+                <div>
+                    <select class="veryLarge" id="originCity">
+                        <option value="" selected disabled>Seleccionar</option>
+                        <option value="1">Beni</option>
+                        <option value="2">Chuquisaca</option>
+                        <option value="3">Cochabamba</option>
+                        <option value="4">La Paz</option>
+                        <option value="5">Oruro</option>
+                        <option value="6">Pando</option>
+                        <option value="7">Potosi</option>
+                        <option value="8">Santa Cruz</option>
+                        <option value="9">Tarija</option>
+                    </select>
+                </div>
+            </div>
+            <div class="labelTextarea">
+                <div>
+                    <label>Destino</label>
+                </div>
+                <div>
+                    <select class="veryLarge" id="destinationCity">
+                        <option value="" selected disabled>Seleccionar</option>
+                        <option value="1">Beni</option>
+                        <option value="2">Chuquisaca</option>
+                        <option value="3">Cochabamba</option>
+                        <option value="4">La Paz</option>
+                        <option value="5">Oruro</option>
+                        <option value="6">Pando</option>
+                        <option value="7">Potosi</option>
+                        <option value="8">Santa Cruz</option>
+                        <option value="9">Tarija</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="4" class="internationalTransport">
+        <div class="divFlex">
+            <div class="labelTextarea">
+                <div>
+                    <label>Origen</label>
+                </div>
+                <div>
+                    <select class="veryLarge">
+                        <option value="" selected disabled>Seleccionar</option>
+                        @foreach (MacroRouteModel macroRoute in Model.macroRoutes)
+                        {
+                            <option value="@macroRoute.id">@macroRoute.name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="labelTextarea">
+                <div>
+                    <label>Ciudad</label>
+                </div>
+                <div>
+                    <select class="veryLarge">
+                        <option value="" selected disabled>Seleccionar</option>
+                        <option value="1">Beni</option>
+                        <option value="2">Chuquisaca</option>
+                        <option value="3">Cochabamba</option>
+                        <option value="4">La Paz</option>
+                        <option value="5">Oruro</option>
+                        <option value="6">Pando</option>
+                        <option value="7">Potosi</option>
+                        <option value="8">Santa Cruz</option>
+                        <option value="9">Tarija</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="divFlex">
+            <div class="labelTextarea2">
+                <div>
+                    <label>Destino</label>
+                </div>
+                <div>
+                    <select class="veryLarge">
+                        <option value="" selected disabled>Seleccionar</option>
+                        @foreach (MacroRouteModel macroRoute in Model.macroRoutes)
+                        {
+                            <option value="@macroRoute.id">@macroRoute.name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="labelTextarea2">
+                <div>
+                    <label>Destino</label>
+                </div>
+                <div>
+                    <select class="veryLarge">
+                        <option value="" selected disabled>Seleccionar</option>
+                        <option value="1">Beni</option>
+                        <option value="2">Chuquisaca</option>
+                        <option value="3">Cochabamba</option>
+                        <option value="4">La Paz</option>
+                        <option value="5">Oruro</option>
+                        <option value="6">Pando</option>
+                        <option value="7">Potosi</option>
+                        <option value="8">Santa Cruz</option>
+                        <option value="9">Tarija</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weight-volume">
+        <div class="labelInput">
+            <label class="smallLabel">Tipo de camion</label>
+            <select style="margin-left:-5%;width:40%;">
+                @foreach (TruckTypeModel truck in Model.trucksTypes)
+                {
+                    <option value="@truck.id">@truck.name</option>
+                }
+            </select>
+        </div>
+        <div class="labelInput">
+            <label class="verySmallLabel">Peso:</label>
+            <input type="text" value="" />
+        </div>
+        <div class="labelInput">
+            <label class="verySmallLabel">Volumen:</label>
+            <input type="text" value="" />
+        </div>
+    </div>
+    <div class="comment">
+        <div class="labelTextarea">
+            <div>
+                <label class="smallLabel">Coméntanos</label>
+            </div>
+            <div>
+                <textarea rows="5" class="veryLargeInput"></textarea>
+            </div>
+        </div>
+        <button type="submit">Cotizar</button>
+    </div>
+</form>

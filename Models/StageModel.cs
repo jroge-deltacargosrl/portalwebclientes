@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PortalWebCliente.Models
 {
-    public class EtapaModel
+    public class StageModel
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -13,6 +13,6 @@ namespace PortalWebCliente.Models
         public int projectId { get; set; }
 
         // adecuacion: etapa contiene muchas tareas
-        public List<TareaModel> tasks { get; set; } = new List<TareaModel>();
+        public List<TaskModel> tasks { get; set; } = new List<TaskModel>();
     }
 }

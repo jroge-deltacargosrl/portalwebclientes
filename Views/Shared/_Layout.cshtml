@@ -60,7 +60,7 @@
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                         <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <i class="icon-envelope-open"style="color:#ec9404;"></i>
+                                <i class="icon-envelope-open" style="color:#ec9404;"></i>
                                 <!--<span class="badge badge-default"> 4 </span>-->
                             </a>
                             <ul class="ALTERdropdown-menu">
@@ -137,7 +137,7 @@
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
-                                <span style="color:black;"class="username username-hide-on-mobile">@ViewBag.userEmail</span>
+                                <span style="color:black;" class="username username-hide-on-mobile">@ViewBag.userEmail</span>
                                 <!--<i class="fa fa-angle-down"></i>-->
                             </a>
                             <ul class="ALTERdropdown-menu dropdown-menu-default">
@@ -186,11 +186,11 @@
     <div class="clearfix"></div>
     <!-- END HEADER & CONTENT DIVIDER -->
     <!-- BEGIN CONTAINER -->
-    <div class="page-container"style="background-color:white;">
+    <div class="page-container" style="background-color:white;">
         <!-- BEGIN SIDEBAR page-sidebar-wrapper en layout.min-->
-        <div class="page-sidebar-wrapper"style="background-color:white;">
+        <div class="page-sidebar-wrapper" style="background-color:white;">
             <!-- END SIDEBAR -->
-            <div class="page-sidebar navbar-collapse collapse"style="background-color:white;">
+            <div class="page-sidebar navbar-collapse collapse" style="background-color:white;">
                 <!-- BEGIN SIDEBAR MENU -->
                 <!-- en layout.min-->
                 <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200"
@@ -199,7 +199,7 @@
                         style="background-color:white;">
                         <a href="/Home/Index" class="nav-link nav-toggle"
                            style="background-color:white;color:black;">
-                            <i class="icon-home"style="color:#ec9404;"></i>
+                            <i class="icon-home" style="color:#ec9404;"></i>
                             <span class="title">Operaciones</span>
                             <span class="selected"></span>
                             <span class="arrow open"></span>
@@ -207,9 +207,9 @@
                     </li>
                     <li class="nav-item start active open"
                         style="background-color:white;">
-                        <a href="/Home/Cotizaciones" class="nav-link nav-toggle"
+                        <a href="/Quotation/Create" class="nav-link nav-toggle"
                            style="background-color:white;color:black;">
-                            <i class="icon-diamond"style="color:#ec9404;"></i>
+                            <i class="icon-diamond" style="color:#ec9404;"></i>
                             <span class="title">Cotizaciones</span>
                             <span class="selected"></span>
                             <span class="arrow open"></span>
@@ -225,7 +225,11 @@
         <div class="page-content-wrapper">
             <!-- BEGIN CONTENT BODY -->
             <div class="page-content">
-                @RenderBody()
+                <div class="row">
+                    <div class="col-lg-4">
+                        @RenderBody()
+                    </div>
+                </div>
             </div>
             <!-- END CONTENT BODY -->
         </div>
