@@ -32,8 +32,8 @@ namespace PortalWebCliente.Controllers
                 if (usuario.password != null)
                 {
                     //Tabla de configuracion
-                    string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
-                    //string urlRequest = @"https://localhost:44333//api/v1/";
+                    //string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+                    string urlRequest = @"https://localhost:44333//api/v1/";
                     var responseLogin = new RequestAPI()
                         .addClient(new RestClient(urlRequest))
                         .addRequest(new RestRequest("access/", Method.POST, DataFormat.Json))
@@ -95,11 +95,13 @@ namespace PortalWebCliente.Controllers
             });
         }
 
+        // modificar este metodo
         [HttpGet]
         public IActionResult Index()
         {
             UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
-            string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+            //string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+            string urlRequest = @"https://localhost:44333/api/v1/";
             var responseProjects = new RequestAPI()
                 .addClient(new RestClient(urlRequest))
                 .addRequest(new RestRequest("operation/{idCustomer}", Method.GET))
@@ -113,14 +115,14 @@ namespace PortalWebCliente.Controllers
         }
 
         [HttpGet]//("/Home/{proyectName}", Name = "aux")]
-        public IActionResult TimeLineOperacion(string proyectName)
+        public IActionResult TimeLineOperacion(string projectName)
         {
             List<ProjectModel> listaDeProyectos =
                 HttpContext.Session.getObjectFromJson
                 <List<ProjectModel>>("listaDeProyectosJSON");
             foreach (ProjectModel proyecto in listaDeProyectos)
             {
-                if (proyecto.name.Equals(proyectName))
+                if (proyecto.name.Equals(projectName))
                 {
                     UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
                     ViewBag.userEmail = usuarioActual.email;

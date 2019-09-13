@@ -122,7 +122,6 @@ E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\LogIn.g.cshtml.cs
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
-E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\TimeLine.g.cshtml.cs
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\TimeLineOperacion.g.cshtml.cs
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
@@ -138,3 +137,5 @@ E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.pdb
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csproj.CopyComplete
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotation\Create.g.cshtml.cs
+E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csprojAssemblyReference.cache
+E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotation\Create.g.cshtml.cs

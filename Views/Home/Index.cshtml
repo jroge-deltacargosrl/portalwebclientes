@@ -25,8 +25,10 @@
                                 <br /> <!--8 Nov-->
                             </div>
                             <div class="list-item-content" style="padding:13px 0px 0px 50px;margin:auto 0px auto 0px;">
+                                
                                 <h3 class="uppercase bold">
-                                    <a href="/Home/@item.name">@item.name</a>
+                                    @*<a href="/Home/TimeLineOperacion/@item.name">@item.name</a>*@
+                                    <a href="@Url.Action("TimeLineOperacion","Home",new { projectName = item.name})">@item.name</a>
                                 </h3>
                                 <!--<p>Detalles de la operacion</p>-->
                             </div>
