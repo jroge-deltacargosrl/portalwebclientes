@@ -32,8 +32,8 @@ namespace PortalWebCliente.Controllers
                 if (usuario.password != null)
                 {
                     //Tabla de configuracion
-                    //string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
-                    string urlRequest = @"https://localhost:44333//api/v1/";
+                    string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+                    //string urlRequest = @"https://localhost:44333//api/v1/";
                     var responseLogin = new RequestAPI()
                         .addClient(new RestClient(urlRequest))
                         .addRequest(new RestRequest("access/", Method.POST, DataFormat.Json))
@@ -100,8 +100,8 @@ namespace PortalWebCliente.Controllers
         public IActionResult Index()
         {
             UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
-            //string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
-            string urlRequest = @"https://localhost:44333/api/v1/";
+            string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+            //string urlRequest = @"https://localhost:44333/api/v1/";
             var responseProjects = new RequestAPI()
                 .addClient(new RestClient(urlRequest))
                 .addRequest(new RestRequest("operation/{idCustomer}", Method.GET))
@@ -114,7 +114,7 @@ namespace PortalWebCliente.Controllers
             return View(projectList);
         }
 
-        [HttpGet]//("/Home/{proyectName}", Name = "aux")]
+        [HttpGet("/Home/{projectName}", Name = "aux")]
         public IActionResult TimeLineOperacion(string projectName)
         {
             List<ProjectModel> listaDeProyectos =

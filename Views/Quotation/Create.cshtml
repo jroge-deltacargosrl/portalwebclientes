@@ -31,7 +31,7 @@
         </div>
         <div class="labelInputSelect">
             <label>Tiempo de almacenamiento</label>
-            <input type="text" value="" />
+            <input type="text" class="largeInputShort" />
             <select class="regular">
                 <option value="week">Semana(s)</option>
                 <option value="month">Mes(es)</option>
@@ -81,6 +81,17 @@
                 </div>
             </div>
         </div>
+        <div class="divFlex">
+            <div class="labelInput">
+                <label class="smallLabel">Tipo de camión</label>
+                <select class="largeInput">
+                    @foreach (TruckTypeModel truck in Model.trucksTypes)
+                    {
+                        <option value="@truck.id">@truck.name</option>
+                    }
+                </select>
+            </div>
+        </div>
     </div>
     <div id="4" class="internationalTransport">
         <div class="divFlex">
@@ -102,20 +113,9 @@
                 <div>
                     <label>Ciudad</label>
                 </div>
-                @*<div>
-                        <select class="veryLarge">
-                            <option value="" selected disabled>Seleccionar</option>
-                            <option value="1">Beni</option>
-                            <option value="2">Chuquisaca</option>
-                            <option value="3">Cochabamba</option>
-                            <option value="4">La Paz</option>
-                            <option value="5">Oruro</option>
-                            <option value="6">Pando</option>
-                            <option value="7">Potosi</option>
-                            <option value="8">Santa Cruz</option>
-                            <option value="9">Tarija</option>
-                        </select>
-                    </div>*@
+                <div>
+                    <input type="text" class="veryLarge" />
+                </div>
             </div>
         </div>
         <div class="divFlex">
@@ -135,42 +135,33 @@
             </div>
             <div class="labelTextarea2">
                 <div>
-                    <label>Destino</label>
+                    <label>Ciudad</label>
                 </div>
                 <div>
-                    <select class="veryLarge">
-                        <option value="" selected disabled>Seleccionar</option>
-                        <option value="1">Beni</option>
-                        <option value="2">Chuquisaca</option>
-                        <option value="3">Cochabamba</option>
-                        <option value="4">La Paz</option>
-                        <option value="5">Oruro</option>
-                        <option value="6">Pando</option>
-                        <option value="7">Potosi</option>
-                        <option value="8">Santa Cruz</option>
-                        <option value="9">Tarija</option>
-                    </select>
+                    <input type="text" class="veryLarge" />
                 </div>
+            </div>
+        </div>
+        <div class="divFlex">
+            <div class="labelInput">
+                <label class="smallLabel">Tipo de camión</label>
+                <select class="largeInput">
+                    @foreach (TruckTypeModel truck in Model.trucksTypes)
+                    {
+                        <option value="@truck.id">@truck.name</option>
+                    }
+                </select>
             </div>
         </div>
     </div>
     <div class="weight-volume">
         <div class="labelInput">
-            <label class="smallLabel">Tipo de camion</label>
-            <select style="margin-left:-5%;width:40%;">
-                @foreach (TruckTypeModel truck in Model.trucksTypes)
-                {
-                    <option value="@truck.id">@truck.name</option>
-                }
-            </select>
-        </div>
-        <div class="labelInput">
             <label class="verySmallLabel">Peso:</label>
-            <input type="text" value="" />
+            <input type="text" class="largeInputShort" /> Tn.
         </div>
         <div class="labelInput">
             <label class="verySmallLabel">Volumen:</label>
-            <input type="text" value="" />
+            <input class="largeInputShort" type="text" value="" /> m3
         </div>
     </div>
     <div class="comment">
@@ -184,7 +175,6 @@
         </div>
         <button type="submit">Cotizar</button>
     </div>
-
 </form>
 
 

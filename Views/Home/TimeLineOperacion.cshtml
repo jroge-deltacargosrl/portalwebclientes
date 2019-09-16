@@ -3,14 +3,19 @@
     @model PortalWebCliente.Models.ProjectModel;
     <!-- BEGIN CONTENT -->
     @{
-        int distanciaPorEtapa = 200, porcentajePorEtapa = 820 / 4;
-        int c = 1, cantidadTareasTerminadasDeLaEtapaAnterior = 0,
+        int distanciaPorEtapa = 800 / Model.stages.Count,
+            porcentajePorEtapa = (820 / Model.stages.Count);
+        if (Model.stages.Count == 5)
+        {
+            porcentajePorEtapa += 30;
+        }
+        else
+        {
+            porcentajePorEtapa += 70;
+        }
+        int c = 1, cantidadDeTareasTerminadasEnLaEtapaActual = 0, cantidadDeTareasTerminadasEnLaEtapaSiguiente = 0,
         caminoRecorrido, caminoFaltante, porcentajeRecorrido = 0;
         string state;
-    }
-    @if (Model.stages.Count == 5)
-    {
-        distanciaPorEtapa = 160; porcentajePorEtapa = 820 / 5;
     }
     <h2 class="titulo-operacion">@Model.name</h2>
     <div class="Timeline">
@@ -18,50 +23,24 @@
             <line x1="0" y1="0" x2="0" y2="0" style="stroke:#ec9404;stroke-width:5" />
             Sorry, your browser does not support inline SVG.
         </svg>
-        @for (int i = 0; i < Model.stages.Count; i++)
+        @for (int i = 0; i < Model.stages.Count - 1; i++)
         {
             @if (c == 1)
             {
+                c++;
                 <svg height="5" width="150">
                     <line x1="0" y1="0" x2="0" y2="0" style="stroke:#ec9404;stroke-width:5" />
                     Sorry, your browser does not support inline SVG.
                 </svg>
             }
-            else
-            {
-                @if (cantidadTareasTerminadasDeLaEtapaAnterior ==
-            Model.stages.ElementAt(i - 1).tasks.Count)
-                {
-                    porcentajeRecorrido += porcentajePorEtapa;
-                    <svg height="5" width="@distanciaPorEtapa">
-                        <line x1="0" y1="0" x2="@distanciaPorEtapa" y2="0" style="stroke:#ec9404;stroke-width:5" />
-                        Sorry, your browser does not support inline SVG.
-                    </svg>
-                }
-                else
-                {
-                    caminoRecorrido = (distanciaPorEtapa / Model.stages.ElementAt(i - 1).tasks.Count) *
-                    cantidadTareasTerminadasDeLaEtapaAnterior;
-                    caminoFaltante = distanciaPorEtapa - caminoRecorrido;
-                    <svg height="5" width="@caminoRecorrido">
-                        <line x1="0" y1="0" x2="@caminoRecorrido" y2="0" style="stroke:#ec9404;stroke-width:5" />
-                        Sorry, your browser does not support inline SVG.
-                    </svg>
-                    <svg height="5" width="@caminoFaltante">
-                        <line x1="0" y1="0" x2="@caminoFaltante" y2="0" style="stroke:gray;stroke-width:5" />
-                        Sorry, your browser does not support inline SVG.
-                    </svg>
-                    porcentajeRecorrido += (porcentajePorEtapa / Model.stages.ElementAt(i - 1).tasks.Count) *
-                    cantidadTareasTerminadasDeLaEtapaAnterior;
-                }
-            }
+
             <div class="event2">
                 <div class="event2Bubble">
                     <label><b>@Model.stages.ElementAt(i).name</b></label>
                     <div class="eventTime">
                         <ul>
                             @{
-                                cantidadTareasTerminadasDeLaEtapaAnterior = 0;
+                                cantidadDeTareasTerminadasEnLaEtapaActual = 0;
                             }
                             @for (int j = 0; j < Model.stages.ElementAt(i).tasks.Count; j++)
                             {
@@ -69,7 +48,7 @@
                                 @if (task.kanbanState == "done")
                                 {
                                     state = "check";
-                                    cantidadTareasTerminadasDeLaEtapaAnterior++;
+                                    cantidadDeTareasTerminadasEnLaEtapaActual++;
                                 }
                                 else
                                 {
@@ -88,25 +67,107 @@
                         </ul>
                     </div>
                 </div>
-                @if (c == 1 || cantidadTareasTerminadasDeLaEtapaAnterior ==
-            Model.stages.ElementAt(i).tasks.Count)
-                {
-                    c++;
-                    <svg height="20" width="20">
-                        <circle cx="10" cy="11" r="5" fill="#ec9404" />
-                    </svg>
-                }
-                else
-                {
-                    <svg height="20" width="20">
-                        <circle cx="10" cy="11" r="5" fill="gray" />
-                    </svg>
-                }
             </div>
+            @if (cantidadDeTareasTerminadasEnLaEtapaActual ==
+          Model.stages.ElementAt(i).tasks.Count)
+            {
+                <svg height="20" width="20">
+                    <circle cx="10" cy="11" r="5" fill="#ec9404" />
+                </svg>
+            }
+            else
+            {
+                <svg height="20" width="20">
+                    <circle cx="10" cy="11" r="5" fill="gray" />
+                </svg>
+            }
+
+            cantidadDeTareasTerminadasEnLaEtapaSiguiente = 0;
+            @foreach (TaskModel task in Model.stages.ElementAt(i + 1).tasks)
+            {
+                if (task.kanbanState == "done")
+                {
+                    cantidadDeTareasTerminadasEnLaEtapaSiguiente++;
+                }
+            }
+            @if (cantidadDeTareasTerminadasEnLaEtapaSiguiente ==
+         Model.stages.ElementAt(i + 1).tasks.Count)
+            {
+                porcentajeRecorrido += porcentajePorEtapa;
+                <svg height="5" width="@distanciaPorEtapa">
+                    <line x1="0" y1="0" x2="@distanciaPorEtapa" y2="0" style="stroke:#ec9404;stroke-width:5" />
+                    Sorry, your browser does not support inline SVG.
+                </svg>
+            }
+            else
+            {
+                caminoRecorrido = (distanciaPorEtapa / Model.stages.ElementAt(i + 1).tasks.Count) *
+                cantidadDeTareasTerminadasEnLaEtapaSiguiente;
+                caminoFaltante = distanciaPorEtapa - caminoRecorrido;
+                <svg height="5" width="@caminoRecorrido">
+                    <line x1="0" y1="0" x2="@caminoRecorrido" y2="0" style="stroke:#ec9404;stroke-width:5" />
+                    Sorry, your browser does not support inline SVG.
+                </svg>
+                <svg height="5" width="@caminoFaltante">
+                    <line x1="0" y1="0" x2="@caminoFaltante" y2="0" style="stroke:gray;stroke-width:5" />
+                    Sorry, your browser does not support inline SVG.
+                </svg>
+                porcentajeRecorrido += ((porcentajePorEtapa / Model.stages.ElementAt(i + 1).tasks.Count)) *
+                cantidadDeTareasTerminadasEnLaEtapaSiguiente;
+            }
+        }
+        <div class="event2">
+            <div class="event2Bubble">
+                <label><b>@Model.stages.Last().name</b></label>
+                <div class="eventTime">
+                    <ul>
+                        @{
+                            cantidadDeTareasTerminadasEnLaEtapaActual = 0;
+                        }
+                        @for (int j = 0; j < Model.stages.Last().tasks.Count; j++)
+                        {
+                            TaskModel task = Model.stages.Last().tasks.ElementAt(j);
+                            @if (task.kanbanState == "done")
+                            {
+                                state = "check";
+                                cantidadDeTareasTerminadasEnLaEtapaActual++;
+                            }
+                            else
+                            {
+                                state = "close";
+                            }
+                            <li>
+                                <div class="icon-@state"></div>
+                                <div class="task-name">
+                                    @task.name
+                                </div>
+                                <div class="divUpload">
+                                    <input class="inputFile" asp-for="stages.Last().tasks.ElementAt(j).document" type="file" title="Subir Documento" />
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @if (cantidadDeTareasTerminadasEnLaEtapaActual ==
+      Model.stages.Last().tasks.Count)
+        {
+            <svg height="20" width="20">
+                <circle cx="10" cy="11" r="5" fill="#ec9404" />
+            </svg>
+        }
+        else
+        {
+            <svg height="20" width="20">
+                <circle cx="10" cy="11" r="5" fill="gray" />
+            </svg>
         }
         <div>
             @{
-                int k = -750 + porcentajeRecorrido;
+                int k = -890 + porcentajeRecorrido;
+                //INICIO DE RECORRIDO EN 890
+                //FIN DE RECORRIDO EN 70
             }
             <img class="now" src="~/images/camionDelta.png" alt="Alternate Text"
                  style="margin-left:@k%;" />

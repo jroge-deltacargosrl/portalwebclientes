@@ -3,8 +3,7 @@
 <div class="portlet light portlet-fit ">
     <div class="portlet-title">
         <div class="caption">
-            <i class="icon-layers font-gray"></i>
-            <span class="caption-subject font-black bold uppercase" style="font-size:150%;">LISTADO DE OPERACIONES POR CLIENTE</span>
+            <span class="caption-subject font-black bold uppercase" style="font-size:150%;">LISTADO DE OPERACIONES</span>
         </div>
     </div>
     <div class="portlet-body" style="padding:2px">
@@ -25,12 +24,9 @@
                                 <br /> <!--8 Nov-->
                             </div>
                             <div class="list-item-content" style="padding:13px 0px 0px 50px;margin:auto 0px auto 0px;">
-                                
                                 <h3 class="uppercase bold">
-                                    @*<a href="/Home/TimeLineOperacion/@item.name">@item.name</a>*@
-                                    <a href="@Url.Action("TimeLineOperacion","Home",new { projectName = item.name})">@item.name</a>
+                                    <a href="/Home/@item.name">@item.name</a>
                                 </h3>
-                                <!--<p>Detalles de la operacion</p>-->
                             </div>
                         </li>
                     }

@@ -81,6 +81,8 @@ namespace PortalWebCliente.Controllers
                     }
                 }
             };
+            UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
+            ViewBag.userEmail = usuarioActual.email;
             return View(quotationFormat);
         }
     }
