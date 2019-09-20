@@ -8,6 +8,6 @@ namespace PortalWebCliente.Models
     public class TruckTypeModel
     {
         public int id { get; set; }
-        public string name { get; set; }
+        public string tipo { get; set; }
     }
 }

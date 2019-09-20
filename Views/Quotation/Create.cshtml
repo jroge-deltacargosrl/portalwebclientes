@@ -35,7 +35,7 @@
             <select class="regular">
                 <option value="week">Semana(s)</option>
                 <option value="month">Mes(es)</option>
-                <option value="year">Años(s)</option>
+                <option value="year">Año(s)</option>
             </select>
         </div>
     </div>
@@ -87,7 +87,7 @@
                 <select class="largeInput">
                     @foreach (TruckTypeModel truck in Model.trucksTypes)
                     {
-                        <option value="@truck.id">@truck.name</option>
+                        <option value="@truck.id">@truck.tipo</option>
                     }
                 </select>
             </div>
@@ -148,7 +148,7 @@
                 <select class="largeInput">
                     @foreach (TruckTypeModel truck in Model.trucksTypes)
                     {
-                        <option value="@truck.id">@truck.name</option>
+                        <option value="@truck.id">@truck.tipo</option>
                     }
                 </select>
             </div>

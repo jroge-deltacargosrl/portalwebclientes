@@ -3,7 +3,7 @@
 }
 .row{
     overflow-y:auto;
-    height:600px;
+    min-height:500px;
 }
 
 .titulo-operacion {

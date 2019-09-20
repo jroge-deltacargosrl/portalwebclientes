@@ -19,6 +19,10 @@ namespace PortalWebCliente.Controllers
                 .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
                 .buildRequest();
             QuotationViewModel quotationFormat = JsonConvert.DeserializeObject<QuotationViewModel>(responseProjects);
+            UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
+            ViewBag.userEmail = usuarioActual.email;
+            return View(quotationFormat);
+            //NUNCA PASA POR AQUI
             quotationFormat = new QuotationViewModel()
             {
                 serviceTypes = new List<ServiceTypeModel>()
@@ -67,23 +71,22 @@ namespace PortalWebCliente.Controllers
                     new TruckTypeModel()
                     {
                         id=1,
-                        name="A"
+                        tipo="A"
                     },
                     new TruckTypeModel()
                     {
                         id=2,
-                        name="B"
+                        tipo="B"
                     },
                     new TruckTypeModel()
                     {
                         id=3,
-                        name="C"
+                        tipo="C"
                     }
                 }
             };
-            UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
-            ViewBag.userEmail = usuarioActual.email;
             return View(quotationFormat);
         }
+
     }
 }

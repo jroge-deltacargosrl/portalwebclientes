@@ -15,20 +15,9 @@ $(document).ready(function () {
             $('.quotationForms').children('.comment').css({ 'margin-top': '-5%' });
         }
         if (s == "#3" || s == "#4") {
-            $('.quotationForms').children('.weight-volume').css({ 'margin-top': '-5%' });
         }
         $('.quotationForms').children('.comment').show();
     });
-    /*var $selects = $('select');
-    $selects.on('change', function () {
-
-        var $select = $(this),
-            $options = $selects.not($select).find('option'),
-            selectedText = $select.children('option:selected').text();
-        var $optionsToDisable = $options.filter(function () {
-            return $(this).text() == selectedText;
-        });
-        $optionsToDisable.prop('disabled', true);*/
     var $selects = $('select');
     $selects.on('change', function () {
         $("option", $selects).prop("disabled", false);
@@ -41,5 +30,26 @@ $(document).ready(function () {
             });
         });
     });
-    //$selects.eq(0).trigger('change');
+    $selects.eq(0).trigger('change');
+});
+
+$nombre = $_FILES['file-0'];
+var data = new FormData();
+jQuery.each($('input[type=file]')[0].files, function (i, file) {
+    data.append('file-' + i, file);
+});
+var other_data = $('form').serializeArray();
+$.each(other_data, function (key, input) {
+    data.append(input.name, input.value);
+});
+jQuery.ajax({
+    url: 'php.php',
+    data: data,
+    cache: false,
+    contentType: false,
+    processData: false,
+    type: 'POST',
+    success: function (data) {
+        alert(data);
+    }
 });

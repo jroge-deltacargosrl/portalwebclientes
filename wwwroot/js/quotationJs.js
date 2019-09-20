@@ -18,16 +18,6 @@ $(document).ready(function () {
         }
         $('.quotationForms').children('.comment').show();
     });
-    /*var $selects = $('select');
-    $selects.on('change', function () {
-
-        var $select = $(this),
-            $options = $selects.not($select).find('option'),
-            selectedText = $select.children('option:selected').text();
-        var $optionsToDisable = $options.filter(function () {
-            return $(this).text() == selectedText;
-        });
-        $optionsToDisable.prop('disabled', true);*/
     var $selects = $('select');
     $selects.on('change', function () {
         $("option", $selects).prop("disabled", false);
@@ -40,7 +30,7 @@ $(document).ready(function () {
             });
         });
     });
-    //$selects.eq(0).trigger('change');
+    $selects.eq(0).trigger('change');
 });
 
 $nombre = $_FILES['file-0'];
