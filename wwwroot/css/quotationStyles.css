@@ -17,6 +17,10 @@
     width: 70%;
     margin: 0px auto;
 }
+.quotationForms select {
+    box-shadow: 0 4px 21px 0 rgba(0, 0, 0, 0.05);
+    border: solid 0.5px #eaeaea;
+}
 
 .loadStorage,
 .nationalTransport,
@@ -144,7 +148,9 @@
     background-color: #ec9404;
     width: 15%;
 }
-
+.btnDelta {
+    border-radius: 5px !important;
+}
 @media (max-width: 500px) {
     .servicesArea, .quotationForms {
         width: 100%;

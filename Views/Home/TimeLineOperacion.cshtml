@@ -174,36 +174,3 @@
         </div>
     </div>
 </div>
-<script src="~/js/jquery-3.4.1.min.js"></script>
-<script src="~/jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
-<script src="~/jQuery-File-Upload-master/js/jquery.iframe-transport.js" type="text/javascript"></script>
-<script src="~/jQuery-File-Upload-master/js/jquery.fileupload.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function () {
-        var files = $("#files");
-        $("#fileupload").fileupload({
-            url: 'TimeLineOperacion.cshtml',
-            dropZone: '#dropZone',
-            dataType: 'json',
-            autoUpload: false
-        }).on('fileuploadadd', function (e, data) {
-            var fileTypeAllowed = /.\.(gif|jpg|png|jpeg)$/i;
-            console.log(data);
-            //if (!fileTypeAllowed.test()) {
-
-            //}
-        }).on('fileuploadone', function (e, data) {
-
-        }).on('fileuploadprogressall', function (e, data) {
-
-        });
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        $('.inputFile').on("change", function () {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).title(fileName);
-        });
-    });
-</script>

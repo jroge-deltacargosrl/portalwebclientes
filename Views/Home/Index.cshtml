@@ -1,7 +1,7 @@
 ﻿@model List<PortalWebCliente.Models.ProjectModel>
 
 <div class="portlet light portlet-fit ">
-    <div class="portlet-title">
+    <div class="portlet-title"style="margin:0;">
         <div class="caption">
             <span class="caption-subject font-black bold uppercase" style="font-size:150%;">LISTADO DE OPERACIONES</span>
         </div>
@@ -13,17 +13,9 @@
                 <ul style="margin:0%;padding:0%;">
                     @foreach (ProjectModel item in Model)
                     {
-                        <li class="mt-list-item" style="padding:20px 0px;">
-                            <div class="list-icon-container done">
-                                <a href="javascript:;">
-                                    <i class="icon-check"></i>
-                                </a>
-                            </div>
-                            <div class="list-datetime">
-                                <!--11am-->
-                                <br /> <!--8 Nov-->
-                            </div>
-                            <div class="list-item-content" style="padding:13px 0px 0px 50px;margin:auto 0px auto 0px;">
+                        <li class="mt-list-item"style="margin:0;padding:2% 0;display:flex;">
+                            <img src="~/images/operation-history-icon.png"width="40px"height="40px"style="margin:0 2%;"/>
+                            <div class="list-item-content"style="padding:0;float:left;margin:auto 0 0 0;">
                                 <h3 class="uppercase bold">
                                     <a href="/Home/@item.name">@item.name</a>
                                 </h3>
@@ -35,3 +27,4 @@
         </div>
     </div>
 </div>
+<link href="~/css/operationsStyles.css" rel="stylesheet" type="text/css" />

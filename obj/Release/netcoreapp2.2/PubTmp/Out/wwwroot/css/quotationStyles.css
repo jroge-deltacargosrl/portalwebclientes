@@ -144,7 +144,9 @@
     background-color: #ec9404;
     width: 15%;
 }
-
+.btnDelta {
+    border-radius: 5px !important;
+}
 @media (max-width: 500px) {
     .servicesArea, .quotationForms {
         width: 100%;

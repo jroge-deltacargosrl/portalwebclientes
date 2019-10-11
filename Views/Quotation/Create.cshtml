@@ -1,5 +1,6 @@
 ﻿@model QuotationViewModel
 <link href="~/css/quotationStyles.css" rel="stylesheet" />
+<link href="~/css/bundle-styles.css" rel="stylesheet" />
 <script src="~/js/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="~/js/quotationJs.js" type="text/javascript"></script>
 <div class="servicesArea">
@@ -19,7 +20,7 @@
     </select>
 </div>
 
-<form action="/Quotation/Create" method="post" class="quotationForms">
+<form action="/Quotation/Create" method="post" class="form quotationForms">
     <div id="2" class="loadStorage">
         <div class="labelInputSelect">
             <label>Capacidad de almacenamiento</label>
@@ -31,7 +32,7 @@
         </div>
         <div class="labelInputSelect">
             <label>Tiempo de almacenamiento</label>
-            <input type="text" class="largeInputShort" />
+            <input type="text" class="largeInputShort"/>
             <select class="regular">
                 <option value="week">Semana(s)</option>
                 <option value="month">Mes(es)</option>
@@ -114,7 +115,7 @@
                     <label>Ciudad</label>
                 </div>
                 <div>
-                    <input type="text" class="veryLarge" />
+                    <input type="text" class="veryLarge"/>
                 </div>
             </div>
         </div>
@@ -173,7 +174,12 @@
                 <textarea rows="5" class="veryLargeInput"></textarea>
             </div>
         </div>
-        <button type="submit">Cotizar</button>
+        <button type="submit"
+                class="btn btn-block btnDelta">
+            <a style="color:white;text-decoration:none;">
+                Cotizar
+            </a>
+        </button>
     </div>
 </form>
 
