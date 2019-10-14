@@ -1,9 +1,10 @@
 .page-content {
     width: auto;
 }
-.row{
-    overflow-y:auto;
-    min-height:500px;
+
+.row {
+    overflow-y: auto;
+    min-height: 500px;
 }
 
 .titulo-operacion {
@@ -50,7 +51,7 @@
     padding: 10px 0px 10px 0px;
     position: absolute;
     background-color: white;
-    width: 150px;
+    width: 180px;
     height: auto;
     left: -70px;
     top: 33px;
@@ -72,26 +73,105 @@
         border-top-style: solid;
         border-top-color: gray;
         border-top-width: 1px;
-        width:100%;
+        width: 100%;
     }
 
-        .event2Bubble li .icon-check {
-            color: green;
-            margin: 2px 0px 0px 10px;
+        .event2Bubble li .check {
+            position: relative;
+            margin: auto 5%;
             padding: 0;
-            width: 14px;
+            width: 8%;
+            height: 1.5rem;
+            background-color: transparent;
+            background-image: url(../../../../images/check2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
-        .event2Bubble li .icon-close {
-            margin: 2px 0px 0px 10px;
+        .event2Bubble li .no-check {
+            position: relative;
+            margin: auto 5%;
             padding: 0;
-            width: 14px;
+            width: 7%;
+            height: 1.2rem;
+            background-color: transparent;
+            background-image: url(../../../../images/gray-circle.png);
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
         .event2Bubble li .task-name {
-            margin: 0px 0px 0px 5px;
-            width:55%;
+            margin:auto 0;
+            padding:0;
+            /*width: 45%;*/
+            width:60%;
         }
+
+.options {
+    /*width: 30%;
+    display:flex;*/
+    width:10%;
+}
+
+    .options .divUpload {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        height: 1.8rem;
+        background-color: transparent;
+        background-image: url(../../../../images/upload-file-no-hover.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+        .options .divUpload input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .options .divUpload:hover {
+            background-image: url(../../../../images/upload-file-hover.png);
+        }
+
+    .options .divView {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        height: 1.8rem;
+        background-color: transparent;
+        background-image: url(../../../../images/open-file-no-hover.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+        .options .divView:hover {
+            background-image: url(../../../../images/open-file-hover.png);
+        }
+
+    .options .divDownload {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        height: 1.8rem;
+        background-color: transparent;
+        background-image: url(../../../../images/download-file-no-hover.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+        .options .divDownload:hover {
+            background-image: url(../../../../images/download-file-hover.png);
+        }
+
 
 /*Triangulos*/
 /*NO SE USA*/
@@ -148,7 +228,8 @@
     .Timeline {
         width: 300%;
     }
-    .clearfix{
-        background-color:white;
+
+    .clearfix {
+        background-color: white;
     }
 }

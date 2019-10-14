@@ -52,15 +52,17 @@
                                 }
                                 else
                                 {
-                                    state = "close";
+                                    state = "no-check";
                                 }
                                 <li>
-                                    <div class="icon-@state"></div>
+                                    <div class="@state"></div>
                                     <div class="task-name">
                                         @task.name
                                     </div>
-                                    <div class="divUpload">
-                                        <input type="file" id="fileupload" class="inputFile" asp-for="stages.ElementAt(i).tasks.ElementAt(j).document" title="Subir Documento" />
+                                    <div class="options">
+                                        <div class="divUpload"><input type="file" id="fileupload" class="inputFile" asp-for="stages.ElementAt(i).tasks.ElementAt(j).document" title="Subir Documento" /></div>
+                                        <div class="divView"></div>
+                                        <div class="divDownload"></div>
                                     </div>
                                 </li>
                             }
@@ -69,7 +71,7 @@
                 </div>
             </div>
             @if (cantidadDeTareasTerminadasEnLaEtapaActual ==
-      Model.stages.ElementAt(i).tasks.Count)
+     Model.stages.ElementAt(i).tasks.Count)
             {
                 <svg height="20" width="20">
                     <circle cx="10" cy="11" r="5" fill="#ec9404" />
@@ -91,7 +93,7 @@
                 }
             }
             @if (cantidadDeTareasTerminadasEnLaEtapaSiguiente ==
-     Model.stages.ElementAt(i + 1).tasks.Count)
+    Model.stages.ElementAt(i + 1).tasks.Count)
             {
                 porcentajeRecorrido += porcentajePorEtapa;
                 <svg height="5" width="@distanciaPorEtapa">
@@ -134,15 +136,17 @@
                             }
                             else
                             {
-                                state = "close";
+                                state = "no-check";
                             }
                             <li>
-                                <div class="icon-@state"></div>
+                                <div class="@state"></div>
                                 <div class="task-name">
                                     @task.name
                                 </div>
-                                <div class="divUpload">
-                                    <input type="file" id="fileupload" name="attachments[]" multiple class="inputFile" asp-for="stages.Last().tasks.ElementAt(j).document" title="Subir Documento" />
+                                <div class="options">
+                                    <div class="divUpload"><input type="file" id="fileupload" name="attachments[]" multiple class="inputFile" asp-for="stages.Last().tasks.ElementAt(j).document" title="Subir Documento" /></div>
+                                    <div class="divView"></div>
+                                    <div class="divDownload"></div>
                                 </div>
                             </li>
                         }
@@ -151,7 +155,7 @@
             </div>
         </div>
         @if (cantidadDeTareasTerminadasEnLaEtapaActual ==
-  Model.stages.Last().tasks.Count)
+ Model.stages.Last().tasks.Count)
         {
             <svg height="20" width="20">
                 <circle cx="10" cy="11" r="5" fill="#ec9404" />
