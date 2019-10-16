@@ -17,6 +17,10 @@
     width: 70%;
     margin: 0px auto;
 }
+.quotationForms select {
+    box-shadow: 0 4px 21px 0 rgba(0, 0, 0, 0.05);
+    border: solid 0.5px #eaeaea;
+}
 
 .loadStorage,
 .nationalTransport,

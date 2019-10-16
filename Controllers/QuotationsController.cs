@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace PortalWebCliente.Controllers
 {
-    public class QuotationController : Controller
+    public class QuotationsController : Controller
     {
         public IActionResult Create()
         {

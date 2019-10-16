@@ -82,9 +82,6 @@ C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netco
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.TagHelpers.input.cache
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.TagHelpers.output.cache
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorCoreGenerate.cache
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\About.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Contact.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\LogIn.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
@@ -136,6 +133,7 @@ E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.dll
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.pdb
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csproj.CopyComplete
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotation\Create.g.cshtml.cs
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csprojAssemblyReference.cache
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotation\Create.g.cshtml.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotations\Create.g.cshtml.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\Index.g.cshtml.cs

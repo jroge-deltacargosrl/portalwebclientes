@@ -1,9 +1,16 @@
 .page-content {
     width: auto;
 }
-.row{
-    overflow-y:auto;
-    min-height:500px;
+
+.row {
+    overflow-y: auto;
+    min-height: 500px;
+}
+
+.user-icon {
+    position: relative;
+    margin: 0;
+    padding: 1%;
 }
 
 .titulo-operacion {
@@ -21,6 +28,18 @@
     margin-top: -60%;
 }
 
+.nav-tabs {
+    margin: 0;
+}
+
+    .nav-tabs li a{
+        color: black !important;
+    }
+
+    .nav-tabs .active a{
+        color: #ec9404 !important;
+    }
+
 .Timeline {
     display: flex;
     align-items: center;
@@ -33,7 +52,9 @@
     position: relative;
 }
 
+
 /*NO SE USA*/
+
 .event1Bubble {
     position: absolute;
     background-color: rgba(158, 158, 158, 0.1);
@@ -45,18 +66,20 @@
     box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)
 }
 
+
 /*SI SE USA*/
+
 .event2Bubble {
     padding: 10px 0px 10px 0px;
     position: absolute;
     background-color: white;
-    width: 150px;
+    width: 180px;
     height: auto;
     left: -70px;
     top: 33px;
     border-radius: 5px;
     text-align: center;
-    box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)
+    /*box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)*/
 }
 
     .event2Bubble ul {
@@ -70,31 +93,114 @@
         padding: 15px 0px 15px 0px;
         display: flex;
         border-top-style: solid;
-        border-top-color: gray;
+        border-top-color: lightgray;
         border-top-width: 1px;
-        width:100%;
+        width: 100%;
     }
 
-        .event2Bubble li .icon-check {
-            color: green;
-            margin: 2px 0px 0px 10px;
+        .event2Bubble li .check {
+            position: relative;
+            margin: auto 5%;
             padding: 0;
-            width: 14px;
+            width: 8%;
+            height: 1.5rem;
+            background-color: transparent;
+            background-image: url(../../../../images/check2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
-        .event2Bubble li .icon-close {
-            margin: 2px 0px 0px 10px;
+        .event2Bubble li .no-check {
+            position: relative;
+            margin: auto 5%;
             padding: 0;
-            width: 14px;
+            width: 7%;
+            height: 1.2rem;
+            background-color: transparent;
+            background-image: url(../../../../images/gray-circle.png);
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
         .event2Bubble li .task-name {
-            margin: 0px 0px 0px 5px;
-            width:55%;
+            margin: auto 0;
+            padding: 0;
+            width: 50%;
+            /* width: 60%; */
         }
 
+.options {
+    width: 30%;
+    display: flex;
+    color: gray;
+    /* width: 10%; */
+}
+
+    .options .divUpload {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        height: 1.8rem;
+        background-color: transparent;
+        background-image: url(../../../../images/upload-file-no-hover.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+        .options .divUpload input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .options .divUpload:hover {
+            background-image: url(../../../../images/upload-file-hover.png);
+        }
+
+    .options .divView {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        height: 1.8rem;
+        background-color: transparent;
+        background-image: url(../../../../images/open-file-no-hover.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+        .options .divView:hover {
+            background-image: url(../../../../images/open-file-hover.png);
+        }
+
+    .options .divDownload {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        height: 1.8rem;
+        background-color: transparent;
+        background-image: url(../../../../images/download-file-no-hover.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+        .options .divDownload:hover {
+            background-image: url(../../../../images/download-file-hover.png);
+        }
+
+
 /*Triangulos*/
+
+
 /*NO SE USA*/
+
 .event1Bubble:before {
     bottom: -1px;
     left: 1px;
@@ -109,7 +215,9 @@
     border-width: 12px;
 }
 
+
 /*SI SE USA*/
+
 .event2Bubble:before {
     bottom: 60px;
     left: 45%;
@@ -148,7 +256,8 @@
     .Timeline {
         width: 300%;
     }
-    .clearfix{
-        background-color:white;
+
+    .clearfix {
+        background-color: white;
     }
 }

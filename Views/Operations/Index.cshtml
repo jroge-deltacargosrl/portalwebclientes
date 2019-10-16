@@ -1,0 +1,88 @@
+﻿<div class="portlet-body">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#tab_1_1" data-toggle="tab" aria-expanded="false">En curso</a>
+        </li>
+        <li class="">
+            <a href="#tab_1_2" data-toggle="tab" aria-expanded="true">Historial</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="portlet light portlet-fit tab-pane fade active in" id="tab_1_1">
+            <div class="portlet-body" style="padding:2px">
+                <div class="mt-element-list">
+                    <div class="mt-list-container list-default" style="padding:5px">
+                        <ul style="margin:0%;padding:0%;">
+                            @{
+                                if (ViewBag.runningOperations.Count == 0)
+                                {
+                                    <li class="mt-list-item" style="margin:0;padding:2% 0;display:flex;">
+                                        <img src="~/images/operation-history-icon.png" width="40px" height="40px" style="margin:0 2%;" />
+                                        <div class="list-item-content" style="padding:0;float:left;margin:auto 0 0 0;">
+                                            <h3 class="uppercase bold">
+                                                Sin Operaciones
+                                            </h3>
+                                        </div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    foreach (ProjectModel item in ViewBag.runningOperations)
+                                    {
+                                        <li class="mt-list-item" style="margin:0;padding:2% 0;display:flex;">
+                                            <img src="~/images/operation-history-icon.png" width="40px" height="40px" style="margin:0 2%;" />
+                                            <div class="list-item-content" style="padding:0;float:left;margin:auto 0 0 0;">
+                                                <h3 class="uppercase bold">
+                                                    <a href="/RunningOperations/@item.name">@item.name</a>
+                                                </h3>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet light portlet-fit tab-pane fade in" id="tab_1_2">
+            <div class="portlet-body" style="padding:2px">
+                <div class="mt-element-list">
+                    <div class="mt-list-container list-default" style="padding:5px">
+                        <ul style="margin:0%;padding:0%;">
+                            @{
+                                if (ViewBag.historyOperations.Count == 0)
+                                {
+                                    <li class="mt-list-item" style="margin:0;padding:2% 0;display:flex;">
+                                        <img src="~/images/operation-history-icon.png" width="40px" height="40px" style="margin:0 2%;" />
+                                        <div class="list-item-content" style="padding:0;float:left;margin:auto 0 0 0;">
+                                            <h3 class="uppercase bold">
+                                                Sin historial de Operaciones
+                                            </h3>
+                                        </div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    @foreach (ProjectModel item in ViewBag.historyOperations)
+                                    {
+                                        <li class="mt-list-item" style="margin:0;padding:2% 0;display:flex;">
+                                            <img src="~/images/operation-history-icon.png" width="40px" height="40px" style="margin:0 2%;" />
+                                            <div class="list-item-content" style="padding:0;float:left;margin:auto 0 0 0;">
+                                                <h3 class="uppercase bold">
+                                                    <a href="/Home/@item.name">@item.name</a>
+                                                </h3>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/css/operationsStyles.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/layouts/layout2/css/custom.min.css" rel="stylesheet" type="text/css" />

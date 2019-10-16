@@ -7,6 +7,12 @@
     min-height: 500px;
 }
 
+.user-icon {
+    position: relative;
+    margin: 0;
+    padding: 1%;
+}
+
 .titulo-operacion {
     width: 100%;
     text-align: center;
@@ -22,6 +28,18 @@
     margin-top: -60%;
 }
 
+.nav-tabs {
+    margin: 0;
+}
+
+    .nav-tabs li a{
+        color: black !important;
+    }
+
+    .nav-tabs .active a{
+        color: #ec9404 !important;
+    }
+
 .Timeline {
     display: flex;
     align-items: center;
@@ -34,7 +52,9 @@
     position: relative;
 }
 
+
 /*NO SE USA*/
+
 .event1Bubble {
     position: absolute;
     background-color: rgba(158, 158, 158, 0.1);
@@ -46,7 +66,9 @@
     box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)
 }
 
+
 /*SI SE USA*/
+
 .event2Bubble {
     padding: 10px 0px 10px 0px;
     position: absolute;
@@ -57,7 +79,7 @@
     top: 33px;
     border-radius: 5px;
     text-align: center;
-    box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)
+    /*box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)*/
 }
 
     .event2Bubble ul {
@@ -71,7 +93,7 @@
         padding: 15px 0px 15px 0px;
         display: flex;
         border-top-style: solid;
-        border-top-color: gray;
+        border-top-color: lightgray;
         border-top-width: 1px;
         width: 100%;
     }
@@ -101,16 +123,17 @@
         }
 
         .event2Bubble li .task-name {
-            margin:auto 0;
-            padding:0;
-            /*width: 45%;*/
-            width:60%;
+            margin: auto 0;
+            padding: 0;
+            width: 50%;
+            /* width: 60%; */
         }
 
 .options {
-    /*width: 30%;
-    display:flex;*/
-    width:10%;
+    width: 30%;
+    display: flex;
+    color: gray;
+    /* width: 10%; */
 }
 
     .options .divUpload {
@@ -174,7 +197,10 @@
 
 
 /*Triangulos*/
+
+
 /*NO SE USA*/
+
 .event1Bubble:before {
     bottom: -1px;
     left: 1px;
@@ -189,7 +215,9 @@
     border-width: 12px;
 }
 
+
 /*SI SE USA*/
+
 .event2Bubble:before {
     bottom: 60px;
     left: 45%;
