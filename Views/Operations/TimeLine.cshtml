@@ -1,10 +1,31 @@
-﻿<!--row y col-lg-4 en bootstrap.min-->
+﻿<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+<link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+<link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<link href="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL STYLES -->
+<link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+<link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+<!-- END THEME GLOBAL STYLES -->
+<!-- BEGIN THEME LAYOUT STYLES -->
+<link href="../assets/layouts/layout2/css/layout.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/layouts/layout2/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="../assets/layouts/layout2/css/custom.min.css" rel="stylesheet" type="text/css" />
+<!-- END THEME LAYOUT STYLES -->
+<link rel="shortcut icon" href="favicon.ico" />
+<!-- END HEAD -->
+<!--row y col-lg-4 en bootstrap.min-->
 <div class="container-timeline">
     @model PortalWebCliente.Models.ProjectModel;
     <!-- BEGIN CONTENT -->
     @{
         int distanciaPorEtapa = 800 / Model.stages.Count,
-            porcentajePorEtapa = (820 / Model.stages.Count);
+        porcentajePorEtapa = (820 / Model.stages.Count);
         if (Model.stages.Count == 5)
         {
             porcentajePorEtapa += 30;
@@ -60,9 +81,10 @@
                                         @task.name
                                     </div>
                                     <div class="options">
-                                        <div class="divUpload"><input type="file" id="fileupload" class="inputFile" asp-for="stages.ElementAt(i).tasks.ElementAt(j).document" title="Subir Documento" /></div>
-                                        <div class="divView"></div>
-                                        <div class="divDownload"></div>
+                                        <div class="divUpload" data-toggle="modal" href="#basic"></div>
+                                        <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
+                                        <div class="divView" title="Ver Documento"></div>
+                                        <div class="divDownload" title="Descargar Documento"></div>
                                     </div>
                                 </li>
                             }
@@ -71,7 +93,7 @@
                 </div>
             </div>
             @if (cantidadDeTareasTerminadasEnLaEtapaActual ==
-     Model.stages.ElementAt(i).tasks.Count)
+          Model.stages.ElementAt(i).tasks.Count)
             {
                 <svg height="20" width="20">
                     <circle cx="10" cy="11" r="5" fill="#ec9404" />
@@ -93,7 +115,7 @@
                 }
             }
             @if (cantidadDeTareasTerminadasEnLaEtapaSiguiente ==
-    Model.stages.ElementAt(i + 1).tasks.Count)
+          Model.stages.ElementAt(i + 1).tasks.Count)
             {
                 porcentajeRecorrido += porcentajePorEtapa;
                 <svg height="5" width="@distanciaPorEtapa">
@@ -155,7 +177,7 @@
             </div>
         </div>
         @if (cantidadDeTareasTerminadasEnLaEtapaActual ==
- Model.stages.Last().tasks.Count)
+      Model.stages.Last().tasks.Count)
         {
             <svg height="20" width="20">
                 <circle cx="10" cy="11" r="5" fill="#ec9404" />
@@ -177,4 +199,39 @@
                  style="margin-left:@k%;" />
         </div>
     </div>
+</div>
+<!------------------------------------------------------------------------------------------------------->
+<div class="modal fade" id="basic" tabindex="-1" role="full" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-controller="Operations" asp-action="UploadFile" method="POST" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Subir documento</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="input-group input-large">
+                            <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                                <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                <span class="fileinput-filename"> </span>
+                            </div>
+                            <span class="input-group-addon btn default btn-file">
+                                <span class="fileinput-new"> Select file </span>
+                                <span class="fileinput-exists"> Change </span>
+                                <input type="file" name="..."asp-for="@Model.stages[0].tasks[0].document">
+                            </span>
+                            <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btnDelta">Save changes</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

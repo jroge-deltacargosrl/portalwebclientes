@@ -98,7 +98,6 @@ C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netco
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.pdb
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csproj.CopyComplete
 E:\Documentacion Carrera Profesional\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\TimeLine.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\TimeLineOperacion.g.cshtml.cs
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.deps.json
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.runtimeconfig.json
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.runtimeconfig.dev.json
@@ -137,3 +136,4 @@ E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotation\Create.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotations\Create.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\Index.g.cshtml.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\TimeLine.g.cshtml.cs
