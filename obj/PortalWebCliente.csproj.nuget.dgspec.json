@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalwebclientes\\PortalWebCliente.csproj": {}
+    "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalWebClientes\\PortalWebCliente.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalwebclientes\\PortalWebCliente.csproj": {
+    "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalWebClientes\\PortalWebCliente.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalwebclientes\\PortalWebCliente.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalWebClientes\\PortalWebCliente.csproj",
         "projectName": "PortalWebCliente",
-        "projectPath": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalwebclientes\\PortalWebCliente.csproj",
+        "projectPath": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalWebClientes\\PortalWebCliente.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalwebclientes\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Desktop\\DeltaCargo\\Delta Cargo SRL\\portalWebClientes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

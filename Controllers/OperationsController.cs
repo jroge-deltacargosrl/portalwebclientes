@@ -25,109 +25,10 @@ namespace PortalWebCliente.Controllers
         [HttpGet("/Timeline/{projectName}", Name = "aux")]
         public IActionResult Timeline(string projectName)
         {
-            List<ProjectModel> listaDeProyectos =
-                HttpContext.Session.getObjectFromJson
-                <List<ProjectModel>>("listaDeProyectosJSON");
-            foreach (ProjectModel proyecto in listaDeProyectos)
-            {
-                if (proyecto.name.Equals(projectName))
-                {
-                    UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
-                    ViewBag.userEmail = usuarioActual.email;
-                    ViewBag.project = proyecto;
-                    return View();
-                }
-            }
-            //NUNCA PASA POR AQUI
-            ProjectModel operacion = new ProjectModel();
-            operacion.stages = new List<StageModel>()
-            {
-                new StageModel()
-                {
-                    id=1,
-                    name="Etapa1",
-                    projectId=1,
-                    sequence=1,
-                    tasks=new List<TaskModel>()
-                    {
-                        new TaskModel
-                        {
-                            id=1,
-                            name="Tarea1",
-                            projectId=1,
-                            stageId=1,
-                            date_start=new DateTime(2019,01,01),
-                            kanbanState="normal"
-                        },
-                        new TaskModel
-                        {
-                            id=2,
-                            name="Tarea2",
-                            projectId=1,
-                            stageId=1,
-                            date_start=new DateTime(2019,01,02),
-                            kanbanState="done"
-                        }
-                    }
-                },
-                new StageModel()
-                {
-                    id=2,
-                    name="etapa2",
-                    projectId=2,
-                    sequence=2,
-                    tasks=new List<TaskModel>()
-                    {
-                        new TaskModel
-                        {
-                            id=3,
-                            name="Tarea3",
-                            projectId=2,
-                            stageId=2,
-                            date_start=new DateTime(2019,01,01),
-                            kanbanState="normal"
-                        },
-                        new TaskModel
-                        {
-                            id=4,
-                            name="Tarea4",
-                            projectId=2,
-                            stageId=2,
-                            date_start=new DateTime(2019,01,02),
-                            kanbanState="done"
-                        }
-                    }
-                },
-                new StageModel()
-                {
-                    id=3,
-                    name="etapa3",
-                    projectId=3,
-                    sequence=3,
-                    tasks=new List<TaskModel>()
-                    {
-                        new TaskModel
-                        {
-                            id=5,
-                            name="Tarea5",
-                            projectId=3,
-                            stageId=3,
-                            date_start=new DateTime(2019,01,01),
-                            kanbanState="normal"
-                        },
-                        new TaskModel
-                        {
-                            id=6,
-                            name="Tarea6",
-                            projectId=3,
-                            stageId=3,
-                            date_start=new DateTime(2019,01,02),
-                            kanbanState="done"
-                        }
-                    }
-                }
-            };
-            return View(operacion);
+            UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
+            ViewBag.userEmail = usuarioActual.email;
+            ViewBag.project = getProjectWithName(projectName);
+            return View();
         }
 
         [HttpGet]
@@ -228,18 +129,122 @@ namespace PortalWebCliente.Controllers
         }
 
         [HttpPost]
-        public IActionResult UploadFile(EmployeeViewModel model)
+        public IActionResult UploadFile(string projectN, IFormFile file)
         {
             string uniqueFile = null;
-            if (model.file != null)
+            if (file != null)
             {
-                string upload = Path.Combine(_hostingEnv.WebRootPath + "/images");
-                uniqueFile = Guid.NewGuid().ToString() + "_" + model.file.FileName;
+                string upload = Path.Combine(_hostingEnv.WebRootPath + "/uploads");
+                uniqueFile = Guid.NewGuid().ToString() + "_" + file.FileName;
                 string finalPath = Path.Combine(upload, uniqueFile);
-                model.file.CopyTo(new FileStream(finalPath, FileMode.Create));
+                file.CopyTo(new FileStream(finalPath, FileMode.Create));
+                //Esta linea copia el archivo subido a la carpeta wwwroot/uploads
             }
             ViewBag.file = uniqueFile == null ? "NULL" : uniqueFile;
-            return View();
+            UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
+            ViewBag.userEmail = usuarioActual.email;
+            ViewBag.project = getProjectWithName(projectN);
+            return View("Timeline");
+        }
+        private ProjectModel getProjectWithName(string projectName)
+        {
+            List<ProjectModel> listaDeProyectos = HttpContext.Session.getObjectFromJson<List<ProjectModel>>("listaDeProyectosJSON");
+            foreach (ProjectModel proyecto in listaDeProyectos)
+            {
+                if (proyecto.name.Equals(projectName))
+                {
+                    return proyecto;
+                }
+            }
+            ProjectModel operacion = new ProjectModel();
+            operacion.stages = new List<StageModel>()
+            {
+                new StageModel()
+                {
+                    id=1,
+                    name="Etapa1",
+                    projectId=1,
+                    sequence=1,
+                    tasks=new List<TaskModel>()
+                    {
+                        new TaskModel
+                        {
+                            id=1,
+                            name="Tarea1",
+                            projectId=1,
+                            stageId=1,
+                            date_start=new DateTime(2019,01,01),
+                            kanbanState="normal"
+                        },
+                        new TaskModel
+                        {
+                            id=2,
+                            name="Tarea2",
+                            projectId=1,
+                            stageId=1,
+                            date_start=new DateTime(2019,01,02),
+                            kanbanState="done"
+                        }
+                    }
+                },
+                new StageModel()
+                {
+                    id=2,
+                    name="etapa2",
+                    projectId=2,
+                    sequence=2,
+                    tasks=new List<TaskModel>()
+                    {
+                        new TaskModel
+                        {
+                            id=3,
+                            name="Tarea3",
+                            projectId=2,
+                            stageId=2,
+                            date_start=new DateTime(2019,01,01),
+                            kanbanState="normal"
+                        },
+                        new TaskModel
+                        {
+                            id=4,
+                            name="Tarea4",
+                            projectId=2,
+                            stageId=2,
+                            date_start=new DateTime(2019,01,02),
+                            kanbanState="done"
+                        }
+                    }
+                },
+                new StageModel()
+                {
+                    id=3,
+                    name="etapa3",
+                    projectId=3,
+                    sequence=3,
+                    tasks=new List<TaskModel>()
+                    {
+                        new TaskModel
+                        {
+                            id=5,
+                            name="Tarea5",
+                            projectId=3,
+                            stageId=3,
+                            date_start=new DateTime(2019,01,01),
+                            kanbanState="normal"
+                        },
+                        new TaskModel
+                        {
+                            id=6,
+                            name="Tarea6",
+                            projectId=3,
+                            stageId=3,
+                            date_start=new DateTime(2019,01,02),
+                            kanbanState="done"
+                        }
+                    }
+                }
+            };
+            return operacion;
         }
 
         private bool isEmpty(string word)

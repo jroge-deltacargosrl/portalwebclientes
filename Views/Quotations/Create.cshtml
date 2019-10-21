@@ -1,6 +1,5 @@
 ﻿@model QuotationViewModel
 <link href="~/css/quotationStyles.css" rel="stylesheet" />
-<link href="~/css/bundle-styles.css" rel="stylesheet" />
 <script src="~/js/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="~/js/quotationJs.js" type="text/javascript"></script>
 <div class="servicesArea">
@@ -40,7 +39,6 @@
             </select>
         </div>
     </div>
-
     <div id="3" class="nationalTransport">
         <div class="divFlex">
             <div class="labelTextarea">
@@ -85,7 +83,7 @@
         <div class="divFlex">
             <div class="labelInput">
                 <label class="smallLabel">Tipo de camión</label>
-                <select class="largeInput">
+                <select class="largeInput"type="text">
                     @foreach (TruckTypeModel truck in Model.trucksTypes)
                     {
                         <option value="@truck.id">@truck.tipo</option>
@@ -158,11 +156,11 @@
     <div class="weight-volume">
         <div class="labelInput">
             <label class="verySmallLabel">Peso:</label>
-            <input type="text" class="largeInputShort" /> Tn.
+            <input class="largeInputShort"style="margin-right:1%;"/>Tn.
         </div>
         <div class="labelInput">
             <label class="verySmallLabel">Volumen:</label>
-            <input class="largeInputShort" type="text" value="" /> m3
+            <input class="largeInputShort" style="margin-right:1%;"/>m3
         </div>
     </div>
     <div class="comment">

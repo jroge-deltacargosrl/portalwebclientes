@@ -21,7 +21,6 @@
 <!-- END HEAD -->
 <!--row y col-lg-4 en bootstrap.min-->
 <div class="container-timeline">
-    @model EmployeeViewModel;
     <!-- BEGIN CONTENT -->
     @{
         int distanciaPorEtapa = 800 / ViewBag.project.stages.Count,
@@ -38,7 +37,7 @@
         caminoRecorrido, caminoFaltante, porcentajeRecorrido = 0;
         string state;
     }
-    <h2 class="titulo-operacion">@ViewBag.project.name</h2>
+    <h2 class="titulo-operacion"style="width:100%;text-align:center;">@ViewBag.project.name</h2>
     <div class="Timeline">
         <svg height="5" width="0">
             <line x1="0" y1="0" x2="0" y2="0" style="stroke:#ec9404;stroke-width:5" />
@@ -207,9 +206,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Subir documento</h4>
+                <h4 class="modal-title">Seleccionar archivo</h4>
             </div>
             <form enctype="multipart/form-data"asp-controller="Operations"asp-action="UploadFile"method="post">
+                <input type="hidden"hidden name="projectN" value="@ViewBag.project.name"/>
                 <div class="modal-body">
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="input-group input-large">
@@ -218,9 +218,9 @@
                                 <span class="fileinput-filename"></span>
                             </div>
                             <span class="input-group-addon btn default btn-file">
-                                <span class="fileinput-new">Select file</span>
-                                <span class="fileinput-exists">Change</span>
-                                <input asp-for=file>
+                                <span class="fileinput-new">Examinar...</span>
+                                <span class="fileinput-exists">Cambiar</span>
+                                <input name="file"type="file">
                             </span>
                             <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                         </div>
