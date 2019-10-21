@@ -9,7 +9,6 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http.Headers;
 
 namespace PortalWebCliente.Controllers
 {
@@ -35,7 +34,8 @@ namespace PortalWebCliente.Controllers
                 {
                     UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
                     ViewBag.userEmail = usuarioActual.email;
-                    return View(proyecto);
+                    ViewBag.project = proyecto;
+                    return View();
                 }
             }
             //NUNCA PASA POR AQUI
@@ -228,21 +228,18 @@ namespace PortalWebCliente.Controllers
         }
 
         [HttpPost]
-        public JsonResult UploadFile(ProjectModel project)
+        public IActionResult UploadFile(EmployeeViewModel model)
         {
-            IFormFile imageFile = project.stages[0].tasks[0].document;
-            string cad = "ERROR";
-            if (ModelState.IsValid)
+            string uniqueFile = null;
+            if (model.file != null)
             {
-                var filename = ContentDispositionHeaderValue.Parse(imageFile.ContentDisposition).FileName.Trim('"');
-                var targetDirectory = Path.Combine(_hostingEnv.WebRootPath, string.Format("Common\\Images\\"));
-                var savePath = Path.Combine(targetDirectory, filename);
-                imageFile.CopyTo(new FileStream(savePath, FileMode.Create));
-                //model.ImageFile = filename;
-                //_imageUploadAppService.UserCreate(model);
-                cad = "OK";
+                string upload = Path.Combine(_hostingEnv.WebRootPath + "/images");
+                uniqueFile = Guid.NewGuid().ToString() + "_" + model.file.FileName;
+                string finalPath = Path.Combine(upload, uniqueFile);
+                model.file.CopyTo(new FileStream(finalPath, FileMode.Create));
             }
-            return Json(cad);
+            ViewBag.file = uniqueFile == null ? "NULL" : uniqueFile;
+            return View();
         }
 
         private bool isEmpty(string word)

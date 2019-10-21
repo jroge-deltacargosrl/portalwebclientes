@@ -137,3 +137,4 @@ E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotations\Create.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\Index.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\TimeLine.g.cshtml.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\UploadFile.g.cshtml.cs

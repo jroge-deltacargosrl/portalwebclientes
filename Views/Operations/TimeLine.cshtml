@@ -21,12 +21,12 @@
 <!-- END HEAD -->
 <!--row y col-lg-4 en bootstrap.min-->
 <div class="container-timeline">
-    @model PortalWebCliente.Models.ProjectModel;
+    @model EmployeeViewModel;
     <!-- BEGIN CONTENT -->
     @{
-        int distanciaPorEtapa = 800 / Model.stages.Count,
-        porcentajePorEtapa = (820 / Model.stages.Count);
-        if (Model.stages.Count == 5)
+        int distanciaPorEtapa = 800 / ViewBag.project.stages.Count,
+        porcentajePorEtapa = (820 / ViewBag.project.stages.Count);
+        if (ViewBag.project.stages.Count == 5)
         {
             porcentajePorEtapa += 30;
         }
@@ -38,13 +38,13 @@
         caminoRecorrido, caminoFaltante, porcentajeRecorrido = 0;
         string state;
     }
-    <h2 class="titulo-operacion">@Model.name</h2>
+    <h2 class="titulo-operacion">@ViewBag.project.name</h2>
     <div class="Timeline">
         <svg height="5" width="0">
             <line x1="0" y1="0" x2="0" y2="0" style="stroke:#ec9404;stroke-width:5" />
             Sorry, your browser does not support inline SVG.
         </svg>
-        @for (int i = 0; i < Model.stages.Count - 1; i++)
+        @for (int i = 0; i <= ViewBag.project.stages.Count - 2; i++)
         {
             @if (c == 1)
             {
@@ -57,15 +57,15 @@
 
             <div class="event2">
                 <div class="event2Bubble">
-                    <label><b>@Model.stages.ElementAt(i).name</b></label>
+                    <label><b>@ViewBag.project.stages[i].name</b></label>
                     <div class="eventTime">
                         <ul>
                             @{
                                 cantidadDeTareasTerminadasEnLaEtapaActual = 0;
                             }
-                            @for (int j = 0; j < Model.stages.ElementAt(i).tasks.Count; j++)
+                            @for (int j = 0; j < ViewBag.project.stages[i].tasks.Count; j++)
                             {
-                                TaskModel task = Model.stages.ElementAt(i).tasks.ElementAt(j);
+                                TaskModel task = ViewBag.project.stages[i].tasks[j];
                                 @if (task.kanbanState == "done")
                                 {
                                     state = "check";
@@ -93,7 +93,7 @@
                 </div>
             </div>
             @if (cantidadDeTareasTerminadasEnLaEtapaActual ==
-          Model.stages.ElementAt(i).tasks.Count)
+          ViewBag.project.stages[i].tasks.Count)
             {
                 <svg height="20" width="20">
                     <circle cx="10" cy="11" r="5" fill="#ec9404" />
@@ -107,7 +107,7 @@
             }
 
             cantidadDeTareasTerminadasEnLaEtapaSiguiente = 0;
-            @foreach (TaskModel task in Model.stages.ElementAt(i + 1).tasks)
+            @foreach (TaskModel task in ViewBag.project.stages[i + 1].tasks)
             {
                 if (task.kanbanState == "done")
                 {
@@ -115,7 +115,7 @@
                 }
             }
             @if (cantidadDeTareasTerminadasEnLaEtapaSiguiente ==
-          Model.stages.ElementAt(i + 1).tasks.Count)
+          ViewBag.project.stages[i + 1].tasks.Count)
             {
                 porcentajeRecorrido += porcentajePorEtapa;
                 <svg height="5" width="@distanciaPorEtapa">
@@ -125,7 +125,7 @@
             }
             else
             {
-                caminoRecorrido = (distanciaPorEtapa / Model.stages.ElementAt(i + 1).tasks.Count) *
+                caminoRecorrido = (distanciaPorEtapa / ViewBag.project.stages[i + 1].tasks.Count) *
                 cantidadDeTareasTerminadasEnLaEtapaSiguiente;
                 caminoFaltante = distanciaPorEtapa - caminoRecorrido;
                 <svg height="5" width="@caminoRecorrido">
@@ -136,21 +136,21 @@
                     <line x1="0" y1="0" x2="@caminoFaltante" y2="0" style="stroke:gray;stroke-width:5" />
                     Sorry, your browser does not support inline SVG.
                 </svg>
-                porcentajeRecorrido += ((porcentajePorEtapa / Model.stages.ElementAt(i + 1).tasks.Count)) *
+                porcentajeRecorrido += ((porcentajePorEtapa / ViewBag.project.stages[i + 1].tasks.Count)) *
                 cantidadDeTareasTerminadasEnLaEtapaSiguiente;
             }
         }
         <div class="event2">
             <div class="event2Bubble">
-                <label><b>@Model.stages.Last().name</b></label>
+                <label><b>@ViewBag.project.stages[ViewBag.project.stages.Count - 1].name</b></label>
                 <div class="eventTime">
                     <ul>
                         @{
                             cantidadDeTareasTerminadasEnLaEtapaActual = 0;
                         }
-                        @for (int j = 0; j < Model.stages.Last().tasks.Count; j++)
+                        @for (int j = 0; j < ViewBag.project.stages[ViewBag.project.stages.Count - 1].tasks.Count; j++)
                         {
-                            TaskModel task = Model.stages.Last().tasks.ElementAt(j);
+                            TaskModel task = ViewBag.project.stages[ViewBag.project.stages.Count - 1].tasks[j];
                             @if (task.kanbanState == "done")
                             {
                                 state = "check";
@@ -166,9 +166,10 @@
                                     @task.name
                                 </div>
                                 <div class="options">
-                                    <div class="divUpload"><input type="file" id="fileupload" name="attachments[]" multiple class="inputFile" asp-for="stages.Last().tasks.ElementAt(j).document" title="Subir Documento" /></div>
-                                    <div class="divView"></div>
-                                    <div class="divDownload"></div>
+                                    <div class="divUpload" data-toggle="modal" href="#basic"></div>
+                                    <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
+                                    <div class="divView" title="Ver Documento"></div>
+                                    <div class="divDownload" title="Descargar Documento"></div>
                                 </div>
                             </li>
                         }
@@ -177,7 +178,7 @@
             </div>
         </div>
         @if (cantidadDeTareasTerminadasEnLaEtapaActual ==
-      Model.stages.Last().tasks.Count)
+      ViewBag.project.stages[ViewBag.project.stages.Count - 1].tasks.Count)
         {
             <svg height="20" width="20">
                 <circle cx="10" cy="11" r="5" fill="#ec9404" />
@@ -204,30 +205,30 @@
 <div class="modal fade" id="basic" tabindex="-1" role="full" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form asp-controller="Operations" asp-action="UploadFile" method="POST" enctype="multipart/form-data">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Subir documento</h4>
-                </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Subir documento</h4>
+            </div>
+            <form enctype="multipart/form-data"asp-controller="Operations"asp-action="UploadFile"method="post">
                 <div class="modal-body">
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="input-group input-large">
                             <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
                                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                <span class="fileinput-filename"> </span>
+                                <span class="fileinput-filename"></span>
                             </div>
                             <span class="input-group-addon btn default btn-file">
-                                <span class="fileinput-new"> Select file </span>
-                                <span class="fileinput-exists"> Change </span>
-                                <input type="file" name="..."asp-for="@Model.stages[0].tasks[0].document">
+                                <span class="fileinput-new">Select file</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input asp-for=file>
                             </span>
                             <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btnDelta">Save changes</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btnDelta">Subir archivo</button>
                 </div>
             </form>
         </div>
@@ -235,3 +236,24 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+<!-- BEGIN CORE PLUGINS -->
+<script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script src="../assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
+<script src="../assets/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
+<script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
