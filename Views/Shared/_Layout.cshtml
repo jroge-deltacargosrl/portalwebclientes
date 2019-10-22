@@ -246,7 +246,7 @@
     </footer>
     <!-- END FOOTER -->
     <!--[if lt IE 9]>
-    <script src="../assets/global/plugins/respond.min.js"></script>
+        <script src="../assets/global/plugins/respond.min.js"></script>
     <script src="../assets/global/plugins/excanvas.min.js"></script>
     <![endif]-->
     <!-- BEGIN CORE PLUGINS -->
@@ -301,40 +301,6 @@
     <script src="../assets/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
     <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
     <!-- END THEME LAYOUT SCRIPTS -->
-    <!--My Scripts-->
-    <script src="~/js/jquery-3.4.1.min.js"></script>
-    <script src="~/jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
-    <script src="~/jQuery-File-Upload-master/js/jquery.iframe-transport.js" type="text/javascript"></script>
-    <script src="~/jQuery-File-Upload-master/js/jquery.fileupload.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function () {
-            var files = $("#files");
-            $("#fileupload").fileupload({
-                url: 'TimeLineOperacion.cshtml',
-                dropZone: '#dropZone',
-                dataType: 'json',
-                autoUpload: false
-            }).on('fileuploadadd', function (e, data) {
-                var fileTypeAllowed = /.\.(jpg|png|jpeg|docx)$/i;
-                var fileNames = data.originalFiles[0]['name'];
-                var fileSizes = data.originalFiles[0]['size'];
-                if (!fileTypeAllowed.test(fileNames)) {
-                    alert('Tipo de documentos no validos.');
-                } else if (fileSizes > 1000000) {
-                    alert('Tamaño del documento excedido.');
-                } else {
-                    data.submit();
-                }
-            }).on('fileuploadone', function (e, data) {
-                //var status = data.jqXHR.responseJSON.status;
-                //var msg = data.jqXHR.responseJSON.msg;
-                //alert('status:' + status);
-            }).on('fileuploadprogressall', function (e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                alert('Subiendo... ' + progress + "%");
-            });
-        });
-    </script>
-    <link href="../../wwwroot/css/layoutStyles.css" rel="stylesheet" type="text/css" />
 </body>
+
 </html>

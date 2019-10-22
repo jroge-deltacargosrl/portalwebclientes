@@ -161,6 +161,7 @@
 
         .options .divUpload:hover {
             background-image: url(../../../../images/upload-file-hover.png);
+            cursor:pointer;
         }
 
     .options .divView {
@@ -177,6 +178,7 @@
 
         .options .divView:hover {
             background-image: url(../../../../images/open-file-hover.png);
+            cursor: pointer;
         }
 
     .options .divDownload {
@@ -193,6 +195,7 @@
 
         .options .divDownload:hover {
             background-image: url(../../../../images/download-file-hover.png);
+            cursor: pointer;
         }
 
 
@@ -250,6 +253,10 @@
 .futureOpacity {
     -webkit-filter: opacity(.3);
     filter: opacity(.3);
+}
+.btnDelta{
+    background-color:#ec9404;
+    color:white;
 }
 
 @media (max-width: 1000px) {
