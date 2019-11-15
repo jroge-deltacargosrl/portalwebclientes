@@ -15,8 +15,8 @@ namespace PortalWebCliente.Models
         public int projectId { get; set; }
         // adecuacion parcial:
         public int stageId { get; set; }
+
         /*Nuevos atributos:JROGE*/
         public bool canUpload { get; set; }
-        public IFormFile document { get; set; }
     }
 }

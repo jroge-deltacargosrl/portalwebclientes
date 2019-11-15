@@ -14,7 +14,8 @@ namespace PortalWebCliente.Controllers
 {
     public class OperationsController : Controller
     {
-        private string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+        //private string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
+        private string urlRequest = @"https://localhost:44333/api/v1/";
         private IHostingEnvironment _hostingEnv;
 
         public OperationsController(IHostingEnvironment hostingEnv)
@@ -129,29 +130,159 @@ namespace PortalWebCliente.Controllers
         }
 
         [HttpPost]
-        public IActionResult UploadFile(string projectN, IFormFile file)
+        public IActionResult UploadFile(string fileIds, IFormFile file)
         {
             string uniqueFile = null;
+            string stringFile = "";
             if (file != null)
             {
                 string upload = Path.Combine(_hostingEnv.WebRootPath + "/uploads");
-                uniqueFile = Guid.NewGuid().ToString() + "_" + file.FileName;
+                uniqueFile =  fileIds+"_"+file.FileName;
                 string finalPath = Path.Combine(upload, uniqueFile);
-                file.CopyTo(new FileStream(finalPath, FileMode.Create));
                 //Esta linea copia el archivo subido a la carpeta wwwroot/uploads
+                //file.CopyTo(new FileStream(finalPath, FileMode.Create));
+                if (file.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        var fileBytes = ms.ToArray();
+                        stringFile = Convert.ToBase64String(fileBytes);
+                        //act on the Base64 data
+                        var fileBytes2 = Convert.FromBase64String(stringFile);
+                        var ms2 = new MemoryStream(fileBytes2);
+                        ms2.CopyTo(new FileStream(finalPath, FileMode.Create));
+                    }
+                }
             }
-            ViewBag.file = uniqueFile == null ? "NULL" : uniqueFile;
+            ViewBag.file = uniqueFile == null ? "NULL" : stringFile;//uniqueFile;
             UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
             ViewBag.userEmail = usuarioActual.email;
-            ViewBag.project = getProjectWithName(projectN);
+            string[] ids = fileIds.Split("_");
+            int projectId = Convert.ToInt32(ids[2]);
+            int stageId = Convert.ToInt32(ids[1]);
+            int taskId = Convert.ToInt32(ids[0]);
+            FileModel newFileModel = new FileModel{
+                idTask = taskId,
+                idStage = stageId,
+                idProject = projectId,
+                documentContent = stringFile,
+                documentName = uniqueFile
+            };
+            int response = resonseFromUploadFileAPI(newFileModel).responseType;
+            ViewBag.project = getProjectWithId(projectId);
+            ViewBag.newResponse = response;
             return View("Timeline");
+            //return View();
         }
+
         private ProjectModel getProjectWithName(string projectName)
         {
             List<ProjectModel> listaDeProyectos = HttpContext.Session.getObjectFromJson<List<ProjectModel>>("listaDeProyectosJSON");
             foreach (ProjectModel proyecto in listaDeProyectos)
             {
                 if (proyecto.name.Equals(projectName))
+                {
+                    return proyecto;
+                }
+            }
+            ProjectModel operacion = new ProjectModel();
+            operacion.stages = new List<StageModel>()
+            {
+                new StageModel()
+                {
+                    id=1,
+                    name="Etapa1",
+                    projectId=1,
+                    sequence=1,
+                    tasks=new List<TaskModel>()
+                    {
+                        new TaskModel
+                        {
+                            id=1,
+                            name="Tarea1",
+                            projectId=1,
+                            stageId=1,
+                            date_start=new DateTime(2019,01,01),
+                            kanbanState="normal"
+                        },
+                        new TaskModel
+                        {
+                            id=2,
+                            name="Tarea2",
+                            projectId=1,
+                            stageId=1,
+                            date_start=new DateTime(2019,01,02),
+                            kanbanState="done"
+                        }
+                    }
+                },
+                new StageModel()
+                {
+                    id=2,
+                    name="etapa2",
+                    projectId=2,
+                    sequence=2,
+                    tasks=new List<TaskModel>()
+                    {
+                        new TaskModel
+                        {
+                            id=3,
+                            name="Tarea3",
+                            projectId=2,
+                            stageId=2,
+                            date_start=new DateTime(2019,01,01),
+                            kanbanState="normal"
+                        },
+                        new TaskModel
+                        {
+                            id=4,
+                            name="Tarea4",
+                            projectId=2,
+                            stageId=2,
+                            date_start=new DateTime(2019,01,02),
+                            kanbanState="done"
+                        }
+                    }
+                },
+                new StageModel()
+                {
+                    id=3,
+                    name="etapa3",
+                    projectId=3,
+                    sequence=3,
+                    tasks=new List<TaskModel>()
+                    {
+                        new TaskModel
+                        {
+                            id=5,
+                            name="Tarea5",
+                            projectId=3,
+                            stageId=3,
+                            date_start=new DateTime(2019,01,01),
+                            kanbanState="normal"
+                        },
+                        new TaskModel
+                        {
+                            id=6,
+                            name="Tarea6",
+                            projectId=3,
+                            stageId=3,
+                            date_start=new DateTime(2019,01,02),
+                            kanbanState="done"
+                        }
+                    }
+                }
+            };
+            return operacion;
+        }
+
+        private ProjectModel getProjectWithId(int projectId)
+        {
+            List<ProjectModel> listaDeProyectos = HttpContext.Session.getObjectFromJson<List<ProjectModel>>("listaDeProyectosJSON");
+            foreach (ProjectModel proyecto in listaDeProyectos)
+            {
+                if (proyecto.id==projectId)
                 {
                     return proyecto;
                 }
@@ -261,6 +392,17 @@ namespace PortalWebCliente.Controllers
                 .addBodyData(user)
                 .buildRequest();
             return JsonConvert.DeserializeObject<UserResponse>(responseLogin);
+        }
+
+        private FileResponse resonseFromUploadFileAPI(FileModel file)
+        {
+            var responseFile= new RequestAPI()
+                .addClient(new RestClient(urlRequest))
+                .addRequest(new RestRequest("operationUploadFile/", Method.POST, DataFormat.Json))
+                .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
+                .addBodyData(file)
+                .buildRequest();
+            return JsonConvert.DeserializeObject<FileResponse>(responseFile);
         }
 
         private List<ProjectModel> responseFromOperationAPI(int id)
