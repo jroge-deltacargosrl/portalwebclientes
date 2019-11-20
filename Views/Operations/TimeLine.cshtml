@@ -25,7 +25,7 @@
     @{
         int distanciaPorEtapa = 800 / ViewBag.project.stages.Count,
         porcentajePorEtapa = (820 / ViewBag.project.stages.Count);
-        string nuevoId = "";
+        string nuevoId = "", fileDownload = "";
         if (ViewBag.project.stages.Count == 5)
         {
             porcentajePorEtapa += 30;
@@ -86,11 +86,14 @@
                                             task.id + "_" +
                                             ViewBag.project.stages[i].id + "_" +
                                             ViewBag.project.id;
+                                            fileDownload = nuevoId + ".pdf";
                                         }
-                                        <div id=@nuevoId class="divUpload" data-toggle="modal" href="#basic"></div>
+                                        <div title="Subir documento" id=@nuevoId class="divUpload" data-toggle="modal" href="#basic"></div>
                                         <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
-                                        <div class="divView" title="Ver Documento"></div>
-                                        <div class="divDownload" title="Descargar Documento"></div>
+                                        <div class="divView" title="Ver documento"></div>
+                                        <a title="Descargar documento"class="divDownload" href="https://uploadedfiles.blob.core.windows.net/pdf/@fileDownload">
+                                            <div class="" title="Descargar Documento"></div>
+                                        </a>
                                     </div>
                                 </li>
                             }
@@ -177,11 +180,14 @@
                                         task.id + "_" +
                                         ViewBag.project.stages[ViewBag.project.stages.Count - 1].id + "_" +
                                         ViewBag.project.id;
+                                        fileDownload = nuevoId + ".pdf";
                                     }
-                                    <div id=@nuevoId class="divUpload" data-toggle="modal" href="#basic"></div>
+                                    <div title="Subir documento"id=@nuevoId class="divUpload" data-toggle="modal" href="#basic"></div>
                                     <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
-                                    <div class="divView" title="Ver Documento"></div>
-                                    <div class="divDownload" title="Descargar Documento"></div>
+                                    <div class="divView" data-toggle="modal" href="#basic2" title="Ver documento"></div>
+                                    <a title="Descargar documento"class="divDownload" href="https://uploadedfiles.blob.core.windows.net/pdf/@fileDownload">
+                                        <div class="" title="Descargar Documento"></div>
+                                    </a>
                                 </div>
                             </li>
                         }
@@ -213,6 +219,18 @@
         </div>
     </div>
 </div>
+@if (ViewBag.newResponse == 1)
+{
+    <script>
+        //alert("Subido con éxito");
+    </script>
+}
+else if (@ViewBag.newResponse == 2)
+{
+    <script>
+        //alert("Ups!");
+    </script>
+}
 <!------------------------------------------------------------------------------------------------------->
 <div class="modal fade" id="basic" tabindex="-1" role="full" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
@@ -228,12 +246,12 @@
                         <div class="input-group input-large">
                             <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
                                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                <span class="fileinput-filename"></span>
+                                <span class="fileinput-filename"> </span>
                             </div>
                             <span class="input-group-addon btn default btn-file">
                                 <span class="fileinput-new">Examinar...</span>
                                 <span class="fileinput-exists">Cambiar</span>
-                                <input name="file" type="file">
+                                <input type="file" name="...">
                             </span>
                             <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                         </div>
@@ -244,19 +262,6 @@
                     <button type="submit" class="btn btnDelta">Subir archivo</button>
                 </div>
             </form>
-            @if (ViewBag.newResponse == 1)
-            {
-                <form enctype="multipart/form-data" id="formuploadajax" method="post">
-                    Nombre: <input type="text" name="nombre" placeholder="Escribe tu nombre">
-                    <br />
-                    <input type="file" id="archivo1" name="archivo1" />
-                    <br />
-                    <input type="file" id="archivo2" name="archivo2" />
-                    <br />
-                    <input type="submit" value="Subir archivos" />
-                </form>
-                <div id="mensaje"></div>
-            }
         </div>
         <!-- /.modal-content -->
     </div>
@@ -271,3 +276,6 @@
         });
     });
 </script>
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->

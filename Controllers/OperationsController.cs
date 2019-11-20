@@ -14,8 +14,10 @@ namespace PortalWebCliente.Controllers
 {
     public class OperationsController : Controller
     {
-        //private string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
-        private string urlRequest = @"https://localhost:44333/api/v1/";
+        private string urlRequest = 
+            @"http://deltacargoapi.azurewebsites.net/api/v1/"
+            //@"https://localhost:44333/api/v1/"
+            ;
         private IHostingEnvironment _hostingEnv;
 
         public OperationsController(IHostingEnvironment hostingEnv)
@@ -132,15 +134,11 @@ namespace PortalWebCliente.Controllers
         [HttpPost]
         public IActionResult UploadFile(string fileIds, IFormFile file)
         {
-            string uniqueFile = null;
+            string fileName = null;
             string stringFile = "";
             if (file != null)
             {
-                string upload = Path.Combine(_hostingEnv.WebRootPath + "/uploads");
-                uniqueFile =  fileIds+"_"+file.FileName;
-                string finalPath = Path.Combine(upload, uniqueFile);
-                //Esta linea copia el archivo subido a la carpeta wwwroot/uploads
-                //file.CopyTo(new FileStream(finalPath, FileMode.Create));
+                fileName = fileIds;
                 if (file.Length > 0)
                 {
                     using (var ms = new MemoryStream())
@@ -148,14 +146,10 @@ namespace PortalWebCliente.Controllers
                         file.CopyTo(ms);
                         var fileBytes = ms.ToArray();
                         stringFile = Convert.ToBase64String(fileBytes);
-                        //act on the Base64 data
-                        var fileBytes2 = Convert.FromBase64String(stringFile);
-                        var ms2 = new MemoryStream(fileBytes2);
-                        ms2.CopyTo(new FileStream(finalPath, FileMode.Create));
                     }
                 }
             }
-            ViewBag.file = uniqueFile == null ? "NULL" : stringFile;//uniqueFile;
+            ViewBag.file = fileName == null ? "NULL" : stringFile;//uniqueFile;
             UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
             ViewBag.userEmail = usuarioActual.email;
             string[] ids = fileIds.Split("_");
@@ -167,7 +161,7 @@ namespace PortalWebCliente.Controllers
                 idStage = stageId,
                 idProject = projectId,
                 documentContent = stringFile,
-                documentName = uniqueFile
+                documentName = fileName+".pdf"
             };
             int response = resonseFromUploadFileAPI(newFileModel).responseType;
             ViewBag.project = getProjectWithId(projectId);
