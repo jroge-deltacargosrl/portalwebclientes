@@ -138,3 +138,40 @@ C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netco
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\Index.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\TimeLine.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\UploadFile.g.cshtml.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\appsettings.Development.json
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\appsettings.json
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.deps.json
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.runtimeconfig.json
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.runtimeconfig.dev.json
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.dll
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.pdb
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.Views.dll
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\PortalWebCliente.Views.pdb
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csprojAssemblyReference.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorAssemblyInfo.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorAssemblyInfo.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.AssemblyInfoInputs.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.AssemblyInfo.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.TagHelpers.input.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.TagHelpers.output.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorCoreGenerate.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\LogIn.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\Index.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\TimeLine.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\UploadFile.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotations\Create.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorTargetAssemblyInfo.cache
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorTargetAssemblyInfo.cs
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.Views.pdb
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.dll
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.pdb
+E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csproj.CopyComplete

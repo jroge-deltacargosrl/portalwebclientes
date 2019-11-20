@@ -409,9 +409,9 @@ namespace PortalWebCliente.Controllers
         {
             var responseProjects = new RequestAPI()
                            .addClient(new RestClient(urlRequest))
-                           .addRequest(new RestRequest("operation/{idCustomer}", Method.GET))
+                           .addRequest(new RestRequest("operation/{idClient}", Method.GET))
                            .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
-                           .addUrlSegmentParam(new KeyValuePair<string, object>("idCustomer", id)) // credenciales estaticas
+                           .addUrlSegmentParam(new KeyValuePair<string, object>("idClient", id)) // credenciales estaticas
                            .buildRequest();
             return JsonConvert.DeserializeObject<List<ProjectModel>>(responseProjects);
         }
