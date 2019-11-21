@@ -12,5 +12,7 @@ namespace PortalWebCliente.Models
         public int idProject { get; set; }
         public string documentName { get; set; }
         public string documentContent { get; set; }
+        
+
     }
 }
