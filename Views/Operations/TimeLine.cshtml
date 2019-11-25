@@ -44,7 +44,7 @@
         string state;
     }
     <h2 class="titulo-operacion" style="width:1000px;text-align:center;">@ViewBag.project.name</h2>
-    <div class="Timeline" style="width:100%;">
+    <div class="Timeline">
         <svg height="5" width="0">
             <line x1="0" y1="0" x2="0" y2="0" style="stroke:#ec9404;stroke-width:5" />
             Sorry, your browser does not support inline SVG.
@@ -117,7 +117,7 @@
                                             {
                                                 <div title="Subir documento" id=@nuevoId class="divUpload" data-toggle="modal" href="#basic"></div>
                                                 <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
-                                                <div class="divView" style="opacity:0.2;" title="Ver documento"data-toggle="modal" href="#noView"></div>
+                                                <div class="divView" style="opacity:0.2;" title="Ver documento" data-toggle="modal" href="#myModal"></div>
                                                 <a title="Descargar documento" style="opacity:0.2;" class="divDownload" data-toggle="modal" href="#noFile">
                                                     <div title="Descargar Documento"></div>
                                                 </a>
@@ -241,23 +241,23 @@ ViewBag.project.stages[i + 1].tasks.Count)
                                             fileDownload = $"{names[0]}-{names[1]}({projectId}{stageId}{taskId}).pdf";
                                         }
                                         @if (!task.uploaded)
-                                            {
-                                                <div title="Subir documento" id=@nuevoId class="divUpload" data-toggle="modal" href="#basic"></div>
-                                                <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
-                                                <div class="divView" style="opacity:0.2;" title="Ver documento"data-toggle="modal" href="#noView"></div>
-                                                <a title="Descargar documento" style="opacity:0.2;" class="divDownload" data-toggle="modal" href="#noFile">
-                                                    <div title="Descargar Documento"></div>
-                                                </a>
-                                            }
-                                            else
-                                            {
-                                                <div title="Subir documento" id=@nuevoId class="divUpload" style="opacity:0.2;" data-toggle="modal" href="#basic"></div>
-                                                <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
-                                                <div class="divView" title="Ver documento"></div>
-                                                <a title="Descargar documento" class="divDownload" href="https://deltacargostorage.blob.core.windows.net/pdf/@fileDownload">
-                                                    <div class="" title="Descargar Documento"></div>
-                                                </a>
-                                            }
+                                        {
+                                            <div title="Subir documento" id=@nuevoId class="divUpload" data-toggle="modal" href="#basic"></div>
+                                            <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
+                                            <div class="divView" style="opacity:0.2;" title="Ver documento" data-toggle="modal" href="#noView"></div>
+                                            <a title="Descargar documento" style="opacity:0.2;" class="divDownload" data-toggle="modal" href="#noFile">
+                                                <div title="Descargar Documento"></div>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <div title="Subir documento" id=@nuevoId class="divUpload" style="opacity:0.2;" data-toggle="modal" href="#basic"></div>
+                                            <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
+                                            <div class="divView" title="Ver documento"></div>
+                                            <a title="Descargar documento" class="divDownload" href="https://deltacargostorage.blob.core.windows.net/pdf/@fileDownload">
+                                                <div class="" title="Descargar Documento"></div>
+                                            </a>
+                                        }
                                     </div>
                                 }
                             </li>
@@ -290,18 +290,6 @@ ViewBag.project.stages[ViewBag.project.stages.Count - 1].tasks.Count)
         </div>
     </div>
 </div>
-@if (ViewBag.newResponse == 1)
-{
-    <script>
-        //alert("Subido con éxito");
-    </script>
-}
-else if (@ViewBag.newResponse == 2)
-{
-    <script>
-        //alert("Ups!");
-    </script>
-}
 <!------------------------------------------------------------------------------------------------------->
 <div class="modal fade" id="basic" tabindex="-1" role="full" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
@@ -360,7 +348,7 @@ else if (@ViewBag.newResponse == 2)
     </div>
     <!-- /.modal-dialog -->
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal"tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -368,9 +356,9 @@ else if (@ViewBag.newResponse == 2)
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
-                <!--<embed id="pdfdoc"  width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">-->
-                <object id="pdfdoc" type="application/pdf" width="100%" height="500px">
-
+                <iframe src="https://docs.google.com/gview?url=https://uploadedfiles.blob.core.windows.net/pdf/Per%C3%BA_DespachoAnticipado-SolicitarCRT(327).pdf&embedded=true"
+                        style="width: 100%; height:  500px;color:black;"
+                        frameborder="0" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

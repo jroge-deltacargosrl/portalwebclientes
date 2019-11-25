@@ -304,7 +304,7 @@ hid {
 
 @media (max-width: 1000px) {
     .Timeline {
-        width: 300%;
+        width: 500%;
     }
 
     .clearfix {

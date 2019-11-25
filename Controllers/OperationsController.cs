@@ -15,8 +15,8 @@ namespace PortalWebCliente.Controllers
     public class OperationsController : Controller
     {
         private string urlRequest =
-            //@"http://deltacargoapi.azurewebsites.net/api/v1/"
-            @"https://localhost:44333/api/v1/"
+            @"http://deltacargoapi.azurewebsites.net/api/v1/"
+            //@"https://localhost:44333/api/v1/"
             //@"http://192.168.1.40:44333/api/v1/"
             ;
         private IHostingEnvironment _hostingEnv;
@@ -312,7 +312,7 @@ namespace PortalWebCliente.Controllers
 
         private FileResponse resonseFromUploadFileAPI(FileModel file)
         {
-            RestRequest request = new RestRequest("operation/", Method.POST, DataFormat.Json);
+            RestRequest request = new RestRequest("operation/uploadFile/", Method.POST, DataFormat.Json);
 
             var responseFile= new RequestAPI()
                 .addClient(new RestClient(urlRequest))
