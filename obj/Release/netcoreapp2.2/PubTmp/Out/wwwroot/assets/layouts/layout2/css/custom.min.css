@@ -32,11 +32,11 @@
     margin: 0;
 }
 
-    .nav-tabs li a{
+    .nav-tabs li a {
         color: black !important;
     }
 
-    .nav-tabs .active a{
+    .nav-tabs .active a {
         color: #ec9404 !important;
     }
 
@@ -148,21 +148,34 @@
         background-repeat: no-repeat;
     }
 
-        .options .divUpload input {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-        }
+    .options .divUploadHIDDEN {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        height: 1.8rem;
+        background-color: transparent;
+        background-image: url(../../../../images/upload-file-no-hover.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0;
+    }
 
-        .options .divUpload:hover {
-            background-image: url(../../../../images/upload-file-hover.png);
-            cursor:pointer;
-        }
+    .options .divUpload input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    .options .divUpload:hover {
+        background-image: url(../../../../images/upload-file-hover.png);
+        cursor: pointer;
+    }
 
     .options .divView {
         position: relative;
@@ -176,10 +189,23 @@
         background-repeat: no-repeat;
     }
 
-        .options .divView:hover {
-            background-image: url(../../../../images/open-file-hover.png);
-            cursor: pointer;
-        }
+    .options .divViewHIDDEN {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        height: 1.8rem;
+        background-color: transparent;
+        background-image: url(../../../../images/open-file-no-hover.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0;
+    }
+
+    .options .divView:hover {
+        background-image: url(../../../../images/open-file-hover.png);
+        cursor: pointer;
+    }
 
     .options .divDownload {
         position: relative;
@@ -193,11 +219,27 @@
         background-repeat: no-repeat;
     }
 
-        .options .divDownload:hover {
-            background-image: url(../../../../images/download-file-hover.png);
-            cursor: pointer;
-        }
+    .options .divDownloadHIDDEN {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        height: 1.8rem;
+        background-color: transparent;
+        background-image: url(../../../../images/download-file-no-hover.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0;
+    }
 
+    .options .divDownload:hover {
+        background-image: url(../../../../images/download-file-hover.png);
+        cursor: pointer;
+    }
+
+hid {
+    
+}
 
 /*Triangulos*/
 
@@ -254,9 +296,10 @@
     -webkit-filter: opacity(.3);
     filter: opacity(.3);
 }
-.btnDelta{
-    background-color:#ec9404;
-    color:white;
+
+.btnDelta {
+    background-color: #ec9404;
+    color: white;
 }
 
 @media (max-width: 1000px) {

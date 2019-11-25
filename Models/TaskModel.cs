@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace PortalWebCliente.Models
 {
@@ -19,7 +15,5 @@ namespace PortalWebCliente.Models
         /*Nuevos atributos:JROGE*/
         public bool canUpload { get; set; }
         public bool uploaded { get; set; }
-
-
     }
 }

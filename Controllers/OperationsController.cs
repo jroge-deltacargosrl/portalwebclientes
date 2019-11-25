@@ -14,9 +14,10 @@ namespace PortalWebCliente.Controllers
 {
     public class OperationsController : Controller
     {
-        private string urlRequest = 
+        private string urlRequest =
             //@"http://deltacargoapi.azurewebsites.net/api/v1/"
             @"https://localhost:44333/api/v1/"
+            //@"http://192.168.1.40:44333/api/v1/"
             ;
         private IHostingEnvironment _hostingEnv;
 
@@ -156,25 +157,25 @@ namespace PortalWebCliente.Controllers
             string[] datos = fileIds.Split("#");
             string[] names = datos[0].Split("*");
 
-
             string[] ids = datos[1].Split("_");
             int projectId = Convert.ToInt32(ids[2]);
-            int stageId = Convert.ToInt32(ids[1]);
             int taskId = Convert.ToInt32(ids[0]);
 
-            string taskFileName = $"{names[0]}-{names[1]}({projectId}{stageId}{taskId}).pdf";
-
+            string taskFileName = $"{names[0]}-{names[1]}({projectId}{taskId}).pdf";
 
             FileModel newFileModel = new FileModel {
                 idTask = taskId,
-                idStage = stageId,
                 idProject = projectId,
                 documentContent = stringFile,
                 documentName = taskFileName
             };
             int response = resonseFromUploadFileAPI(newFileModel).responseType;
+            ViewBag.response = response;
+            UserResponse actualUser = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
+            List<ProjectModel> operations = responseFromOperationAPI(actualUser.id);
+            HttpContext.Session.setObjectAsJson("listaDeProyectosJSON", operations);
+            ViewBag.userEmail = actualUser.email;
             ViewBag.project = getProjectWithId(projectId);
-            ViewBag.newResponse = response;
             return View("Timeline");
             //return View();
         }

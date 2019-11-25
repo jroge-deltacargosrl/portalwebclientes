@@ -73,8 +73,6 @@ C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\bin\Debug\netco
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\bin\Debug\netcoreapp2.2\PortalWebCliente.pdb
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\bin\Debug\netcoreapp2.2\PortalWebCliente.Views.dll
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\bin\Debug\netcoreapp2.2\PortalWebCliente.Views.pdb
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csprojAssemblyReference.cache
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csproj.CoreCompileInputs.cache
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorAssemblyInfo.cache
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorAssemblyInfo.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.AssemblyInfoInputs.cache
@@ -82,15 +80,6 @@ C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netco
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.TagHelpers.input.cache
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.TagHelpers.output.cache
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorCoreGenerate.cache
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\LogIn.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorTargetAssemblyInfo.cache
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.RazorTargetAssemblyInfo.cs
 C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\PortalWebCliente.Views.pdb
@@ -134,10 +123,6 @@ E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csproj.CopyComplete
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csprojAssemblyReference.cache
 E:\Documentacion Trabajo\DELTA CARGO\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotation\Create.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotations\Create.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\Index.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\TimeLine.g.cshtml.cs
-C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalWebClientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\UploadFile.g.cshtml.cs
 E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\appsettings.Development.json
 E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\appsettings.json
 E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
@@ -175,3 +160,20 @@ E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebcliente
 E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.dll
 E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.pdb
 E:\Documentacion Trabajo Profesional\Delta Cargo\Implementacion\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csproj.CopyComplete
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\LogIn.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\Index.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\TimeLine.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Operations\UploadFile.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Quotations\Create.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\hp\Desktop\DeltaCargo\Delta Cargo SRL\portalwebclientes\obj\Debug\netcoreapp2.2\PortalWebCliente.csprojAssemblyReference.cache
