@@ -15,5 +15,6 @@ namespace PortalWebCliente.Models
         /*Nuevos atributos:JROGE*/
         public bool canUpload { get; set; }
         public bool uploaded { get; set; }
+        public string format { get; set; }
     }
 }

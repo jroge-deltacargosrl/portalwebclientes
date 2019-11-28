@@ -19,20 +19,14 @@ namespace PortalWebCliente.Controllers
             //@"https://localhost:44333/api/v1/"
             //@"http://192.168.1.40:44333/api/v1/"
             ;
+        private string urlRequest2 =
+            @"url"
+            ;
         private IHostingEnvironment _hostingEnv;
 
         public OperationsController(IHostingEnvironment hostingEnv)
         {
             _hostingEnv = hostingEnv;
-        }
-
-        [HttpGet("/Timeline/{projectName}", Name = "aux")]
-        public IActionResult Timeline(string projectName)
-        {
-            UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
-            ViewBag.userEmail = usuarioActual.email;
-            ViewBag.project = getProjectWithName(projectName);
-            return View();
         }
 
         [HttpGet]
@@ -132,15 +126,30 @@ namespace PortalWebCliente.Controllers
             });
         }
 
+        [HttpGet("/Timeline/{projectName}", Name = "aux")]
+        public IActionResult Timeline(string projectName)
+        {
+            UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
+            ViewBag.userEmail = usuarioActual.email;
+            ViewBag.project = getProjectWithName(projectName);
+            return View();
+        }
+
         [HttpPost]
         public IActionResult UploadFile(string fileIds, IFormFile file)
         {
-            string fileName = null;
             string stringFile = "";
+            string[] elements = file.FileName.Split(".");
+            string formatFile = elements[elements.Length - 1];
+            int response = 0;
+            string[] datos = fileIds.Split("#");
+            string[] names = datos[0].Split("*");
+            string[] ids = datos[1].Split("_");
+            int projectId = Convert.ToInt32(ids[2]);
+            int taskId = Convert.ToInt32(ids[0]);
             if (file != null)
             {
-                fileName = fileIds;
-                if (file.Length > 0)
+                if (file.Length < getMegaBytes(5))
                 {
                     using (var ms = new MemoryStream())
                     {
@@ -148,36 +157,46 @@ namespace PortalWebCliente.Controllers
                         var fileBytes = ms.ToArray();
                         stringFile = Convert.ToBase64String(fileBytes);
                     }
+                    string taskFileName = $"{names[0]}-{names[1]}({projectId}{taskId}).{formatFile}";
+                    FileModel newFileModel = new FileModel
+                    {
+                        idTask = taskId,
+                        idProject = projectId,
+                        documentContent = stringFile,
+                        documentName = taskFileName,
+                        format = formatFile
+                    };
+                    response = resonseFromUploadFileAPI(newFileModel).responseType;
+                }
+                else
+                {
+                    response = 3;
                 }
             }
-            ViewBag.file = fileName == null ? "NULL" : stringFile;//uniqueFile;
-            UserResponse usuarioActual = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
-            ViewBag.userEmail = usuarioActual.email;
-
-            string[] datos = fileIds.Split("#");
-            string[] names = datos[0].Split("*");
-
-            string[] ids = datos[1].Split("_");
-            int projectId = Convert.ToInt32(ids[2]);
-            int taskId = Convert.ToInt32(ids[0]);
-
-            string taskFileName = $"{names[0]}-{names[1]}({projectId}{taskId}).pdf";
-
-            FileModel newFileModel = new FileModel {
-                idTask = taskId,
-                idProject = projectId,
-                documentContent = stringFile,
-                documentName = taskFileName
-            };
-            int response = resonseFromUploadFileAPI(newFileModel).responseType;
             ViewBag.response = response;
-            UserResponse actualUser = HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
-            List<ProjectModel> operations = responseFromOperationAPI(actualUser.id);
-            HttpContext.Session.setObjectAsJson("listaDeProyectosJSON", operations);
-            ViewBag.userEmail = actualUser.email;
             ViewBag.project = getProjectWithId(projectId);
+            ViewBag.userEmail = getUserEmail();
             return View("Timeline");
-            //return View();
+        }
+
+        private long getMegaBytes(int count)
+        {
+            return count * 1000000;
+        }
+
+        private int getUserId()
+        {
+            return getActualUser().id;
+        }
+
+        private string getUserEmail()
+        {
+            return getActualUser().email;
+        }
+
+        private UserResponse getActualUser()
+        {
+            return HttpContext.Session.getObjectFromJson<UserResponse>("usuarioResponseJSON");
         }
 
         private ProjectModel getProjectWithName(string projectName)
@@ -195,10 +214,10 @@ namespace PortalWebCliente.Controllers
 
         private ProjectModel getProjectWithId(int projectId)
         {
-            List<ProjectModel> listaDeProyectos = HttpContext.Session.getObjectFromJson<List<ProjectModel>>("listaDeProyectosJSON");
+            List<ProjectModel> listaDeProyectos = responseFromOperationAPI(getUserId());
             foreach (ProjectModel proyecto in listaDeProyectos)
             {
-                if (proyecto.id==projectId)
+                if (proyecto.id == projectId)
                 {
                     return proyecto;
                 }
@@ -314,7 +333,7 @@ namespace PortalWebCliente.Controllers
         {
             RestRequest request = new RestRequest("operation/uploadFile/", Method.POST, DataFormat.Json);
 
-            var responseFile= new RequestAPI()
+            var responseFile = new RequestAPI()
                 .addClient(new RestClient(urlRequest))
                 .addRequest(request)
                 .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))

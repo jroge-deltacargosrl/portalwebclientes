@@ -111,22 +111,22 @@
                                                 int stageId = Convert.ToInt32(ids[1]);
                                                 int taskId = Convert.ToInt32(ids[0]);
 
-                                                fileDownload = $"{names[0]}-{names[1]}({projectId}{stageId}{taskId}).pdf";
+                                                fileDownload = $"{names[0]}-{names[1]}({projectId}{taskId}).{task.format}";
                                             }
                                             @if (!task.uploaded)
                                             {
                                                 <div title="Subir documento" id=@nuevoId class="divUpload" data-toggle="modal" href="#basic"></div>
                                                 <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
-                                                <div class="divView" style="opacity:0.2;" title="Ver documento" data-toggle="modal" href="#myModal"></div>
+                                                <div class="divView" style="opacity:0.2;" title="Ver documento" data-toggle="modal" href="#noView"></div>
                                                 <a title="Descargar documento" style="opacity:0.2;" class="divDownload" data-toggle="modal" href="#noFile">
                                                     <div title="Descargar Documento"></div>
                                                 </a>
                                             }
                                             else
                                             {
-                                                <div title="Subir documento" id=@nuevoId class="divUpload" style="opacity:0.2;" data-toggle="modal" href="#basic"></div>
+                                                <div title="Subir documento" id=@nuevoId class="divUpload" style="opacity:0.2;" data-toggle="modal" href="#noUpload"></div>
                                                 <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
-                                                <div class="divView" title="Ver documento"></div>
+                                                <div class="divView" title="Ver documento"data-toggle="modal"href="#myModal" id=@fileDownload></div>
                                                 <a title="Descargar documento" class="divDownload" href="https://deltacargostorage.blob.core.windows.net/pdf/@fileDownload">
                                                     <div class="" title="Descargar Documento"></div>
                                                 </a>
@@ -238,7 +238,7 @@ ViewBag.project.stages[i + 1].tasks.Count)
                                             int stageId = Convert.ToInt32(ids[1]);
                                             int taskId = Convert.ToInt32(ids[0]);
 
-                                            fileDownload = $"{names[0]}-{names[1]}({projectId}{stageId}{taskId}).pdf";
+                                            fileDownload = $"{names[0]}-{names[1]}({projectId}{taskId}).{task.format}";
                                         }
                                         @if (!task.uploaded)
                                         {
@@ -251,9 +251,9 @@ ViewBag.project.stages[i + 1].tasks.Count)
                                         }
                                         else
                                         {
-                                            <div title="Subir documento" id=@nuevoId class="divUpload" style="opacity:0.2;" data-toggle="modal" href="#basic"></div>
+                                            <div title="Subir documento" id=@nuevoId class="divUpload" style="opacity:0.2;" data-toggle="modal" href="#noUpload"></div>
                                             <!--<input type="file" name="document" id="fileupload" class="inputFile" title="Subir Documento" />-->
-                                            <div class="divView" title="Ver documento"></div>
+                                            <div class="divView" title="Ver documento" data-toggle="modal" id=@fileDownload href="#myModal"></div>
                                             <a title="Descargar documento" class="divDownload" href="https://deltacargostorage.blob.core.windows.net/pdf/@fileDownload">
                                                 <div class="" title="Descargar Documento"></div>
                                             </a>
@@ -348,62 +348,66 @@ ViewBag.project.stages[ViewBag.project.stages.Count - 1].tasks.Count)
     </div>
     <!-- /.modal-dialog -->
 </div>
-<div class="modal fade" id="myModal"tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="noUpload" tabindex="-1" role="full" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                Usted ya ha subido un archivo, contactese con la operadora para subir nuevamente un archivo
             </div>
-            <div class="modal-body">
-                <iframe src="https://docs.google.com/gview?url=https://uploadedfiles.blob.core.windows.net/pdf/Per%C3%BA_DespachoAnticipado-SolicitarCRT(327).pdf&embedded=true"
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document"style="height:90%">
+        <div class="modal-content"style="height:100%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Visor </h4>
+            </div>
+            <div class="modal-body"style="height:80%">
+                <!--<iframe src="https://docs.google.com/gview?url=https://uploadedfiles.blob.core.windows.net/pdf/Per%C3%BA_DespachoAnticipado-SolicitarCRT(327).pdf&embedded=true"
                         style="width: 100%; height:  500px;color:black;"
-                        frameborder="0" />
+                        frameborder="0" />-->
+                <iframe id="toView"src="https://docs.google.com/gview?url=https://uploadedfiles.blob.core.windows.net/pdf/Per%C3%BA_DespachoAnticipado-SolicitarCRT(327).pdf&embedded=true"
+                    style="width: 100%; height:100%;"
+                    frameborder="0"></iframe>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
 </div>
+@switch (ViewBag.response)
+{
+    case 0:
+        <script>
+            alert("Nada para subir!");
+        </script>
+        break;
+    case 1:
+        <script>
+            alert("Subido correctamente");
+        </script>
+        break;
+    case 2:
+        <script>
+            alert("Error al subir archivo");
+        </script>
+        break;
+    case 3:
+        <script>
+            alert("Archivo demasiado grande");
+        </script>
+        break;
+}
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="~/js/operations.js" type="text/javascript"></script>
-<script>
-    $(document).ready(function () {
-        $(".divUpload").click(function () {
-            $("input[name=fileIds]").val($(this).context.id);
-            console.log($(this).context.id);
-        });
-    });
-</script>
-@if (ViewBag.response == 1)
-{
-    <script>
-        alert("Archivo subido con éxito");
-    </script>
-}
-else if (ViewBag.response == 2)
-{
-    <script>
-        alert("Fallo de subida");
-    </script>
-}
+
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script src="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
-<script>
-    jQuery(document).ready(function () {
-        jQuery('#OpenDocument').on('click', function () {
-            var url = $(this).attr('rel');
-            jQuery('#myModalLabel').text(url);
-            jQuery('#pdfdoc')
-                .attr('data', url)
-                .attr('src', url);
-
-            jQuery('#myModal').modal({
-                show: true
-            });
-        });
-    });
-</script>
+<!--https://docs.google.com/gview?url=https://deltacargostorage.blob.core.windows.net/pdf/-->
+<!--&embedded=true-->

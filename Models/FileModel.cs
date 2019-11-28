@@ -7,5 +7,6 @@
         public int idProject { get; set; }
         public string documentName { get; set; }
         public string documentContent { get; set; }
+        public string format { get; set; }
     }
 }
