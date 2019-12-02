@@ -320,9 +320,10 @@ namespace PortalWebCliente.Controllers
 
         private UserResponse responseFromLoginAPI(UserModel user)
         {
+            user.typeAccess = 1;
             var responseLogin = new RequestAPI()
                 .addClient(new RestClient(urlRequest))
-                .addRequest(new RestRequest("access/", Method.POST, DataFormat.Json))
+                .addRequest(new RestRequest("user/access/", Method.POST, DataFormat.Json))
                 .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
                 .addBodyData(user)
                 .buildRequest();

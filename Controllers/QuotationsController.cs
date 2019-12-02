@@ -15,7 +15,7 @@ namespace PortalWebCliente.Controllers
             string urlRequest = @"http://deltacargoapi.azurewebsites.net/api/v1/";
             var responseProjects = new RequestAPI()
                 .addClient(new RestClient(urlRequest))
-                .addRequest(new RestRequest("quotation/", Method.GET))
+                .addRequest(new RestRequest("quotation/dataRequired", Method.GET))
                 .addHeader(new KeyValuePair<string, object>("Accept", "application/json"))
                 .buildRequest();
             QuotationViewModel quotationFormat = JsonConvert.DeserializeObject<QuotationViewModel>(responseProjects);
